@@ -912,6 +912,14 @@ footer a:hover {
     animation: fadeIn var(--transition-base) ease-out;
 }
 
+/* Mobile responsive - Different background for mobile */
+@media (max-width: 768px) {
+    .hero-bg-image {
+        background-image: url('./webmovil.png') !important;
+        background-attachment: scroll;
+    }
+}
+
 /* Print styles */
 @media print {
     .navbar,
