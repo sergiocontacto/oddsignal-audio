@@ -920,11 +920,23 @@ footer a:hover {
         background-position: center top;
     }
 
-    /* Mobile buttons - centered and horizontal */
+    /* Mobile hero content - position at top */
+    .hero-fullscreen-content {
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        align-items: center;
+    }
+
+    /* Mobile buttons - only FREE BETA visible */
     .hero-buttons {
         justify-content: center;
         gap: var(--spacing-md);
         flex-wrap: nowrap;
+    }
+
+    .btn-secondary {
+        display: none;
     }
 
     .btn {
