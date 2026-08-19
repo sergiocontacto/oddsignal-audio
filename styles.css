@@ -944,6 +944,69 @@ footer a:hover {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: var(--text-sm);
     }
+
+    /* PRODUCTS - Mobile optimization */
+    .product-showcase {
+        flex-direction: column;
+        padding: var(--spacing-lg);
+    }
+
+    .product-image-gallery {
+        width: 100%;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .gallery-container img {
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+    }
+
+    .product-info-compact {
+        width: 100%;
+        padding: 0;
+    }
+
+    .product-logo-container {
+        height: auto;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .product-logo {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .product-badge-text {
+        font-size: var(--text-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .section-heading {
+        font-size: var(--text-lg);
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .features-list {
+        font-size: var(--text-base);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .system-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .system-item {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .btn-download {
+        width: 100%;
+        text-align: center;
+        margin-top: var(--spacing-lg);
+    }
 }
 
 /* Print styles */
