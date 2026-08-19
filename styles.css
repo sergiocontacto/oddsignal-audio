@@ -946,9 +946,17 @@ footer a:hover {
     }
 
     /* PRODUCTS - Mobile optimization */
+    .products-container-new {
+        background-image: url('./estructura-producto-movil.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
     .product-showcase {
         flex-direction: column;
         padding: var(--spacing-lg);
+        background: transparent;
     }
 
     .product-image-gallery {
