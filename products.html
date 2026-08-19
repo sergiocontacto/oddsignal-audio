@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - ODDSIGNAL AUDIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="./logo-blanco.png" alt="ODDSIGNAL AUDIO">
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link active">PRODUCTS</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector-container">
+                    <select id="language-selector" class="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <div class="products-container-new">
+        <!-- Product: EvoraVerb -->
+        <div class="product-showcase">
+            <!-- Product Image Gallery - Main -->
+            <div class="product-image-gallery">
+                <!-- Image Container -->
+                <div class="gallery-container">
+                    <img src="./plugin-ui-view1.jpg" alt="EvoraVerb - Extended View" class="showcase-image active" data-image="0">
+                    <img src="./plugin-ui-view2.jpg" alt="EvoraVerb - Clean View" class="showcase-image" data-image="1">
+                </div>
+
+                <!-- Gallery Controls -->
+                <div class="gallery-controls">
+                    <button class="gallery-dot active" data-slide="0" aria-label="View 1"></button>
+                    <button class="gallery-dot" data-slide="1" aria-label="View 2"></button>
+                </div>
+            </div>
+
+            <!-- Product Info - Compact -->
+            <div class="product-info-compact">
+                <div class="product-logo-container">
+                    <img src="./logo.png" alt="EvoraVerb Logo" class="product-logo">
+                </div>
+                <p class="product-badge-text">Professional Atmospheric Reverb</p>
+
+                <!-- Features -->
+                <div class="features-section">
+                    <h3 class="section-heading">FEATURES</h3>
+                    <ul class="features-list">
+                        <li>Advanced DSP algorithms for pristine audio quality</li>
+                        <li>Low CPU footprint - scalable to 100+ instances</li>
+                        <li>Intuitive interface with real-time feedback</li>
+                        <li>Professionally curated presets</li>
+                        <li>Premium, minimal design philosophy</li>
+                    </ul>
+                </div>
+
+                <!-- System Requirements -->
+                <div class="system-requirements-section">
+                    <h3 class="section-heading">SYSTEM REQUIREMENTS</h3>
+                    <div class="system-grid">
+                        <div class="system-item">
+                            <span class="system-label">Windows</span>
+                            <span class="system-value">Windows 10 or later</span>
+                            <span class="system-note">Intel i5 or equivalent</span>
+                        </div>
+                        <div class="system-item">
+                            <span class="system-label">macOS</span>
+                            <span class="system-value">macOS 10.13 or later</span>
+                            <span class="system-note">Apple Silicon & Intel compatible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="contact.html" class="btn btn-download">DOWNLOAD NOW</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ODDSIGNAL AUDIO. All rights reserved. | <a href="contact.html">Contact</a></p>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
