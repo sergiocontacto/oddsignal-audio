@@ -915,7 +915,7 @@ footer a:hover {
 /* Mobile responsive - Different background for mobile */
 @media (max-width: 768px) {
     .hero-bg-image {
-        background-image: url('./mobile.jpg') !important;
+        background-image: url('./webmovil.png') !important;
         background-attachment: scroll;
         background-position: center top;
     }
