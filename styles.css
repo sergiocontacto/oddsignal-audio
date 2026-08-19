@@ -919,6 +919,18 @@ footer a:hover {
         background-attachment: scroll;
         background-position: center top;
     }
+
+    /* Mobile buttons - centered and horizontal */
+    .hero-buttons {
+        justify-content: center;
+        gap: var(--spacing-md);
+        flex-wrap: nowrap;
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--text-sm);
+    }
 }
 
 /* Print styles */
