@@ -964,11 +964,16 @@ footer a:hover {
         margin-bottom: var(--spacing-lg);
     }
 
-    .gallery-container img {
+    .gallery-container {
+        background-image: url('./estructura-producto-movil.png');
+        background-size: cover;
+        background-position: center;
         width: 100%;
-        height: auto;
-        min-height: 500px;
-        object-fit: cover;
+        height: 600px;
+    }
+
+    .gallery-container img {
+        display: none;
     }
 
     .product-info-compact {
