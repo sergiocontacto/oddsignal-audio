@@ -971,6 +971,14 @@ footer a:hover {
         object-fit: cover;
     }
 
+    .gallery-container img:nth-child(2) {
+        display: none;
+    }
+
+    .gallery-controls {
+        display: none;
+    }
+
     .product-info-compact {
         width: 100%;
         padding: 0;
