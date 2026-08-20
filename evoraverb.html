@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How EvoraVerb Works &mdash; Atmospheric Reverb Plugin</title>
+
+    <meta name="description" content="How EvoraVerb works: an 8-line feedback delay network with three-layer modulation, behind two controls. Free VST3 and AU reverb plugin for Windows and macOS.">
+    <link rel="canonical" href="https://oddsignalaudio.com/evoraverb.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="How EvoraVerb Works &mdash; Atmospheric Reverb Plugin">
+    <meta property="og:description" content="How EvoraVerb works: an 8-line feedback delay network with three-layer modulation, behind two controls. Free VST3 and AU reverb plugin for Windows and macOS.">
+    <meta property="og:url" content="https://oddsignalaudio.com/evoraverb.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How EvoraVerb Works &mdash; Atmospheric Reverb Plugin">
+    <meta name="twitter:description" content="How EvoraVerb works: an 8-line feedback delay network with three-layer modulation, behind two controls. Free VST3 and AU reverb plugin for Windows and macOS.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=18">
+    <link rel="apple-touch-icon" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
+
+    <style>
+        .doc { padding: 64px 0; }
+        .doc .container { max-width: 820px; }
+
+        .doc h1 { font-size: 44px; margin-bottom: 20px; }
+        .doc h2 {
+            font-size: 24px;
+            margin: 64px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .doc h3 { font-size: 15px; margin: 32px 0 10px; color: var(--color-accent); letter-spacing: 0.12em; }
+        .doc p { margin-bottom: 18px; }
+        .doc .lead { font-size: 19px; line-height: 1.8; }
+
+        .doc table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+        .doc th, .doc td {
+            text-align: left;
+            padding: 11px 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .doc th {
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            opacity: 0.6;
+            font-weight: 600;
+        }
+        .doc td:first-child { color: var(--color-accent); }
+
+        .chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 24px 0 32px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+        }
+        .chain span {
+            padding: 8px 13px;
+            border: 1px solid var(--color-border);
+            border-radius: 3px;
+            background: rgba(17, 24, 35, 0.5);
+        }
+        .chain span.on { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .faq { border-bottom: 1px solid var(--color-border); padding: 22px 0; }
+        .faq h3 { margin: 0 0 10px; color: var(--color-text); font-size: 15px; letter-spacing: 0.06em; }
+        .faq p { margin: 0; font-size: 14px; }
+
+        .doc-cta { margin-top: 64px; text-align: center; }
+
+        @media (max-width: 768px) {
+            .doc { padding: 40px 0; }
+            .doc h1 { font-size: 30px; }
+            .doc h2 { font-size: 19px; margin: 44px 0 16px; }
+            .doc .lead { font-size: 16px; }
+            .doc table { font-size: 12px; }
+            .doc th, .doc td { padding: 9px 8px; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Is EvoraVerb free?","acceptedAnswer":{"@type":"Answer","text":"Yes. EvoraVerb 1.0.0 is currently available as a free public beta. You sign up through the form on our site and get the download."}},
+        {"@type":"Question","name":"Which plugin formats does EvoraVerb support?","acceptedAnswer":{"@type":"Answer","text":"VST3, Audio Unit and a standalone application. AAX is not included, because it requires the Avid SDK and a PACE signature."}},
+        {"@type":"Question","name":"Does EvoraVerb add latency?","acceptedAnswer":{"@type":"Answer","text":"No. Reported latency is 0 samples, so it introduces no delay compensation in your session."}},
+        {"@type":"Question","name":"Can I use EvoraVerb on a mono track?","acceptedAnswer":{"@type":"Answer","text":"No. EvoraVerb is stereo in, stereo out only. On a mono source, place it on a stereo bus or a stereo send."}},
+        {"@type":"Question","name":"Why does EvoraVerb only have two knobs?","acceptedAnswer":{"@type":"Answer","text":"Amount is a macro control: one gesture rescales six internal parameters at once, along a path tuned so every position is musically usable. Mix sets the wet and dry balance."}},
+        {"@type":"Question","name":"What sample rates does EvoraVerb support?","acceptedAnswer":{"@type":"Answer","text":"Whatever your host runs. Every delay length and filter coefficient is recalculated when the sample rate changes."}},
+        {"@type":"Question","name":"Can the parameters be automated?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both Amount and Mix are exposed to the host and every internal parameter is ramped, so automation moves do not click."}},
+        {"@type":"Question","name":"How long can the reverb tail get?","acceptedAnswer":{"@type":"Answer","text":"Up to about 12 seconds of decay at maximum Amount. The plugin reports a 6 second tail to the host."}}
+      ]
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link active">PRODUCTS</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <section class="doc">
+        <div class="container">
+
+            <h1>How EvoraVerb works</h1>
+            <p class="lead">EvoraVerb is an algorithmic reverb plugin built around a feedback delay network. Two controls on the surface; eight delay lines, allpass diffusion and three-layer modulation underneath. This page explains what happens to your signal and how it differs from other reverbs.</p>
+
+            <img src="./plugin-evoraverb.webp" alt="EvoraVerb plugin interface showing the Amount and Mix controls" width="1000" height="737" loading="lazy" decoding="async" style="width:100%;height:auto;margin:40px 0;">
+
+            <h2>Two controls, six parameters</h2>
+            <p>Most reverbs give you a dozen knobs and leave the coherent combinations for you to find. EvoraVerb takes the opposite approach: <strong>Amount</strong> is a macro that rescales six internal parameters at once, along a path where every position is a usable space.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Internal parameter</th><th>At 0%</th><th>At 100%</th><th>What you hear</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Size</td><td>0.20</td><td>0.95</td><td>Room dimensions</td></tr>
+                    <tr><td>Decay</td><td>0.8 s</td><td>12.0 s</td><td>Tail length</td></tr>
+                    <tr><td>Damping</td><td>0.55</td><td>0.30</td><td>Opens up in the highs as it grows</td></tr>
+                    <tr><td>Pre-delay</td><td>10 ms</td><td>35 ms</td><td>Distance to the first reflection</td></tr>
+                    <tr><td>Mod depth</td><td>0.15</td><td>0.55</td><td>Movement inside the tail</td></tr>
+                    <tr><td>Width</td><td>0.70</td><td>1.00</td><td>Stereo spread</td></tr>
+                </tbody>
+            </table>
+
+            <p>Turning Amount takes you from a small controlled room to a long enveloping space in one gesture. <strong>Mix</strong> sets the wet and dry balance. Both are exposed to your host for automation.</p>
+
+            <h2>The signal chain</h2>
+            <p>Each stage hands the next a wavefront that is already more scattered, so the feedback network never receives a dry impulse. It sustains and blurs a cloud that already exists, which is where the metallic character of cheaper reverbs comes from.</p>
+
+            <div class="chain">
+                <span>Input L/R</span>
+                <span>Pre-delay</span>
+                <span>Early reflections</span>
+                <span>Allpass diffuser</span>
+                <span class="on">FDN tank</span>
+                <span>Damping</span>
+                <span>Width M/S</span>
+                <span>Output</span>
+            </div>
+
+            <h3>Pre-delay</h3>
+            <p>True stereo: left and right travel down independent lines instead of being summed to mono, so the width of your source survives all the way to the tank. Third-order Lagrange interpolation, with 500 ms of headroom.</p>
+
+            <h3>Early reflections</h3>
+            <p>Eight taps per channel on separate lines, with deliberately irregular timings that differ between left and right so the image does not collapse to the centre in mono. Each bounce loses highs, the way a real wall behaves.</p>
+
+            <h3>Allpass diffuser</h3>
+            <p>Four allpass stages in series per channel, again with different times left and right. This is the stage that does most of the work removing the metallic quality: it turns the wavefront into a dense cloud before it ever reaches the tank.</p>
+
+            <h3>FDN tank</h3>
+            <p>Eight delay lines with mutually prime lengths, fed back through a Householder matrix that preserves energy and spreads every line into all the others. Left and right are injected separately per line, and the matrix itself blends the channels over time.</p>
+
+            <h3>Damping and low-end control</h3>
+            <p>Every line carries its own one-pole lowpass in the loop, each with a slightly different spectral deviation so the eight do not all decay with the same timbre. A second, very slow filter removes the DC component that would otherwise accumulate inaudibly and destabilise long tails.</p>
+
+            <h2>What makes it different</h2>
+
+            <h3>Three-layer modulation</h3>
+            <p>What gives away an artificial reverb on long tails is the periodic, predictable sway of a pure sine LFO. EvoraVerb combines three independent sources on every line:</p>
+            <table>
+                <thead><tr><th>Layer</th><th>Frequency</th><th>Weight</th><th>Contributes</th></tr></thead>
+                <tbody>
+                    <tr><td>Main LFO</td><td>0.15 &ndash; 0.64 Hz</td><td>60%</td><td>Chorus-like movement</td></tr>
+                    <tr><td>Slow drift</td><td>0.021 &ndash; 0.112 Hz</td><td>28%</td><td>Long-term breathing</td></tr>
+                    <tr><td>Smoothed noise</td><td>Non-periodic</td><td>12%</td><td>Breaks audible repetition</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Asymmetric by design</h3>
+            <p>Reflection times, diffuser stages and output weights all differ between channels. Nothing is mirrored, so the stereo image stays open instead of pulling to the middle.</p>
+
+            <h3>Built for real-time</h3>
+            <p>No memory is allocated while audio is running &mdash; everything is reserved when the plugin is prepared. Every parameter is ramped, from 20 ms on Mix to 250 ms on Decay, so automation never produces a click. Denormals are handled and the feedback loop carries a soft-clip safety limiter.</p>
+
+            <h3>An interface that gets out of the way</h3>
+            <p>Vector graphics, no bitmaps, at 512 &times; 512. It scales cleanly and stays readable next to the rest of your session.</p>
+
+            <h2>Formats and system requirements</h2>
+            <table>
+                <tbody>
+                    <tr><td>Formats</td><td>VST3, Audio Unit, Standalone</td></tr>
+                    <tr><td>Windows</td><td>Windows 10 or later, 64-bit</td></tr>
+                    <tr><td>macOS</td><td>macOS 10.13 or later</td></tr>
+                    <tr><td>Channels</td><td>Stereo in, stereo out only</td></tr>
+                    <tr><td>Latency</td><td>0 samples</td></tr>
+                    <tr><td>Reported tail</td><td>6.0 s</td></tr>
+                    <tr><td>Maximum decay</td><td>12 s</td></tr>
+                    <tr><td>Processing</td><td>32-bit floating point</td></tr>
+                    <tr><td>Sample rate</td><td>Follows the host</td></tr>
+                    <tr><td>MIDI</td><td>Not used</td></tr>
+                    <tr><td>Automatable parameters</td><td>2 (Amount, Mix)</td></tr>
+                    <tr><td>Session state</td><td>Saved with your project</td></tr>
+                    <tr><td>VST3 size</td><td>About 9.5 MB (Windows x64)</td></tr>
+                    <tr><td>Version</td><td>1.0.0 &mdash; public beta</td></tr>
+                </tbody>
+            </table>
+            <p>AAX is not included. It requires the Avid SDK and a PACE signature, neither of which is part of this build, so EvoraVerb does not run in Pro Tools yet.</p>
+
+            <h2>Frequently asked questions</h2>
+
+            <div class="faq">
+                <h3>Is EvoraVerb free?</h3>
+                <p>Yes. Version 1.0.0 is a free public beta. Sign up through the form and you get the download.</p>
+            </div>
+            <div class="faq">
+                <h3>Which formats does it support?</h3>
+                <p>VST3, Audio Unit and a standalone application. No AAX, so it does not load in Pro Tools.</p>
+            </div>
+            <div class="faq">
+                <h3>Does it add latency?</h3>
+                <p>No. Reported latency is 0 samples, so nothing shifts in your session.</p>
+            </div>
+            <div class="faq">
+                <h3>Can I use it on a mono track?</h3>
+                <p>Not directly. EvoraVerb is stereo in, stereo out. For a mono source, put it on a stereo bus or a stereo send.</p>
+            </div>
+            <div class="faq">
+                <h3>Why only two knobs?</h3>
+                <p>Amount moves six internal parameters along a path where every position is a usable space, so there are no unusable combinations to avoid. Mix handles the balance. That is the whole surface, on purpose.</p>
+            </div>
+            <div class="faq">
+                <h3>What sample rates does it support?</h3>
+                <p>Whatever your host runs. Every delay length and filter coefficient is recalculated when the rate changes.</p>
+            </div>
+            <div class="faq">
+                <h3>Can the parameters be automated?</h3>
+                <p>Yes, both of them. Every internal parameter is ramped, so automation moves do not click.</p>
+            </div>
+            <div class="faq">
+                <h3>How long can the tail get?</h3>
+                <p>Up to around 12 seconds of decay at maximum Amount.</p>
+            </div>
+
+            <div class="doc-cta">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" class="btn btn-primary" target="_blank" rel="noopener">Download the free beta</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n.js?v=18"></script>
+    <script src="script.js?v=18"></script>
+</body>
+</html>
