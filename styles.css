@@ -471,6 +471,19 @@ body.home-page {
     transform: scale(1.05);
 }
 
+/* Mobile Product Image - Only visible on mobile */
+.mobile-product-image {
+    display: none;
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+}
+
+.mobile-product-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
 .product-badge-text {
     font-size: var(--text-base);
     color: #FFFFFF;
@@ -992,6 +1005,11 @@ footer a:hover {
     .product-logo {
         max-width: 150px;
         height: auto;
+    }
+
+    /* Show mobile product image on mobile screens */
+    .mobile-product-image {
+        display: block;
     }
 
     .product-badge-text {
