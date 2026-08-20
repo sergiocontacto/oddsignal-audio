@@ -267,12 +267,12 @@ body.home-page {
 .hero-fullscreen-content {
     position: absolute;
     z-index: 10;
-    top: 64%;
-    left: 5%;
-    transform: translateY(-50%);
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--spacing-md);
     animation: fadeInContent 1s ease-out 0.3s both;
 }
@@ -928,10 +928,6 @@ footer a:hover {
         left: 50%;
         transform: translateX(-50%);
         align-items: center;
-    }
-
-    .hero-buttons {
-        justify-content: center;
     }
 
     /* Mobile buttons - only FREE BETA visible */
