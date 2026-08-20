@@ -935,9 +935,9 @@ footer a:hover {
         background-position: center top;
     }
 
-    /* Mobile hero content - position at top centered */
+    /* Mobile hero content - position below logo */
     .hero-fullscreen-content {
-        top: 150px;
+        top: 90px;
         left: 38%;
         transform: translateX(-50%);
         align-items: center;
