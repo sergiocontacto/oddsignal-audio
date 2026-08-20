@@ -1065,9 +1065,15 @@ footer a:hover {
     border-radius: 8px;
 }
 
-/* Hide desktop image on mobile */
+/* Show desktop image on mobile as well */
 @media (max-width: 768px) {
     .product-image-desktop {
-        display: none;
+        display: flex;
+        width: 100%;
+        margin-top: var(--spacing-lg);
+    }
+
+    .plugin-ui-image {
+        max-width: 100%;
     }
 }
