@@ -282,7 +282,7 @@ body.home-page {
     gap: var(--spacing-lg);
     flex-wrap: wrap;
     margin-top: 0;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .btn-primary {
