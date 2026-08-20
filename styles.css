@@ -240,6 +240,273 @@ a:hover {
     border-color: var(--color-accent);
 }
 
+/* ACCOUNT / AUTH */
+
+/* El body va en mayusculas, pero un email o una contrasena escritos en
+   caps confunden al usuario: aqui se respeta lo que teclea. */
+input,
+textarea,
+select,
+code {
+    text-transform: none;
+}
+
+.auth-section,
+.account-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl) var(--spacing-md);
+}
+
+.account-section {
+    align-items: flex-start;
+    padding-top: var(--spacing-2xl);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: var(--spacing-2xl);
+    background: rgba(17, 24, 35, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.auth-tab {
+    padding: 0 0 12px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-tab.active {
+    opacity: 1;
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-field > span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    opacity: 0.7;
+}
+
+.auth-field small {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+}
+
+.auth-field input,
+.auth-field select {
+    padding: 11px 14px;
+    background-color: rgba(10, 14, 23, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.auth-field input:focus,
+.auth-field select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.auth-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+
+.auth-check input {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
+.auth-submit {
+    align-self: stretch;
+    text-align: center;
+    margin-top: var(--spacing-sm);
+}
+
+.auth-link-btn {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.auth-link-btn:hover {
+    opacity: 1;
+    color: var(--color-accent);
+}
+
+.auth-message {
+    margin-bottom: var(--spacing-lg);
+    padding: 11px 14px;
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    background: rgba(196, 50, 22, 0.15);
+    border: 1px solid rgba(196, 50, 22, 0.4);
+}
+
+.auth-message--ok {
+    background: rgba(60, 160, 90, 0.15);
+    border-color: rgba(60, 160, 90, 0.45);
+}
+
+.auth-notice {
+    font-size: 12px;
+    line-height: 1.8;
+    letter-spacing: 0.06em;
+}
+
+/* Panel de cuenta */
+.account-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.account-email {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    text-transform: none;
+}
+
+.account-block {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: rgba(17, 24, 35, 0.5);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+.account-block h3 {
+    margin-bottom: var(--spacing-lg);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+}
+
+.account-block p {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.account-empty {
+    opacity: 0.55;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 9px;
+    margin-right: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+}
+
+.badge--ok {
+    background: var(--color-accent);
+}
+
+.license-row,
+.download-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.license-row:last-child,
+.download-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.license-row strong,
+.download-row strong {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+}
+
+.license-status,
+.download-meta {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.55;
+}
+
+.license-key {
+    padding: 7px 12px;
+    background: rgba(10, 14, 23, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    user-select: all;
+}
+
 /* ANNOUNCEMENT BANNER */
 .announce {
     display: flex;

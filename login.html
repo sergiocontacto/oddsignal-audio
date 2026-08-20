@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - OddSignal Audio</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="apple-touch-icon" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li><a href="login.html" class="nav-link active" data-auth-link>Login</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-card" data-auth-view>
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" data-tab="signin">Sign in</button>
+                <button type="button" class="auth-tab" data-tab="signup">Create account</button>
+            </div>
+
+            <p class="auth-message" id="auth-message" hidden></p>
+
+            <!-- Iniciar sesión -->
+            <form class="auth-form" id="form-signin">
+                <label class="auth-field">
+                    <span>Email</span>
+                    <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label class="auth-field">
+                    <span>Password</span>
+                    <input type="password" name="password" autocomplete="current-password" required>
+                </label>
+                <button type="submit" class="btn btn-primary auth-submit">Sign in</button>
+                <button type="button" class="auth-link-btn" id="forgot-password">Forgot your password?</button>
+            </form>
+
+            <!-- Crear cuenta -->
+            <form class="auth-form" id="form-signup" hidden>
+                <label class="auth-field">
+                    <span>Name</span>
+                    <input type="text" name="fullName" autocomplete="name" required>
+                </label>
+                <label class="auth-field">
+                    <span>Email</span>
+                    <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label class="auth-field">
+                    <span>Password</span>
+                    <input type="password" name="password" autocomplete="new-password" minlength="8" required>
+                    <small>At least 8 characters.</small>
+                </label>
+                <label class="auth-field">
+                    <span>Main DAW</span>
+                    <input type="text" name="daw" placeholder="Ableton, Logic, Cubase...">
+                </label>
+                <label class="auth-field">
+                    <span>System</span>
+                    <select name="platform">
+                        <option value="">Select</option>
+                        <option value="windows">Windows</option>
+                        <option value="macos">macOS</option>
+                        <option value="both">Both</option>
+                    </select>
+                </label>
+                <label class="auth-check">
+                    <input type="checkbox" name="betaTester" checked>
+                    <span>I want to join the beta tester program</span>
+                </label>
+                <button type="submit" class="btn btn-primary auth-submit">Create account</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js?v=3"></script>
+    <script src="i18n.js?v=3"></script>
+    <script type="module">
+        import { supabase, requireConfig, getSession, signIn, signUp, resetPassword } from './auth.js';
+
+        const message = document.getElementById('auth-message');
+        const formSignin = document.getElementById('form-signin');
+        const formSignup = document.getElementById('form-signup');
+
+        function show(text, kind = 'error') {
+            message.textContent = text;
+            message.className = 'auth-message auth-message--' + kind;
+            message.hidden = false;
+        }
+
+        function clear() {
+            message.hidden = true;
+        }
+
+        // Pestañas
+        document.querySelectorAll('.auth-tab').forEach((tab) => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.auth-tab').forEach((t) => t.classList.remove('active'));
+                tab.classList.add('active');
+                const signup = tab.dataset.tab === 'signup';
+                formSignin.hidden = signup;
+                formSignup.hidden = !signup;
+                clear();
+            });
+        });
+
+        if (requireConfig()) {
+            // Si ya hay sesión, no tiene sentido quedarse aquí.
+            getSession().then((session) => {
+                if (session) window.location.replace('account.html');
+            });
+
+            formSignin.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clear();
+                const btn = formSignin.querySelector('button[type=submit]');
+                btn.disabled = true;
+                try {
+                    const f = new FormData(formSignin);
+                    await signIn({ email: f.get('email').trim(), password: f.get('password') });
+                    window.location.href = 'account.html';
+                } catch (err) {
+                    show(err.message || 'Could not sign in.');
+                    btn.disabled = false;
+                }
+            });
+
+            formSignup.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clear();
+                const btn = formSignup.querySelector('button[type=submit]');
+                btn.disabled = true;
+                try {
+                    const f = new FormData(formSignup);
+                    const { needsConfirmation } = await signUp({
+                        email: f.get('email').trim(),
+                        password: f.get('password'),
+                        fullName: f.get('fullName').trim(),
+                        daw: f.get('daw'),
+                        platform: f.get('platform'),
+                        betaTester: f.get('betaTester') === 'on'
+                    });
+                    if (needsConfirmation) {
+                        show('Check your inbox to confirm your email address.', 'ok');
+                        formSignup.reset();
+                    } else {
+                        window.location.href = 'account.html';
+                    }
+                } catch (err) {
+                    show(err.message || 'Could not create the account.');
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+
+            document.getElementById('forgot-password').addEventListener('click', async () => {
+                const email = formSignin.querySelector('[name=email]').value.trim();
+                if (!email) {
+                    show('Enter your email address first.');
+                    return;
+                }
+                try {
+                    await resetPassword(email);
+                    show('We sent you a link to reset your password.', 'ok');
+                } catch (err) {
+                    show(err.message || 'Could not send the email.');
+                }
+            });
+        }
+    </script>
+    <script src="script.js?v=3"></script>
+</body>
+</html>
