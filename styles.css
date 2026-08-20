@@ -133,10 +133,10 @@ a:hover {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(10, 14, 23, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: transparent;
+    backdrop-filter: blur(5px);
     z-index: 1000;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: none;
 }
 
 .nav-container {
