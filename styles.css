@@ -937,7 +937,7 @@ footer a:hover {
 
     /* Mobile hero content - position below logo */
     .hero-fullscreen-content {
-        top: 90px;
+        top: 120px;
         left: 38%;
         transform: translateX(-50%);
         align-items: center;
