@@ -1051,3 +1051,23 @@ footer a:hover {
         display: none;
     }
 }
+/* Desktop Product Image */
+.product-image-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plugin-ui-image {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+/* Hide desktop image on mobile */
+@media (max-width: 768px) {
+    .product-image-desktop {
+        display: none;
+    }
+}
