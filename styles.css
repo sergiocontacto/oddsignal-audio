@@ -1084,11 +1084,11 @@ footer a:hover {
         display: none;
     }
 
-    .btn-secondary {
+    .hero-buttons .btn-secondary {
         display: none;
     }
 
-    .btn-download {
+    .hero-buttons .btn-primary {
         display: none;
     }
 
