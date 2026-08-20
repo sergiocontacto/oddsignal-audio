@@ -660,6 +660,27 @@ code {
     transform-origin: left;
 }
 
+/* Variante con el logotipo en lugar del texto. El degradado recortado
+   sobre el texto no aplica aqui, asi que se desactiva. */
+.hero-title--logo {
+    background: none;
+    -webkit-text-fill-color: initial;
+    line-height: 0;
+}
+
+/* 150px de alto dejan la palabra "EvoraVerb" del logotipo con la misma
+   altura de mayusculas (50px) y practicamente el mismo ancho (451 frente
+   a 460px) que tenia el texto a 72px. Los margenes negativos compensan
+   el margen transparente del PNG, para que el hueco con el subtitulo
+   siga siendo el mismo. */
+.hero-title--logo img {
+    display: block;
+    width: 451px;
+    max-width: 100%;
+    height: auto;
+    margin: -14px 0;
+}
+
 .hero-subtitle {
     font-size: 20px;
     color: var(--color-accent);
@@ -851,6 +872,11 @@ code {
 
     .hero-title {
         font-size: 48px;
+    }
+
+    .hero-title--logo img {
+        width: 300px;
+        margin: -9px 0;
     }
 
     .hero-image {
