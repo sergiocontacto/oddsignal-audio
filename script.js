@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(btn => {
         btn.addEventListener('mouseenter', () => {
-            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23d44427%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23d44427%22 stroke-width=%221%22 opacity=%220.7%22/></svg>") 10 10, auto';
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23ffffff%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%221%22 opacity=%220.7%22/></svg>") 10 10, auto';
         });
 
         btn.addEventListener('mouseleave', () => {
-            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23c43216%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23c43216%22 stroke-width=%221%22 opacity=%220.5%22/></svg>") 10 10, auto';
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23ffffff%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%221%22 opacity=%220.5%22/></svg>") 10 10, auto';
         });
     });
 
@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('a:not(.btn)');
     links.forEach(link => {
         link.addEventListener('mouseenter', () => {
-            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23d44427%22/></svg>") 10 10, auto';
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23ffffff%22/></svg>") 10 10, auto';
         });
 
         link.addEventListener('mouseleave', () => {
-            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23c43216%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23c43216%22 stroke-width=%221%22 opacity=%220.5%22/></svg>") 10 10, auto';
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23ffffff%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%221%22 opacity=%220.5%22/></svg>") 10 10, auto';
         });
     });
 });

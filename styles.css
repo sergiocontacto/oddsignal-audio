@@ -49,7 +49,7 @@ body {
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="3" fill="%23c43216"/><circle cx="10" cy="10" r="8" fill="none" stroke="%23c43216" stroke-width="1" opacity="0.5"/></svg>') 10 10, auto;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="3" fill="%23ffffff"/><circle cx="10" cy="10" r="8" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.5"/></svg>') 10 10, auto;
     position: relative;
 }
 
