@@ -997,6 +997,12 @@ footer a:hover {
         padding: 0;
     }
 
+    /* Move button to top on mobile */
+    .product-info-compact .btn-download {
+        order: -1;
+        margin-bottom: var(--spacing-lg);
+    }
+
     .product-logo-container {
         height: auto;
         margin-bottom: var(--spacing-md);
