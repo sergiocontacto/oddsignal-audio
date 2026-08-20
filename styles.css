@@ -267,7 +267,7 @@ body.home-page {
 .hero-fullscreen-content {
     position: absolute;
     z-index: 10;
-    top: 62%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
