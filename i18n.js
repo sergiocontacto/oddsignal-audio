@@ -1,5 +1,8 @@
 const translations = {
     en: {
+        "Contact": "Contact",
+        "About": "About",
+        "Instagram": "Instagram",
         HOME: "HOME",
         PRODUCTS: "PRODUCTS",
         ABOUT: "ABOUT",
@@ -27,6 +30,9 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. All rights reserved."
     },
     es: {
+        "Contact": "Contacto",
+        "About": "Acerca de",
+        "Instagram": "Instagram",
         HOME: "INICIO",
         PRODUCTS: "PRODUCTOS",
         ABOUT: "ACERCA DE",
@@ -54,6 +60,9 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Todos los derechos reservados."
     },
     fr: {
+        "Contact": "Contact",
+        "About": "À propos",
+        "Instagram": "Instagram",
         HOME: "ACCUEIL",
         PRODUCTS: "PRODUITS",
         ABOUT: "À PROPOS",
@@ -81,6 +90,9 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tous droits réservés."
     },
     de: {
+        "Contact": "Kontakt",
+        "About": "Über uns",
+        "Instagram": "Instagram",
         HOME: "STARTSEITE",
         PRODUCTS: "PRODUKTE",
         ABOUT: "ÜBER UNS",
@@ -108,6 +120,9 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Alle Rechte vorbehalten."
     },
     it: {
+        "Contact": "Contatti",
+        "About": "Chi siamo",
+        "Instagram": "Instagram",
         HOME: "HOME",
         PRODUCTS: "PRODOTTI",
         ABOUT: "CHI SIAMO",
