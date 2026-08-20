@@ -103,16 +103,7 @@ export async function resetPassword(email) {
 }
 
 
-// ---------- Licencias y descargas ----------
-
-export async function getLicenses() {
-    const { data, error } = await supabase
-        .from('licenses')
-        .select('*')
-        .order('created_at', { ascending: false });
-    if (error) throw error;
-    return data || [];
-}
+// ---------- Descargas ----------
 
 export async function getReleases() {
     const { data, error } = await supabase

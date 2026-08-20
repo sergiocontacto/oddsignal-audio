@@ -464,7 +464,6 @@ code {
     background: var(--color-accent);
 }
 
-.license-row,
 .download-row {
     display: flex;
     align-items: center;
@@ -475,36 +474,21 @@ code {
     border-bottom: 1px solid var(--color-border);
 }
 
-.license-row:last-child,
 .download-row:last-child {
     border-bottom: none;
     padding-bottom: 0;
 }
 
-.license-row strong,
 .download-row strong {
     display: block;
     font-size: 13px;
     letter-spacing: 0.08em;
 }
 
-.license-status,
 .download-meta {
     font-size: 10px;
     letter-spacing: 0.1em;
     opacity: 0.55;
-}
-
-.license-key {
-    padding: 7px 12px;
-    background: rgba(10, 14, 23, 0.7);
-    border: 1px solid var(--color-border);
-    border-radius: 3px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
-    user-select: all;
 }
 
 /* ANNOUNCEMENT BANNER */

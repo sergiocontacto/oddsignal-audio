@@ -1,12 +1,13 @@
 const translations = {
     en: {
+        "Early access": "Early access",
+        "Give me early access to new plugins": "Give me early access to new plugins",
         "Login": "Login",
         "Account": "Account",
         "Sign in": "Sign in",
         "Create account": "Create account",
         "Sign out": "Sign out",
         "My account": "My account",
-        "Licenses": "Licenses",
         "Downloads": "Downloads",
         "Beta tester": "Beta tester",
         "Password": "Password",
@@ -47,13 +48,14 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. All rights reserved."
     },
     es: {
+        "Early access": "Acceso anticipado",
+        "Give me early access to new plugins": "Quiero acceso anticipado a los nuevos plugins",
         "Login": "Acceder",
         "Account": "Mi cuenta",
         "Sign in": "Iniciar sesión",
         "Create account": "Crear cuenta",
         "Sign out": "Cerrar sesión",
         "My account": "Mi cuenta",
-        "Licenses": "Licencias",
         "Downloads": "Descargas",
         "Beta tester": "Beta tester",
         "Password": "Contraseña",
@@ -94,13 +96,14 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Todos los derechos reservados."
     },
     fr: {
+        "Early access": "Accès anticipé",
+        "Give me early access to new plugins": "Je veux un accès anticipé aux nouveaux plugins",
         "Login": "Connexion",
         "Account": "Mon compte",
         "Sign in": "Se connecter",
         "Create account": "Créer un compte",
         "Sign out": "Se déconnecter",
         "My account": "Mon compte",
-        "Licenses": "Licences",
         "Downloads": "Téléchargements",
         "Beta tester": "Bêta-testeur",
         "Password": "Mot de passe",
@@ -141,13 +144,14 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tous droits réservés."
     },
     de: {
+        "Early access": "Früher Zugang",
+        "Give me early access to new plugins": "Ich möchte früher Zugang zu neuen Plugins",
         "Login": "Anmelden",
         "Account": "Mein Konto",
         "Sign in": "Anmelden",
         "Create account": "Konto erstellen",
         "Sign out": "Abmelden",
         "My account": "Mein Konto",
-        "Licenses": "Lizenzen",
         "Downloads": "Downloads",
         "Beta tester": "Beta-Tester",
         "Password": "Passwort",
@@ -188,13 +192,14 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Alle Rechte vorbehalten."
     },
     it: {
+        "Early access": "Accesso anticipato",
+        "Give me early access to new plugins": "Voglio l'accesso anticipato ai nuovi plugin",
         "Login": "Accedi",
         "Account": "Il mio account",
         "Sign in": "Accedi",
         "Create account": "Crea account",
         "Sign out": "Esci",
         "My account": "Il mio account",
-        "Licenses": "Licenze",
         "Downloads": "Download",
         "Beta tester": "Beta tester",
         "Password": "Password",

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account - OddSignal Audio</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <link rel="apple-touch-icon" href="./favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
@@ -51,16 +51,8 @@
 
             <!-- Estado de beta tester -->
             <div class="account-block" id="beta-block" hidden>
-                <h3>Beta tester</h3>
+                <h3>Early access</h3>
                 <p id="beta-status"></p>
-            </div>
-
-            <!-- Licencias -->
-            <div class="account-block">
-                <h3>Licenses</h3>
-                <div id="licenses">
-                    <p class="account-empty">Loading...</p>
-                </div>
             </div>
 
             <!-- Descargas -->
@@ -85,11 +77,11 @@
         </div>
     </footer>
 
-    <script src="supabase-config.js?v=4"></script>
-    <script src="i18n.js?v=4"></script>
+    <script src="supabase-config.js?v=5"></script>
+    <script src="i18n.js?v=5"></script>
     <script type="module">
         import {
-            requireConfig, requireAuth, getProfile, getLicenses,
+            requireConfig, requireAuth, getProfile,
             getReleases, getDownloadUrl, signOut
         } from './auth.js';
 
@@ -121,7 +113,6 @@
             }
 
             renderBeta(profile);
-            await renderLicenses();
             await renderDownloads(profile);
         }
 
@@ -132,33 +123,11 @@
 
             block.hidden = false;
             if (profile.is_beta_tester) {
-                status.innerHTML = '<span class="badge badge--ok">Approved</span> ' +
-                    'You have access to beta builds.';
+                status.innerHTML = '<span class="badge badge--ok">Active</span> ' +
+                    'You get our plugins before public release.';
             } else {
                 status.innerHTML = '<span class="badge">Pending</span> ' +
-                    'Your request is under review. We will email you when it is approved.';
-            }
-        }
-
-        async function renderLicenses() {
-            const box = document.getElementById('licenses');
-            try {
-                const licenses = await getLicenses();
-                if (!licenses.length) {
-                    box.innerHTML = '<p class="account-empty">No licenses yet.</p>';
-                    return;
-                }
-                box.innerHTML = licenses.map((l) => `
-                    <div class="license-row">
-                        <div>
-                            <strong>${escapeHtml(l.product)}</strong>
-                            <span class="license-status">${escapeHtml(l.status)}</span>
-                        </div>
-                        <code class="license-key">${escapeHtml(l.license_key)}</code>
-                    </div>
-                `).join('');
-            } catch (err) {
-                box.innerHTML = '<p class="account-empty">Could not load licenses.</p>';
+                    'Your request is under review. We will email you once it is active.';
             }
         }
 
@@ -168,7 +137,7 @@
                 const releases = await getReleases();
                 if (!releases.length) {
                     box.innerHTML = profile && !profile.is_beta_tester
-                        ? '<p class="account-empty">Downloads will appear here once your beta access is approved.</p>'
+                        ? '<p class="account-empty">Downloads will appear here once your early access is active.</p>'
                         : '<p class="account-empty">No downloads available yet.</p>';
                     return;
                 }
@@ -214,6 +183,6 @@
             }[c]));
         }
     </script>
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>
