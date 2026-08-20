@@ -268,11 +268,11 @@ body.home-page {
     position: absolute;
     z-index: 10;
     top: 68%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 5%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-md);
     animation: fadeInContent 1s ease-out 0.3s both;
 }
@@ -922,12 +922,16 @@ footer a:hover {
         background-position: center top;
     }
 
-    /* Mobile hero content - position at top */
+    /* Mobile hero content - position at top centered */
     .hero-fullscreen-content {
         top: 100px;
         left: 50%;
         transform: translateX(-50%);
         align-items: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
     }
 
     /* Mobile buttons - only FREE BETA visible */
