@@ -1,5 +1,7 @@
 const translations = {
     en: {
+        "New": "New",
+        "EvoraVerb beta is now available to download for free. Join the beta tester program.": "EvoraVerb beta is now available to download for free. Join the beta tester program.",
         "Contact": "Contact",
         "About": "About",
         "Instagram": "Instagram",
@@ -30,6 +32,8 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. All rights reserved."
     },
     es: {
+        "New": "Nuevo",
+        "EvoraVerb beta is now available to download for free. Join the beta tester program.": "La beta de EvoraVerb ya está disponible para descargar gratis. Únete al programa de beta testers.",
         "Contact": "Contacto",
         "About": "Acerca de",
         "Instagram": "Instagram",
@@ -60,6 +64,8 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Todos los derechos reservados."
     },
     fr: {
+        "New": "Nouveau",
+        "EvoraVerb beta is now available to download for free. Join the beta tester program.": "La bêta d'EvoraVerb est disponible en téléchargement gratuit. Rejoignez le programme de bêta-testeurs.",
         "Contact": "Contact",
         "About": "À propos",
         "Instagram": "Instagram",
@@ -90,6 +96,8 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tous droits réservés."
     },
     de: {
+        "New": "Neu",
+        "EvoraVerb beta is now available to download for free. Join the beta tester program.": "Die EvoraVerb-Beta steht jetzt kostenlos zum Download bereit. Werde Beta-Tester.",
         "Contact": "Kontakt",
         "About": "Über uns",
         "Instagram": "Instagram",
@@ -120,6 +128,8 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Alle Rechte vorbehalten."
     },
     it: {
+        "New": "Novità",
+        "EvoraVerb beta is now available to download for free. Join the beta tester program.": "La beta di EvoraVerb è ora scaricabile gratuitamente. Unisciti al programma beta tester.",
         "Contact": "Contatti",
         "About": "Chi siamo",
         "Instagram": "Instagram",

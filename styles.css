@@ -44,6 +44,9 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="3" fill="%23c43216"/><circle cx="10" cy="10" r="8" fill="none" stroke="%23c43216" stroke-width="1" opacity="0.5"/></svg>') 10 10, auto;
@@ -171,7 +174,7 @@ a:hover {
 
 /* NAVBAR */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background-color: transparent;
@@ -235,6 +238,48 @@ a:hover {
 
 .language-selector select:hover {
     border-color: var(--color-accent);
+}
+
+/* ANNOUNCEMENT BANNER */
+.announce {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 10px 20px;
+    background-color: rgba(196, 50, 22, 0.14);
+    border-top: 1px solid rgba(196, 50, 22, 0.35);
+    border-bottom: 1px solid rgba(196, 50, 22, 0.35);
+    color: var(--color-text);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-align: center;
+    transition: background-color 0.25s ease;
+}
+
+.announce:hover {
+    background-color: rgba(196, 50, 22, 0.24);
+    color: var(--color-text);
+}
+
+.announce-tag {
+    flex-shrink: 0;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+}
+
+.announce-arrow {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.announce:hover .announce-arrow {
+    transform: translateX(4px);
 }
 
 /* BUTTONS */
@@ -320,11 +365,11 @@ a:hover {
 /* HERO SECTION */
 .hero {
     position: relative;
-    margin-top: 72px;
-    min-height: 100vh;
+    flex: 1;
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding: var(--spacing-3xl) 0;
 }
 
 .hero-background {
@@ -484,6 +529,7 @@ a:hover {
     padding: var(--spacing-2xl) 0;
     border-top: none;
     background-color: transparent;
+    margin-top: auto;
 }
 
 .footer .container {
@@ -517,6 +563,17 @@ a:hover {
 
     .nav-menu {
         gap: var(--spacing-lg);
+    }
+
+    .announce {
+        gap: 8px;
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+    }
+
+    .announce-arrow {
+        display: none;
     }
 
     .hero-content {
