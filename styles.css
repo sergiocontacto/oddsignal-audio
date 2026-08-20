@@ -931,8 +931,9 @@ footer a:hover {
 @media (max-width: 768px) {
     .hero-bg-image {
         background-image: url('./fondotelofono.jpg') !important;
-        background-attachment: scroll;
-        background-position: center top;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
     }
 
     /* Mobile hero content - position below logo */
