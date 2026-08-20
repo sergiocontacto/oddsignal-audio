@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - ODDSIGNAL AUDIO</title>
+    <title>Products - OddSignal Audio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" href="./favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
     <link rel="manifest" href="./favicon_io/site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <img src="./logo-blanco.png" alt="ODDSIGNAL AUDIO">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
             </a>
-            <ul class="navbar-menu">
+            <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">HOME</a></li>
                 <li><a href="products.html" class="nav-link active">PRODUCTS</a></li>
                 <li><a href="about.html" class="nav-link">ABOUT</a></li>
                 <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-                <li class="language-selector-container">
-                    <select id="language-selector" class="language-selector">
+                <li class="language-selector">
+                    <select id="language-selector">
                         <option value="en">EN</option>
                         <option value="es">ES</option>
                         <option value="fr">FR</option>
@@ -36,62 +36,79 @@
         </div>
     </nav>
 
-    <!-- Products Section -->
-    <div class="products-container-new">
-        <!-- Product: EvoraVerb -->
-        <div class="product-showcase">
-            <!-- Product Info - Compact -->
-            <div class="product-info-compact">
-                <!-- Product Logo -->
-                <div class="product-logo-container">
-                    <img src="./logo.png" alt="EvoraVerb Logo" class="product-logo">
-                </div>
-
-                <p class="product-badge-text">Professional Atmospheric Reverb</p>
-
-                <!-- Features -->
-                <div class="features-section">
-                    <h3 class="section-heading">FEATURES</h3>
-                    <ul class="features-list">
-                        <li>Advanced DSP algorithms for pristine audio quality</li>
-                        <li>Low CPU footprint - scalable to 100+ instances</li>
-                        <li>Intuitive interface with real-time feedback</li>
-                        <li>Professionally curated presets</li>
-                        <li>Premium, minimal design philosophy</li>
-                    </ul>
-                </div>
-
-                <!-- System Requirements -->
-                <div class="system-requirements-section">
-                    <h3 class="section-heading">SYSTEM REQUIREMENTS</h3>
-                    <div class="system-grid">
-                        <div class="system-item">
-                            <span class="system-label">Windows</span>
-                            <span class="system-value">Windows 10 or later</span>
-                            <span class="system-note">Intel i5 or equivalent</span>
-                        </div>
-                        <div class="system-item">
-                            <span class="system-label">macOS</span>
-                            <span class="system-value">macOS 10.13 or later</span>
-                            <span class="system-note">Apple Silicon & Intel compatible</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform?usp=dialog" target="_blank" class="btn btn-download">DOWNLOAD NOW</a>
+    <!-- Products Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Our Products</h1>
+                <p class="hero-description">Professional-grade audio plugins engineered for precision and creativity.</p>
             </div>
-
-            <!-- Product Image - Clickable -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform?usp=dialog" target="_blank" class="product-image-desktop">
-                <img src="./plugin-ui-view1.jpg" alt="EvoraVerb Plugin UI" class="plugin-ui-image">
-            </a>
         </div>
-    </div>
+        <div class="hero-background" style="background-image: url('./fondoweb.png')"></div>
+    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 ODDSIGNAL AUDIO. All rights reserved. | <a href="contact.html">Contact</a></p>
+    <!-- Products Grid -->
+    <section class="features" style="padding-top: 80px;">
+        <div class="container">
+            <div class="features-grid">
+                <!-- EvoraVerb Product -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./plugin png.png" alt="EvoraVerb">
+                    </div>
+                    <h3>EvoraVerb</h3>
+                    <p class="product-subtitle">Professional Atmospheric Reverb</p>
+                    <p class="product-description">Craft lush, ambient spaces with effortless depth and precision. Advanced DSP algorithms deliver natural space simulation with intuitive controls.</p>
+                    <ul class="product-features">
+                        <li>Advanced DSP Engine</li>
+                        <li>Low CPU Footprint</li>
+                        <li>100+ Presets</li>
+                        <li>Real-time Feedback</li>
+                    </ul>
+                    <a href="#download" class="btn btn-primary" style="margin-top: 20px;">Download Beta</a>
+                </div>
+
+                <!-- Coming Soon Product 1 -->
+                <div class="product-card">
+                    <div class="product-placeholder">
+                        Coming Soon
+                    </div>
+                    <h3>Next Generation Plugin</h3>
+                    <p class="product-subtitle">Professional Audio Tool</p>
+                    <p class="product-description">We're developing the next breakthrough in professional audio processing. Stay tuned for announcements.</p>
+                    <a href="contact.html" class="btn btn-secondary" style="margin-top: 20px;">Get Notified</a>
+                </div>
+
+                <!-- Coming Soon Product 2 -->
+                <div class="product-card">
+                    <div class="product-placeholder">
+                        Coming Soon
+                    </div>
+                    <h3>Future Innovation</h3>
+                    <p class="product-subtitle">Professional Audio Solution</p>
+                    <p class="product-description">Cutting-edge technology in development. We're crafting something special for the professional audio community.</p>
+                    <a href="contact.html" class="btn btn-secondary" style="margin-top: 20px;">Stay Updated</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Elevate Your Production?</h2>
+            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
     </footer>
 
     <script src="i18n.js"></script>
