@@ -13,6 +13,6 @@
 // ============================================================
 
 window.SUPABASE_CONFIG = {
-    url: 'https://yzprbgkpnfnhurjklwlt.supabase.co',
+    url: 'https://yzprbqkpnfnhurjklwlt.supabase.co',
     anonKey: 'sb_publishable_FhCQ-Txl0ZXRyOAaZMgaag__78uBC-7'
 };
