@@ -1077,3 +1077,28 @@ footer a:hover {
         max-width: 100%;
     }
 }
+
+/* Hide buttons on mobile HOME */
+@media (max-width: 768px) {
+    .hero-buttons {
+        display: none;
+    }
+
+    .btn-secondary {
+        display: none;
+    }
+
+    .btn-download {
+        display: none;
+    }
+
+    /* Make product image link clickable on mobile */
+    .product-image-desktop {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .product-image-desktop:active {
+        transform: scale(0.98);
+    }
+}
