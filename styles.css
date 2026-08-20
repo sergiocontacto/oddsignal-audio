@@ -812,8 +812,24 @@ code {
     h2 { font-size: 28px; }
     h3 { font-size: 18px; }
 
+    /* En una sola fila el menu se sale de la pantalla: el logo se queda
+       arriba y los enlaces pasan debajo, centrados y con salto de linea. */
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+
     .nav-menu {
-        gap: var(--spacing-lg);
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+
+    .nav-link {
+        font-size: 11px;
+        letter-spacing: 0.06em;
     }
 
     .announce {
@@ -863,9 +879,18 @@ code {
     h1 { font-size: 32px; }
     h2 { font-size: 24px; }
 
+    /* Ajustado para que los enlaces y el idioma quepan en una sola fila. */
     .nav-menu {
-        gap: var(--spacing-md);
-        font-size: 12px;
+        gap: 6px 10px;
+    }
+
+    .nav-link {
+        font-size: 10px;
+    }
+
+    .language-selector select {
+        padding: 4px var(--spacing-sm);
+        font-size: 11px;
     }
 
     .btn {
