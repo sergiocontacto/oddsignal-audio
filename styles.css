@@ -961,7 +961,7 @@ footer a:hover {
 
     /* PRODUCTS - Mobile optimization */
     .products-container-new {
-        background-image: url('./estructura-producto-movil.png');
+        background-image: none;
         background-size: cover;
         background-position: center;
         background-attachment: scroll;
