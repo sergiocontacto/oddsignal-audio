@@ -1084,10 +1084,11 @@ footer a:hover {
     }
 }
 
-/* Hide buttons on mobile HOME */
+/* Mobile HOME buttons - show FREE BETA only, small and centered */
 @media (max-width: 768px) {
     .hero-buttons {
-        display: none;
+        display: flex;
+        justify-content: center;
     }
 
     .hero-buttons .btn-secondary {
@@ -1095,7 +1096,8 @@ footer a:hover {
     }
 
     .hero-buttons .btn-primary {
-        display: none;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--text-sm);
     }
 
     /* Make product image link clickable on mobile */
