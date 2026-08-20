@@ -882,9 +882,9 @@ code {
 
     .hero-title       { order: 1; font-size: 48px; }
     .hero-image       { order: 2; }
-    .hero-subtitle    { order: 3; }
-    .hero-description { order: 4; }
-    .hero-text .btn   { order: 5; }
+    .hero-text .btn   { order: 3; }
+    .hero-subtitle    { order: 4; }
+    .hero-description { order: 5; }
 
     .hero-title--logo img {
         width: 300px;
