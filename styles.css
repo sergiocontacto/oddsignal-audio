@@ -277,37 +277,11 @@ body.home-page {
     animation: fadeInContent 1s ease-out 0.3s both;
 }
 
-.hero-product-title {
-    font-size: var(--text-4xl);
-    font-weight: 700;
-    color: var(--color-white);
-    margin: 0;
-    letter-spacing: 0.05em;
-}
-
-.hero-product-subtitle {
-    font-size: var(--text-lg);
-    color: var(--color-accent);
-    margin: var(--spacing-sm) 0 0 0;
-    letter-spacing: 0.15em;
-    font-weight: 600;
-}
-
-.hero-product-description {
-    font-size: var(--text-base);
-    color: var(--color-gray-active);
-    max-width: 450px;
-    text-align: center;
-    margin: var(--spacing-lg) 0;
-    line-height: 1.7;
-    text-transform: none;
-}
-
 .hero-buttons {
     display: flex;
     gap: var(--spacing-lg);
     flex-wrap: wrap;
-    margin-top: var(--spacing-lg);
+    margin-top: 0;
     justify-content: center;
 }
 
