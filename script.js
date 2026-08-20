@@ -1,42 +1,56 @@
 // ========================================
-// IMAGE GALLERY
+// SCROLL-DRIVEN ANIMATIONS & PARALLAX
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Gallery functionality
-    const galleryDots = document.querySelectorAll('.gallery-dot');
-    const showcaseImages = document.querySelectorAll('.showcase-image');
-
-    galleryDots.forEach(dot => {
-        dot.addEventListener('click', function() {
-            const slideIndex = this.getAttribute('data-slide');
-
-            // Update images
-            showcaseImages.forEach(img => img.classList.remove('active'));
-            showcaseImages[slideIndex].classList.add('active');
-
-            // Update dots
-            galleryDots.forEach(d => d.classList.remove('active'));
-            this.classList.add('active');
+    // Parallax effect on hero background
+    const heroBackground = document.querySelector('.hero-background');
+    if (heroBackground) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
+    }
+
+    // Scroll animation observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for scroll animations
+    document.querySelectorAll('.feature-card, .product-card, .value-card, .section-title').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        observer.observe(el);
     });
 
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        const activeImage = document.querySelector('.showcase-image.active');
-        if (!activeImage) return;
+    // Mouse move effect for 3D perspective
+    const heroImage = document.querySelector('.hero-image img');
+    if (heroImage) {
+        document.addEventListener('mousemove', (e) => {
+            const rect = heroImage.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-        const currentIndex = Array.from(showcaseImages).indexOf(activeImage);
-        let nextIndex;
+            heroImage.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+        });
 
-        if (e.key === 'ArrowRight') {
-            nextIndex = (currentIndex + 1) % showcaseImages.length;
-            galleryDots[nextIndex].click();
-        } else if (e.key === 'ArrowLeft') {
-            nextIndex = (currentIndex - 1 + showcaseImages.length) % showcaseImages.length;
-            galleryDots[nextIndex].click();
-        }
-    });
+        document.addEventListener('mouseleave', () => {
+            heroImage.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+    }
 });
 
 // ========================================
@@ -44,11 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get current page
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-
-    // Update active nav link
     const navLinks = document.querySelectorAll('.nav-link');
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage || (currentPage === '' && href === 'index.html')) {
@@ -56,12 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             link.classList.remove('active');
         }
-    });
-
-    // Add fade-in animation on load
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach((element, index) => {
-        element.style.animation = `fadeIn 0.6s ease-out ${index * 0.1}s both`;
     });
 });
 
@@ -80,80 +86,63 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
-// OBSERVER FOR FADE-IN ANIMATIONS
-// ========================================
-
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.product-card, .value-card, .about-content').forEach(el => {
-    observer.observe(el);
-});
-
-// ========================================
-// EMAIL LINK HANDLING
-// ========================================
-
-document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        // Allow default behavior
-        return true;
-    });
-});
-
-// ========================================
-// BUTTON DOWNLOAD ACTION
-// ========================================
-
-document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        if (this.textContent.includes('DOWNLOAD')) {
-            // Could trigger download or navigation
-            // For now, just provide feedback
-            console.log('Download initiated for:', this.closest('.product-card')?.querySelector('.product-name')?.textContent);
-        }
-    });
-});
-
-// ========================================
-// NAVBAR SCROLL EFFECT
-// ========================================
-
-let lastScrollPosition = 0;
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', function() {
-    const currentScrollPosition = window.scrollY;
-
-    if (currentScrollPosition > 100) {
-        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
-
-    lastScrollPosition = currentScrollPosition;
-});
-
-// ========================================
-// LANGUAGE SELECTOR
+// CUSTOM CURSOR
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    const languageSelector = document.getElementById('language-selector');
-    if (languageSelector) {
-        languageSelector.addEventListener('change', function(e) {
-            I18n.setLanguage(e.target.value);
+    // Enhance button hover effects
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23d44427%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23d44427%22 stroke-width=%221%22 opacity=%220.7%22/></svg>") 10 10, auto';
         });
-    }
+
+        btn.addEventListener('mouseleave', () => {
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23c43216%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23c43216%22 stroke-width=%221%22 opacity=%220.5%22/></svg>") 10 10, auto';
+        });
+    });
+
+    // Hover effects on links
+    const links = document.querySelectorAll('a:not(.btn)');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23d44427%22/></svg>") 10 10, auto';
+        });
+
+        link.addEventListener('mouseleave', () => {
+            document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><circle cx=%2210%22 cy=%2210%22 r=%223%22 fill=%22%23c43216%22/><circle cx=%2210%22 cy=%2210%22 r=%228%22 fill=%22none%22 stroke=%22%23c43216%22 stroke-width=%221%22 opacity=%220.5%22/></svg>") 10 10, auto';
+        });
+    });
 });
+
+// ========================================
+// PAGE LOAD ANIMATION
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.6s ease-in';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// ========================================
+// FORM HANDLING (Contact)
+// ========================================
+
+if (document.getElementById('contact-form')) {
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        // Simple validation
+        if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        alert('Thank you for your message! We will get back to you soon.');
+        this.reset();
+    });
+}
