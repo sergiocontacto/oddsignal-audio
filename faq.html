@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Answers about installing EvoraVerb, supported formats and systems, presets, licensing and troubleshooting.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
 
-    <link rel="stylesheet" href="styles.css?v=27">
+    <link rel="stylesheet" href="styles.css?v=28">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -131,17 +131,23 @@
             word-break: break-all;
         }
 
-        .faq-contact {
-            margin-top: 72px;
-            padding: 40px;
-            text-align: center;
-            background: rgba(17, 24, 35, 0.5);
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
+        /* Cierre sin tarjeta: solo tipografia y aire. */
+        .faq-end { margin-top: 80px; text-align: center; }
+        .faq-end h2 { font-size: 20px; margin-bottom: 10px; }
+        .faq-end p { font-size: 13px; margin-bottom: 26px; opacity: 0.75; }
+
+        .faq-end-mail {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: var(--color-text);
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--color-accent);
+            transition: color 0.2s ease;
         }
 
-        .faq-contact h2 { font-size: 20px; margin-bottom: 12px; }
-        .faq-contact p { font-size: 14px; margin-bottom: 24px; }
+        .faq-end-mail:hover { color: var(--color-accent); }
 
         @media (max-width: 768px) {
             .faq-page { padding: 40px 0; }
@@ -149,7 +155,8 @@
             .faq-page .lead { font-size: 15px; }
             .faq-group { margin-top: 40px; }
             .qa > summary { font-size: 13px; padding: 17px 2px; gap: 14px; }
-            .faq-contact { padding: 28px 20px; margin-top: 48px; }
+            .faq-end { margin-top: 56px; }
+            .faq-end-mail { font-size: 17px; word-break: break-word; }
         }
     </style>
 </head>
@@ -390,10 +397,10 @@
                 </details>
             </div>
 
-            <div class="faq-contact">
+            <div class="faq-end">
                 <h2>Still stuck?</h2>
                 <p>Write to us and we will answer, usually within 24 to 48 hours on business days.</p>
-                <a href="contact.html" class="btn btn-primary">Contact us</a>
+                <a class="faq-end-mail" href="mailto:oddsignalaudio@gmail.com">oddsignalaudio@gmail.com</a>
             </div>
 
         </div>
@@ -410,8 +417,8 @@
             </div>
         </div>
     </footer>
-    <script src="i18n-faq.js?v=27"></script>
-    <script src="i18n.js?v=27"></script>
-    <script src="script.js?v=27"></script>
+    <script src="i18n-faq.js?v=28"></script>
+    <script src="i18n.js?v=28"></script>
+    <script src="script.js?v=28"></script>
 </body>
 </html>

@@ -516,6 +516,70 @@ code {
     opacity: 0.55;
 }
 
+/* CONTACTO
+   Sin tarjeta ni borde: el correo es la pieza principal y el resto se
+   ordena por tipografia y espacio. */
+.contact {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3xl) 0;
+}
+
+.contact .container {
+    max-width: 760px;
+    text-align: center;
+}
+
+.contact-mail {
+    display: inline-block;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--color-text);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+    transition: color 0.2s ease;
+}
+
+.contact-mail:hover { color: var(--color-accent); }
+
+.contact-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-3xl);
+    text-align: left;
+}
+
+.contact-meta h2 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+.contact-meta p {
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+    .contact-mail {
+        font-size: 20px;
+        word-break: break-word;
+    }
+
+    .contact-meta {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        margin-top: var(--spacing-2xl);
+        text-align: center;
+    }
+}
+
 /* Fila de botones. En linea no se alinean: .btn-primary lleva
    overflow:hidden para el efecto de onda, y eso hace que se alinee por su
    borde inferior en vez de por la linea base del texto. Con flex el
