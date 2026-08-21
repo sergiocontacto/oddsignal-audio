@@ -193,7 +193,18 @@ a:hover {
     width: 100%;
     background-color: transparent;
     z-index: 1000;
-    border-bottom: none;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Arriba del todo se deja transparente. En cuanto se hace scroll toma
+   fondo: si no, el contenido pasa por detras y el menu se vuelve
+   ilegible. La clase la pone script.js. */
+.navbar.scrolled {
+    background-color: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--color-border);
 }
 
 .nav-container {

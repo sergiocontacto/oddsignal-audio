@@ -72,6 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========================================
+// FONDO DEL NAVBAR AL HACER SCROLL
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const actualizar = () => navbar.classList.toggle('scrolled', window.scrollY > 8);
+    actualizar();   // por si se recarga la pagina ya desplazada
+    window.addEventListener('scroll', actualizar, { passive: true });
+});
+
+// ========================================
 // SMOOTH SCROLL
 // ========================================
 
