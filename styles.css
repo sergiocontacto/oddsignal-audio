@@ -505,6 +505,18 @@ code {
     opacity: 0.55;
 }
 
+/* Fila de botones. En linea no se alinean: .btn-primary lleva
+   overflow:hidden para el efecto de onda, y eso hace que se alinee por su
+   borde inferior en vez de por la linea base del texto. Con flex el
+   problema desaparece. */
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
 /* ANNOUNCEMENT BANNER */
 .announce {
     display: flex;
