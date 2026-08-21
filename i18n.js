@@ -1,5 +1,6 @@
 const translations = {
     en: {
+        "FAQ": "FAQ",
         "Early access": "Early access",
         "Give me early access to new plugins": "Give me early access to new plugins",
         "Login": "Login",
@@ -48,6 +49,7 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. All rights reserved."
     },
     es: {
+        "FAQ": "Preguntas",
         "Early access": "Acceso anticipado",
         "Give me early access to new plugins": "Quiero acceso anticipado a los nuevos plugins",
         "Login": "Acceder",
@@ -96,6 +98,7 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Todos los derechos reservados."
     },
     fr: {
+        "FAQ": "FAQ",
         "Early access": "Accès anticipé",
         "Give me early access to new plugins": "Je veux un accès anticipé aux nouveaux plugins",
         "Login": "Connexion",
@@ -144,6 +147,7 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tous droits réservés."
     },
     de: {
+        "FAQ": "FAQ",
         "Early access": "Früher Zugang",
         "Give me early access to new plugins": "Ich möchte früher Zugang zu neuen Plugins",
         "Login": "Anmelden",
@@ -192,6 +196,7 @@ const translations = {
         "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Alle Rechte vorbehalten."
     },
     it: {
+        "FAQ": "FAQ",
         "Early access": "Accesso anticipato",
         "Give me early access to new plugins": "Voglio l'accesso anticipato ai nuovi plugin",
         "Login": "Accedi",

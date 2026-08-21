@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ &mdash; Installation, Formats and Support | OddSignal Audio</title>
+
+    <meta name="description" content="Answers about installing EvoraVerb, supported formats and systems, presets, licensing and troubleshooting. Free VST3 and AU reverb for Windows and macOS.">
+    <link rel="canonical" href="https://oddsignalaudio.com/faq.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="FAQ &mdash; Installation, Formats and Support | OddSignal Audio">
+    <meta property="og:description" content="Answers about installing EvoraVerb, supported formats and systems, presets, licensing and troubleshooting.">
+    <meta property="og:url" content="https://oddsignalaudio.com/faq.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ &mdash; Installation, Formats and Support | OddSignal Audio">
+    <meta name="twitter:description" content="Answers about installing EvoraVerb, supported formats and systems, presets, licensing and troubleshooting.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=27">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How do I install EvoraVerb on Windows?","acceptedAnswer":{"@type":"Answer","text":"Drag the whole EvoraVerb.vst3 folder into C:\\Program Files\\Common Files\\VST3\\ and restart your DAW. Windows shows it as an ordinary folder, but it is the plugin itself: copy it as one unit, never its contents separately."}},
+        {"@type":"Question","name":"How do I install EvoraVerb on macOS?","acceptedAnswer":{"@type":"Answer","text":"Double-click each .tar.gz to extract it, then put EvoraVerb.vst3 in /Library/Audio/Plug-Ins/VST3/ and EvoraVerb.component in /Library/Audio/Plug-Ins/Components/. The equivalent folders inside your home Library work too and need no administrator password. Restart your DAW afterwards."}},
+        {"@type":"Question","name":"macOS says the plugin cannot be opened. What do I do?","acceptedAnswer":{"@type":"Answer","text":"EvoraVerb is not yet signed with an Apple Developer ID or notarised, so Gatekeeper blocks it on first run. Open System Settings, go to Privacy and Security, and allow EvoraVerb using the notice near the bottom of the page. No Terminal commands are needed."}},
+        {"@type":"Question","name":"Which formats does EvoraVerb come in?","acceptedAnswer":{"@type":"Answer","text":"VST3 and a standalone application on Windows; VST3, Audio Unit and standalone on macOS. There is no VST2 and no AAX, so it does not load in Pro Tools."}},
+        {"@type":"Question","name":"Which systems are supported?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 or later, 64-bit, and macOS 11 Big Sur or later. The macOS build is a universal binary and runs natively on both Apple Silicon and Intel."}},
+        {"@type":"Question","name":"Does EvoraVerb need a licence key or an internet connection?","acceptedAnswer":{"@type":"Answer","text":"No. There is no serial number, no activation and no copy protection. The plugin never connects to the internet and works offline."}},
+        {"@type":"Question","name":"Can I use EvoraVerb in music I release commercially?","acceptedAnswer":{"@type":"Answer","text":"Yes. Anything you record with EvoraVerb is yours, with no restrictions and no royalties."}},
+        {"@type":"Question","name":"How many presets are included?","acceptedAnswer":{"@type":"Answer","text":"Twenty factory presets, from tight rooms to infinite spaces, including starting points for vocals, drums and piano."}},
+        {"@type":"Question","name":"Does EvoraVerb add latency?","acceptedAnswer":{"@type":"Answer","text":"No. It reports zero samples of latency, so nothing shifts in your session and you can use it while tracking."}},
+        {"@type":"Question","name":"My DAW does not find the plugin. What should I check?","acceptedAnswer":{"@type":"Answer","text":"Check that the file sits in the right folder, that you copied the whole .vst3 unit rather than its contents, and that your DAW is 64-bit. Then force a plugin rescan, which some hosts only do when you clear their cache."}},
+        {"@type":"Question","name":"How do I uninstall it?","acceptedAnswer":{"@type":"Answer","text":"Delete the plugin file from the folder you installed it into. There is no installer and nothing is written elsewhere on your system."}},
+        {"@type":"Question","name":"How do I report a bug or send feedback?","acceptedAnswer":{"@type":"Answer","text":"Write to oddsignalaudio@gmail.com with your operating system, your DAW and its version, and what you were doing when the problem appeared. During the beta this is the fastest route to a fix."}}
+      ]
+    }
+    </script>
+
+    <style>
+        .faq-page { padding: 64px 0; }
+        .faq-page .container { max-width: 780px; }
+
+        .faq-page h1 { font-size: 44px; margin-bottom: 20px; }
+        .faq-page .lead { font-size: 18px; line-height: 1.8; margin-bottom: 12px; }
+
+        .faq-group { margin-top: 56px; }
+        .faq-group > h2 {
+            font-size: 13px;
+            letter-spacing: 0.18em;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .qa {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .qa > summary {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 2px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            line-height: 1.5;
+            list-style: none;
+            transition: color 0.2s ease;
+        }
+
+        .qa > summary::-webkit-details-marker { display: none; }
+        .qa > summary:hover { color: var(--color-accent); }
+
+        /* El signo se dibuja con CSS: gira al abrir sin necesidad de JS. */
+        .qa > summary::after {
+            content: '';
+            flex-shrink: 0;
+            width: 11px;
+            height: 11px;
+            margin-top: 4px;
+            border-right: 1.5px solid var(--color-accent);
+            border-bottom: 1.5px solid var(--color-accent);
+            transform: rotate(45deg);
+            transition: transform 0.25s ease;
+        }
+
+        .qa[open] > summary::after { transform: rotate(-135deg); }
+        .qa[open] > summary { color: var(--color-accent); }
+
+        .qa-body {
+            padding: 0 2px 22px;
+            max-width: 62ch;
+        }
+
+        .qa-body p {
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+
+        .qa-body p:last-child { margin-bottom: 0; }
+
+        .qa-body code {
+            padding: 2px 6px;
+            background: rgba(10, 14, 23, 0.7);
+            border: 1px solid var(--color-border);
+            border-radius: 3px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0;
+            color: var(--color-text);
+            word-break: break-all;
+        }
+
+        .faq-contact {
+            margin-top: 72px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(17, 24, 35, 0.5);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+        }
+
+        .faq-contact h2 { font-size: 20px; margin-bottom: 12px; }
+        .faq-contact p { font-size: 14px; margin-bottom: 24px; }
+
+        @media (max-width: 768px) {
+            .faq-page { padding: 40px 0; }
+            .faq-page h1 { font-size: 30px; }
+            .faq-page .lead { font-size: 15px; }
+            .faq-group { margin-top: 40px; }
+            .qa > summary { font-size: 13px; padding: 17px 2px; gap: 14px; }
+            .faq-contact { padding: 28px 20px; margin-top: 48px; }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <section class="faq-page">
+        <div class="container">
+
+            <h1>Frequently asked questions</h1>
+            <p class="lead">Installing EvoraVerb, what it runs on, and what to do when something does not work.</p>
+
+            <!-- INSTALACION -->
+            <div class="faq-group">
+                <h2>Installation</h2>
+
+                <details class="qa">
+                    <summary>How do I install EvoraVerb on Windows?</summary>
+                    <div class="qa-body">
+                        <p>Drag the whole <code>EvoraVerb.vst3</code> folder into <code>C:\Program Files\Common Files\VST3\</code>, then restart your DAW.</p>
+                        <p>Windows shows it as an ordinary folder, but it is the plugin itself. Copy it as one unit and never move its contents separately, or your DAW will not recognise it.</p>
+                        <p>There is no installer and no command line involved.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>How do I install EvoraVerb on macOS?</summary>
+                    <div class="qa-body">
+                        <p>Double-click each <code>.tar.gz</code> file. macOS extracts them on its own, leaving the plugins next to the archives.</p>
+                        <p>Then move <code>EvoraVerb.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3/</code> and <code>EvoraVerb.component</code> to <code>/Library/Audio/Plug-Ins/Components/</code>.</p>
+                        <p>If you would rather not type an administrator password, the same folders inside your home Library work just as well. Restart your DAW afterwards; Logic rescans Audio Units on launch and the first scan takes a little longer.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>macOS says the plugin cannot be opened. What do I do?</summary>
+                    <div class="qa-body">
+                        <p>EvoraVerb is not yet signed with an Apple Developer ID or notarised. The binaries carry only the ad-hoc signature the compiler generates, which does not satisfy Gatekeeper, so macOS blocks them the first time.</p>
+                        <p>Open <strong>System Settings</strong>, go to <strong>Privacy &amp; Security</strong>, and allow EvoraVerb using the notice near the bottom of the page. You only have to do this once, and no Terminal commands are needed.</p>
+                        <p>Proper signing and notarisation are on the list for the stable release.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>How do I uninstall it?</summary>
+                    <div class="qa-body">
+                        <p>Delete the plugin file from the folder you installed it into. That is all.</p>
+                        <p>There is no installer, no background service and nothing written anywhere else on your system.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- COMPATIBILIDAD -->
+            <div class="faq-group">
+                <h2>Compatibility</h2>
+
+                <details class="qa">
+                    <summary>Which formats does EvoraVerb come in?</summary>
+                    <div class="qa-body">
+                        <p>On Windows, VST3 and a standalone application. On macOS, VST3, Audio Unit and standalone.</p>
+                        <p>There is no VST2 and no AAX, so EvoraVerb does not load in Pro Tools. AAX requires the Avid SDK and a PACE signature, neither of which we have yet.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Which systems are supported?</summary>
+                    <div class="qa-body">
+                        <p>Windows 10 or later, 64-bit, and macOS 11 Big Sur or later.</p>
+                        <p>The macOS build is a universal binary: it runs natively on Apple Silicon and on Intel Macs, with no Rosetta involved.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Does it work in my DAW?</summary>
+                    <div class="qa-body">
+                        <p>Any host that loads VST3 or Audio Units will run it: Ableton Live, Logic Pro, Cubase, Studio One, Reaper, Bitwig, FL Studio and the rest.</p>
+                        <p>The only exception is Pro Tools, which needs AAX.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Can I use it on a mono track?</summary>
+                    <div class="qa-body">
+                        <p>Not directly. EvoraVerb is stereo in, stereo out, which is what lets it keep left and right on separate paths all the way through the reverb.</p>
+                        <p>For a mono source, put it on a stereo bus or a stereo send. That is how reverb is usually set up anyway.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Which sample rates does it support?</summary>
+                    <div class="qa-body">
+                        <p>Whatever your project runs at. Every delay length and filter coefficient is recalculated when the sample rate changes, so the reverb sounds the same at 44.1 kHz and at 96 kHz.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- USO -->
+            <div class="faq-group">
+                <h2>Using EvoraVerb</h2>
+
+                <details class="qa">
+                    <summary>How many presets are included?</summary>
+                    <div class="qa-body">
+                        <p>Twenty factory presets, from tight rooms to infinite spaces, with starting points for vocals, drums and piano.</p>
+                        <p>They set Amount and Mix. The low and high cut filters stay out of presets on purpose, since where you cut frequencies depends on your material rather than on the type of room.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Why does it only have two knobs?</summary>
+                    <div class="qa-body">
+                        <p>That is the simple mode. Amount moves six internal parameters at once along a path where every position is a usable space, so you can find a sound quickly instead of hunting for a good combination.</p>
+                        <p>Open the advanced panel and you get those six directly, plus a low cut and a high cut for the reverb. <a href="evoraverb.html">The technical page</a> covers all of it.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Does EvoraVerb add latency?</summary>
+                    <div class="qa-body">
+                        <p>No. It reports zero samples, so nothing in your session shifts and you can leave it on while tracking.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Is it heavy on CPU?</summary>
+                    <div class="qa-body">
+                        <p>No. Nothing is allocated while audio is running, everything is reserved when the plugin loads, and the engine is eight delay lines rather than a convolution.</p>
+                        <p>You can run several instances on a modern machine without trouble.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Are my settings saved with the project?</summary>
+                    <div class="qa-body">
+                        <p>Yes. Everything is stored in your session, so reopening the project restores exactly what you left.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- LICENCIA Y ACTUALIZACIONES -->
+            <div class="faq-group">
+                <h2>Licence and updates</h2>
+
+                <details class="qa">
+                    <summary>Does it need a licence key or an internet connection?</summary>
+                    <div class="qa-body">
+                        <p>No. There is no serial number, no activation and no copy protection of any kind.</p>
+                        <p>The plugin never connects to the internet and works fine on a machine that has never been online.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Can I use EvoraVerb in music I release commercially?</summary>
+                    <div class="qa-body">
+                        <p>Yes. Anything you record with EvoraVerb is yours, with no restrictions and no royalties.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>How much will it cost after the beta?</summary>
+                    <div class="qa-body">
+                        <p>The beta is free and stays free for everyone taking part in it. We have not settled the pricing of the stable release yet.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>How will I hear about updates?</summary>
+                    <div class="qa-body">
+                        <p>We write to the address you used to sign up for the beta whenever there is a new build. You can also follow us on <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PROBLEMAS -->
+            <div class="faq-group">
+                <h2>Troubleshooting</h2>
+
+                <details class="qa">
+                    <summary>My DAW does not find the plugin. What should I check?</summary>
+                    <div class="qa-body">
+                        <p>Four things, in this order:</p>
+                        <p>First, that the plugin sits in the right folder. Second, that you copied the whole <code>.vst3</code> unit rather than the files inside it, which is the most common mistake on Windows. Third, that your DAW is 64-bit. Fourth, that you are looking under VST3 or Audio Units and not VST2.</p>
+                        <p>If everything checks out, force a plugin rescan. Some hosts only pick up new plugins after you clear their cache in preferences.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>Logic does not list EvoraVerb.</summary>
+                    <div class="qa-body">
+                        <p>Logic only shows Audio Units, so make sure <code>EvoraVerb.component</code> is installed and not just the VST3.</p>
+                        <p>Logic also caches the result of its validation: if the plugin failed the first scan because of the Gatekeeper warning, allow it in Privacy &amp; Security first, then reopen Logic so it validates again.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>I hear a click when I automate a parameter.</summary>
+                    <div class="qa-body">
+                        <p>You should not. Every parameter is ramped internally, from 20 ms on Mix to 250 ms on Decay, precisely so that automation stays clean.</p>
+                        <p>If you run into it, tell us which parameter and which DAW, because that would be a bug worth fixing.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
+                    <summary>How do I report a bug or send feedback?</summary>
+                    <div class="qa-body">
+                        <p>Write to <a href="mailto:oddsignalaudio@gmail.com">oddsignalaudio@gmail.com</a> with your operating system, your DAW and its version, and what you were doing when the problem appeared.</p>
+                        <p>During the beta that is the fastest route to a fix, and the reports we get shape what we work on next.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-contact">
+                <h2>Still stuck?</h2>
+                <p>Write to us and we will answer, usually within 24 to 48 hours on business days.</p>
+                <a href="contact.html" class="btn btn-primary">Contact us</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-faq.js?v=27"></script>
+    <script src="i18n.js?v=27"></script>
+    <script src="script.js?v=27"></script>
+</body>
+</html>
