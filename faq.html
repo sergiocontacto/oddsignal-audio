@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Answers about installing EvoraVerb, supported formats and systems, presets, licensing and troubleshooting.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
 
-    <link rel="stylesheet" href="styles.css?v=28">
+    <link rel="stylesheet" href="styles.css?v=29">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -40,6 +40,7 @@
         {"@type":"Question","name":"macOS says the plugin cannot be opened. What do I do?","acceptedAnswer":{"@type":"Answer","text":"EvoraVerb is not yet signed with an Apple Developer ID or notarised, so Gatekeeper blocks it on first run. Open System Settings, go to Privacy and Security, and allow EvoraVerb using the notice near the bottom of the page. No Terminal commands are needed."}},
         {"@type":"Question","name":"Which formats does EvoraVerb come in?","acceptedAnswer":{"@type":"Answer","text":"VST3 and a standalone application on Windows; VST3, Audio Unit and standalone on macOS. There is no VST2 and no AAX, so it does not load in Pro Tools."}},
         {"@type":"Question","name":"Which systems are supported?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 or later, 64-bit, and macOS 11 Big Sur or later. The macOS build is a universal binary and runs natively on both Apple Silicon and Intel."}},
+        {"@type":"Question","name":"Can I use EvoraVerb in Pro Tools?","acceptedAnswer":{"@type":"Answer","text":"Not natively. EvoraVerb is not available in AAX yet, and Pro Tools only loads AAX plugins. You can still run it through a wrapper such as Blue Cat's PatchWork or DDMF Metaplugin, which host the VST3 inside an AAX shell."}},
         {"@type":"Question","name":"Does EvoraVerb need a licence key or an internet connection?","acceptedAnswer":{"@type":"Answer","text":"No. There is no serial number, no activation and no copy protection. The plugin never connects to the internet and works offline."}},
         {"@type":"Question","name":"Can I use EvoraVerb in music I release commercially?","acceptedAnswer":{"@type":"Answer","text":"Yes. Anything you record with EvoraVerb is yours, with no restrictions and no royalties."}},
         {"@type":"Question","name":"How many presets are included?","acceptedAnswer":{"@type":"Answer","text":"Twenty factory presets, from tight rooms to infinite spaces, including starting points for vocals, drums and piano."}},
@@ -267,6 +268,14 @@
                 </details>
 
                 <details class="qa">
+                    <summary>Can I use EvoraVerb in Pro Tools?</summary>
+                    <div class="qa-body">
+                        <p>Not natively. EvoraVerb is not available in AAX yet, and Pro Tools only loads AAX plugins.</p>
+                        <p>You can still run it through a wrapper such as Blue Cat's PatchWork or DDMF Metaplugin, which host the VST3 inside an AAX shell.</p>
+                    </div>
+                </details>
+
+                <details class="qa">
                     <summary>Can I use it on a mono track?</summary>
                     <div class="qa-body">
                         <p>Not directly. EvoraVerb is stereo in, stereo out, which is what lets it keep left and right on separate paths all the way through the reverb.</p>
@@ -417,8 +426,8 @@
             </div>
         </div>
     </footer>
-    <script src="i18n-faq.js?v=28"></script>
-    <script src="i18n.js?v=28"></script>
-    <script src="script.js?v=28"></script>
+    <script src="i18n-faq.js?v=29"></script>
+    <script src="i18n.js?v=29"></script>
+    <script src="script.js?v=29"></script>
 </body>
 </html>
