@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="How EvoraVerb works: an 8-line feedback delay network with three-layer modulation, behind two controls. Free VST3 and AU reverb plugin for Windows and macOS.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
 
-    <link rel="stylesheet" href="styles.css?v=24">
+    <link rel="stylesheet" href="styles.css?v=25">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -107,7 +107,7 @@
         {"@type":"Question","name":"Does EvoraVerb run on Apple Silicon?","acceptedAnswer":{"@type":"Answer","text":"Yes. The macOS build is a universal binary, so it runs natively on both Apple Silicon and Intel Macs, from macOS 11 onwards."}},
         {"@type":"Question","name":"Does EvoraVerb add latency?","acceptedAnswer":{"@type":"Answer","text":"No. Reported latency is 0 samples, so it introduces no delay compensation in your session."}},
         {"@type":"Question","name":"Can I use EvoraVerb on a mono track?","acceptedAnswer":{"@type":"Answer","text":"No. EvoraVerb is stereo in, stereo out only. On a mono source, place it on a stereo bus or a stereo send."}},
-        {"@type":"Question","name":"Why does EvoraVerb only have two knobs?","acceptedAnswer":{"@type":"Answer","text":"Amount is a macro control: one gesture rescales six internal parameters at once, along a path tuned so every position is musically usable. Mix sets the wet and dry balance."}},
+        {"@type":"Question","name":"Why does EvoraVerb only have two knobs?","acceptedAnswer":{"@type":"Answer","text":"That is only the simple mode. Amount is a macro that rescales six internal parameters at once, along a path where every position is musically usable. The advanced panel gives you those six directly, plus a low cut and a high cut for the reverb."}},
         {"@type":"Question","name":"What sample rates does EvoraVerb support?","acceptedAnswer":{"@type":"Answer","text":"Whatever your host runs. Every delay length and filter coefficient is recalculated when the sample rate changes."}},
         {"@type":"Question","name":"How long can the reverb tail get?","acceptedAnswer":{"@type":"Answer","text":"Up to about 12 seconds of decay at maximum Amount. The plugin reports a 6 second tail to the host."}}
       ]
@@ -154,7 +154,7 @@
 
             <img src="./plugin-evoraverb.webp" alt="EvoraVerb plugin interface showing the Amount and Mix controls" width="1000" height="737" loading="lazy" decoding="async" style="width:100%;height:auto;margin:40px 0;">
 
-            <h2>Two controls, six parameters</h2>
+            <h2>Simple mode: two controls</h2>
             <p>Most reverbs give you a dozen knobs and leave the coherent combinations for you to find. EvoraVerb takes the opposite approach: <strong>Amount</strong> is a macro that rescales six internal parameters at once, along a path where every position is a usable space.</p>
 
             <table>
@@ -172,6 +172,41 @@
             </table>
 
             <p>Turning Amount takes you from a small controlled room to a long enveloping space in one gesture. <strong>Mix</strong> sets the wet and dry balance. Both are exposed to your host for automation.</p>
+
+            <h2>Advanced mode</h2>
+            <p>Open the advanced panel and Amount steps aside: instead of driving the six parameters through a macro, you set each one directly. Nothing fights for control, because Amount only writes to them while the panel is closed.</p>
+            <p>The defaults are exactly the values the macro produced at 50%, so opening the panel never changes the sound you already had.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Control</th><th>Range</th><th>Default</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Size</td><td>0 &ndash; 100%</td><td>57.5%</td></tr>
+                    <tr><td>Decay</td><td>0.1 &ndash; 12 s</td><td>6.40 s</td></tr>
+                    <tr><td>Damping</td><td>0 &ndash; 100%</td><td>42.5%</td></tr>
+                    <tr><td>Pre-Delay</td><td>0 &ndash; 120 ms</td><td>22.5 ms</td></tr>
+                    <tr><td>Modulation</td><td>0 &ndash; 100%</td><td>35%</td></tr>
+                    <tr><td>Width</td><td>0 &ndash; 100%</td><td>85%</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Reverb EQ</h3>
+            <p>Two filters shape the tail: a low cut and a high cut. Both act on the reverb alone and never touch your dry signal, so you can clear space in the low end or take the edge off the top without dulling the source.</p>
+            <p>They stay out of the macro on purpose. Amount describes the space; where you cut frequencies depends on the material you are treating, not on the size of the room.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Filter</th><th>Range</th><th>Default</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Low Cut</td><td>10 Hz &ndash; 1.5 kHz</td><td>Off</td></tr>
+                    <tr><td>High Cut</td><td>100 Hz &ndash; 20 kHz</td><td>Off</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Input and output gain</h3>
+            <p>Two trims sit next to the meters, each ranging from &minus;24 to +24 dB, for matching levels without reaching for another plugin.</p>
 
             <h2>The signal chain</h2>
             <p>Each stage hands the next a wavefront that is already more scattered, so the feedback network never receives a dry impulse. It sustains and blurs a cloud that already exists, which is where the metallic character of cheaper reverbs comes from.</p>
@@ -219,7 +254,7 @@
             <p>Reflection times, diffuser stages and output weights all differ between channels. Nothing is mirrored, so the stereo image stays open instead of pulling to the middle.</p>
 
             <h3>Built for real-time</h3>
-            <p>No memory is allocated while audio is running &mdash; everything is reserved when the plugin is prepared. Every parameter is ramped, from 20 ms on Mix to 250 ms on Decay, so automation never produces a click. Denormals are handled and the feedback loop carries a soft-clip safety limiter.</p>
+            <p>No memory is allocated while audio is running &mdash; everything is reserved when the plugin is prepared. Every parameter is ramped, from 20 ms on Mix to 250 ms on Decay, so automation stays free of audible artefacts. Denormals are handled and the feedback loop carries a soft-clip safety limiter.</p>
 
             <h3>An interface that gets out of the way</h3>
             <p>Vector graphics, no bitmaps, at 512 &times; 512. It scales cleanly and stays readable next to the rest of your session.</p>
@@ -230,6 +265,8 @@
                     <tr><td>Formats</td><td>VST3, Audio Unit, Standalone</td></tr>
                     <tr><td>Windows</td><td>Windows 10 or later, 64-bit</td></tr>
                     <tr><td>macOS</td><td>macOS 11.0 (Big Sur) or later &mdash; Intel and Apple Silicon</td></tr>
+                    <tr><td>Modes</td><td>Simple (2 controls) and advanced (6 controls + EQ)</td></tr>
+                    <tr><td>Reverb EQ</td><td>Low cut and high cut, wet signal only</td></tr>
                     <tr><td>Channels</td><td>Stereo in, stereo out only</td></tr>
                     <tr><td>Latency</td><td>0 samples</td></tr>
                     <tr><td>Reported tail</td><td>6.0 s</td></tr>
@@ -237,7 +274,7 @@
                     <tr><td>Processing</td><td>32-bit floating point</td></tr>
                     <tr><td>Sample rate</td><td>Follows the host</td></tr>
                     <tr><td>MIDI</td><td>Not used</td></tr>
-                    <tr><td>Automatable parameters</td><td>2 (Amount, Mix)</td></tr>
+                    <tr><td>Automatable parameters</td><td>12</td></tr>
                     <tr><td>Session state</td><td>Saved with your project</td></tr>
                     <tr><td>VST3 size</td><td>About 9.5 MB (Windows x64)</td></tr>
                     <tr><td>Version</td><td>1.1.0 &mdash; public beta</td></tr>
@@ -269,7 +306,7 @@
             </div>
             <div class="faq">
                 <h3>Why only two knobs?</h3>
-                <p>Amount moves six internal parameters along a path where every position is a usable space, so there are no unusable combinations to avoid. Mix handles the balance. That is the whole surface, on purpose.</p>
+                <p>That is only the simple mode. Amount moves six internal parameters along a path where every position is a usable space, so you can work fast without hunting for a good combination. When you need precision, the advanced panel gives you those six directly, plus the reverb EQ.</p>
             </div>
             <div class="faq">
                 <h3>What sample rates does it support?</h3>
@@ -297,7 +334,8 @@
             </div>
         </div>
     </footer>
-    <script src="i18n.js?v=24"></script>
-    <script src="script.js?v=24"></script>
+    <script src="i18n-evoraverb.js?v=25"></script>
+    <script src="i18n.js?v=25"></script>
+    <script src="script.js?v=25"></script>
 </body>
 </html>

@@ -241,6 +241,16 @@ const translations = {
     }
 };
 
+// Las paginas con mucho texto propio traen sus cadenas en un archivo
+// aparte y se fusionan aqui, para no cargar todo ese texto en el resto
+// de paginas que no lo necesitan.
+if (window.EXTRA_TRANSLATIONS) {
+    for (const lang in window.EXTRA_TRANSLATIONS) {
+        if (!translations[lang]) translations[lang] = {};
+        Object.assign(translations[lang], window.EXTRA_TRANSLATIONS[lang]);
+    }
+}
+
 let currentLang = localStorage.getItem('selectedLang') || 'en';
 
 function translatePage() {
