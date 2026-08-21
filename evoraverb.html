@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="How EvoraVerb works: an 8-line feedback delay network with three-layer modulation, behind two controls. Free VST3 and AU reverb plugin for Windows and macOS.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
 
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="stylesheet" href="styles.css?v=22">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -102,8 +102,9 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"Is EvoraVerb free?","acceptedAnswer":{"@type":"Answer","text":"Yes. EvoraVerb 1.0.0 is currently available as a free public beta. You sign up through the form on our site and get the download."}},
+        {"@type":"Question","name":"Is EvoraVerb free?","acceptedAnswer":{"@type":"Answer","text":"Yes. EvoraVerb 1.1.0 is currently available as a free public beta. You sign up through the form on our site and get the download."}},
         {"@type":"Question","name":"Which plugin formats does EvoraVerb support?","acceptedAnswer":{"@type":"Answer","text":"VST3, Audio Unit and a standalone application. AAX is not included, because it requires the Avid SDK and a PACE signature."}},
+        {"@type":"Question","name":"Does EvoraVerb run on Apple Silicon?","acceptedAnswer":{"@type":"Answer","text":"Yes. The macOS build is a universal binary, so it runs natively on both Apple Silicon and Intel Macs, from macOS 11 onwards."}},
         {"@type":"Question","name":"Does EvoraVerb add latency?","acceptedAnswer":{"@type":"Answer","text":"No. Reported latency is 0 samples, so it introduces no delay compensation in your session."}},
         {"@type":"Question","name":"Can I use EvoraVerb on a mono track?","acceptedAnswer":{"@type":"Answer","text":"No. EvoraVerb is stereo in, stereo out only. On a mono source, place it on a stereo bus or a stereo send."}},
         {"@type":"Question","name":"Why does EvoraVerb only have two knobs?","acceptedAnswer":{"@type":"Answer","text":"Amount is a macro control: one gesture rescales six internal parameters at once, along a path tuned so every position is musically usable. Mix sets the wet and dry balance."}},
@@ -229,7 +230,7 @@
                 <tbody>
                     <tr><td>Formats</td><td>VST3, Audio Unit, Standalone</td></tr>
                     <tr><td>Windows</td><td>Windows 10 or later, 64-bit</td></tr>
-                    <tr><td>macOS</td><td>macOS 10.13 or later</td></tr>
+                    <tr><td>macOS</td><td>macOS 11.0 (Big Sur) or later &mdash; Intel and Apple Silicon</td></tr>
                     <tr><td>Channels</td><td>Stereo in, stereo out only</td></tr>
                     <tr><td>Latency</td><td>0 samples</td></tr>
                     <tr><td>Reported tail</td><td>6.0 s</td></tr>
@@ -240,7 +241,7 @@
                     <tr><td>Automatable parameters</td><td>2 (Amount, Mix)</td></tr>
                     <tr><td>Session state</td><td>Saved with your project</td></tr>
                     <tr><td>VST3 size</td><td>About 9.5 MB (Windows x64)</td></tr>
-                    <tr><td>Version</td><td>1.0.0 &mdash; public beta</td></tr>
+                    <tr><td>Version</td><td>1.1.0 &mdash; public beta</td></tr>
                 </tbody>
             </table>
             <p>AAX is not included. It requires the Avid SDK and a PACE signature, neither of which is part of this build, so EvoraVerb does not run in Pro Tools yet.</p>
@@ -249,11 +250,15 @@
 
             <div class="faq">
                 <h3>Is EvoraVerb free?</h3>
-                <p>Yes. Version 1.0.0 is a free public beta. Sign up through the form and you get the download.</p>
+                <p>Yes. Version 1.1.0 is a free public beta. Sign up through the form and you get the download.</p>
             </div>
             <div class="faq">
                 <h3>Which formats does it support?</h3>
                 <p>VST3, Audio Unit and a standalone application. No AAX, so it does not load in Pro Tools.</p>
+            </div>
+            <div class="faq">
+                <h3>Does it run on Apple Silicon?</h3>
+                <p>Yes. The macOS build is a universal binary, so it runs natively on both Apple Silicon and Intel Macs, from macOS 11 onwards.</p>
             </div>
             <div class="faq">
                 <h3>Does it add latency?</h3>
@@ -297,7 +302,7 @@
             </div>
         </div>
     </footer>
-    <script src="i18n.js?v=21"></script>
-    <script src="script.js?v=21"></script>
+    <script src="i18n.js?v=22"></script>
+    <script src="script.js?v=22"></script>
 </body>
 </html>
