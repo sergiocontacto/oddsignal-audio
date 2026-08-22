@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="How EvoraVerb works: an 8-line feedback delay network with three-layer modulation, behind two controls. Free VST3 and AU reverb plugin for Windows and macOS.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
 
-    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="stylesheet" href="styles.css?v=32">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -102,7 +102,7 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"Is EvoraVerb free?","acceptedAnswer":{"@type":"Answer","text":"Yes. EvoraVerb 1.1.0 is currently available as a free public beta. You sign up through the form on our site and get the download."}},
+        {"@type":"Question","name":"Is EvoraVerb free?","acceptedAnswer":{"@type":"Answer","text":"Yes. EvoraVerb 1.2.0 is currently available as a free public beta. You sign up through the form on our site and get the download."}},
         {"@type":"Question","name":"Which plugin formats does EvoraVerb support?","acceptedAnswer":{"@type":"Answer","text":"VST3, Audio Unit and a standalone application. AAX is not included, because it requires the Avid SDK and a PACE signature."}},
         {"@type":"Question","name":"Does EvoraVerb run on Apple Silicon?","acceptedAnswer":{"@type":"Answer","text":"Yes. The macOS build is a universal binary, so it runs natively on both Apple Silicon and Intel Macs, from macOS 11 onwards."}},
         {"@type":"Question","name":"Does EvoraVerb add latency?","acceptedAnswer":{"@type":"Answer","text":"No. Reported latency is 0 samples, so it introduces no delay compensation in your session."}},
@@ -209,6 +209,10 @@
             <h3>Input and output gain</h3>
             <p>Two trims sit next to the meters, each ranging from &minus;24 to +24 dB, for matching levels without reaching for another plugin.</p>
 
+            <h3>Typed values and your own presets</h3>
+            <p>Version 1.2 added two things the beta asked for. Every control accepts a value typed in directly, for when you know you want 2.4 seconds rather than somewhere near it. And you can save your own presets alongside the twenty that ship with the plugin.</p>
+            <p>User presets are stored as files on your machine, so they survive reinstalling and can be copied between computers.</p>
+
             <h2>The signal chain</h2>
             <p>Each stage hands the next a wavefront that is already more scattered, so the feedback network never receives a dry impulse. It sustains and blurs a cloud that already exists, which is where the metallic character of cheaper reverbs comes from.</p>
 
@@ -277,8 +281,9 @@
                     <tr><td>MIDI</td><td>Not used</td></tr>
                     <tr><td>Automatable parameters</td><td>12</td></tr>
                     <tr><td>Session state</td><td>Saved with your project</td></tr>
+                    <tr><td>Presets</td><td>20 factory presets, plus your own</td></tr>
                     <tr><td>VST3 size</td><td>About 9.5 MB (Windows x64)</td></tr>
-                    <tr><td>Version</td><td>1.1.0 &mdash; public beta</td></tr>
+                    <tr><td>Version</td><td>1.2.0 &mdash; public beta</td></tr>
                 </tbody>
             </table>
             <p>AAX is not included. It requires the Avid SDK and a PACE signature, neither of which is part of this build, so EvoraVerb does not run in Pro Tools yet.</p>
@@ -287,7 +292,7 @@
 
             <div class="faq">
                 <h3>Is EvoraVerb free?</h3>
-                <p>Yes. Version 1.1.0 is a free public beta. Sign up through the form and you get the download.</p>
+                <p>Yes. Version 1.2.0 is a free public beta. Sign up through the form and you get the download.</p>
             </div>
             <div class="faq">
                 <h3>Which formats does it support?</h3>
@@ -336,8 +341,8 @@
             </div>
         </div>
     </footer>
-    <script src="i18n-evoraverb.js?v=31"></script>
-    <script src="i18n.js?v=31"></script>
-    <script src="script.js?v=31"></script>
+    <script src="i18n-evoraverb.js?v=32"></script>
+    <script src="i18n.js?v=32"></script>
+    <script src="script.js?v=32"></script>
 </body>
 </html>
