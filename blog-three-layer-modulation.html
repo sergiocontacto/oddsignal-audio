@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three layers of modulation, and why one LFO is not enough | OddSignal Audio</title>
+
+    <meta name="description" content="A pure sine LFO is what gives an artificial reverb away on long tails. EvoraVerb combines a main LFO, a slow drift and smoothed noise on every delay line.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog-three-layer-modulation.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Three layers of modulation, and why one LFO is not enough | OddSignal Audio">
+    <meta property="og:description" content="A pure sine LFO is what gives an artificial reverb away on long tails. EvoraVerb combines a main LFO, a slow drift and smoothed noise on every delay line.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog-three-layer-modulation.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Three layers of modulation, and why one LFO is not enough | OddSignal Audio">
+    <meta name="twitter:description" content="A pure sine LFO is what gives an artificial reverb away on long tails. EvoraVerb combines a main LFO, a slow drift and smoothed noise on every delay line.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Three layers of modulation, and why one LFO is not enough",
+      "description": "A pure sine LFO is what gives an artificial reverb away on long tails. EvoraVerb combines a main LFO, a slow drift and smoothed noise on every delay line.",
+      "datePublished": "2026-08-21",
+      "image": "https://oddsignalaudio.com/og-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oddsignalaudio.com/favicon_io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": "https://oddsignalaudio.com/blog-three-layer-modulation.html"
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <article class="post">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span>DSP</span>
+                    <span class="dim">21 August 2026</span>
+                </div>
+                <h1>Three layers of modulation, and why one LFO is not enough</h1>
+                <p class="post-lead">Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.</p>
+            </header>
+
+            <div class="post-body">
+<h2>The tell</h2>
+<p>Delay lines in a feedback network need some movement. Without it the tail settles into fixed resonances and rings. Practically every algorithmic reverb therefore modulates its delay lengths slightly.</p>
+<p>The problem is what most of them modulate with: a single sine LFO per line. On a short decay you never notice. On a twelve second tail you hear it as a periodic sway, and once you have heard it you cannot stop hearing it. The tail stops sounding like a space and starts sounding like an effect.</p>
+
+<h2>Three sources instead of one</h2>
+<p>Every line in EvoraVerb combines three independent modulation sources, weighted:</p>
+<ul>
+    <li><strong>Main LFO, 60 per cent</strong> &mdash; between 0.15 and 0.64 Hz. This is the chorus-like movement that keeps resonances from settling. Its phase is offset by <code>i/8</code> across the eight lines, so they never swing together.</li>
+    <li><strong>Slow drift, 28 per cent</strong> &mdash; between 0.021 and 0.112 Hz. Roughly one cycle every ten to fifty seconds: too slow to hear as movement, fast enough that the tail is never quite the same twice. It reads as breathing.</li>
+    <li><strong>Smoothed noise, 12 per cent</strong> &mdash; not periodic at all. A cheap xorshift generator through a one-pole lowpass, which gives slow random wander in the character of tape wow.</li>
+</ul>
+<p>That third layer is small and does the heaviest lifting. Two sine sources at different rates still produce a repeating pattern, just a longer one. Adding a non-periodic component means the modulation never repeats, and the ear stops finding a pattern to lock onto.</p>
+
+<div class="post-note">
+<p>Combined depth peaks at about ten samples. At 48 kHz that is a fifth of a millisecond of pitch variation. Small enough that nothing detunes, large enough that the resonances never sit still.</p>
+</div>
+
+<h2>Generating a sine without calling sin()</h2>
+<p>Three sources on eight lines is twenty-four oscillators running per sample. Calling <code>std::sin</code> that often is not free, so the LFOs use a different method.</p>
+<p>The oscillator keeps a two-dimensional unit vector and rotates it by a fixed angle each sample, which takes four multiplies and two adds. The rotation angle is computed once, when the frequency is set.</p>
+<p>Rotating repeatedly in floating point has a known flaw: rounding error accumulates and the vector slowly spirals inward or outward, so the amplitude drifts. The fix is a first-order magnitude correction applied every step, <code>k = 1.5 - 0.5 * magnitude²</code>, which pulls the vector back onto the unit circle without a square root. The oscillator holds its amplitude indefinitely at a fraction of the cost of a trigonometric call.</p>
+
+<h2>Modulation moves, size does not</h2>
+<p>One boundary is worth stating clearly, because it looks inconsistent from the outside.</p>
+<p>The modulation continuously slides the read position of each delay line. The <em>base</em> delay, the one that sets room size, never slides &mdash; it jumps between positions through a crossfade.</p>
+<p>The reason is that sliding a delay read point through audio already stored in the buffer changes its pitch, exactly like a tape machine speeding up. At ten samples of modulation that pitch variation is inaudible, and it is the effect we are after. Across the full range of the size control it would be a glissando every time you touched the knob. Same mechanism, two very different magnitudes, two different solutions.</p>
+</div>
+
+            <nav class="post-nav">
+                <a href="blog.html">&larr; All posts</a>
+                <a href="blog-stable-tails.html">Next: What it takes to keep a twelve second tail stable &rarr;</a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=31"></script>
+    <script src="i18n.js?v=31"></script>
+    <script src="script.js?v=31"></script>
+</body>
+</html>

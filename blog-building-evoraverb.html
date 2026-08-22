@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building EvoraVerb: notes from the first release | OddSignal Audio</title>
+
+    <meta name="description" content="Shipping a first plugin from Windows with no Mac: cloud builds, a ZIP that silently broke installs, and a macOS binary that almost nobody could run.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog-building-evoraverb.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Building EvoraVerb: notes from the first release | OddSignal Audio">
+    <meta property="og:description" content="Shipping a first plugin from Windows with no Mac: cloud builds, a ZIP that silently broke installs, and a macOS binary that almost nobody could run.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog-building-evoraverb.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building EvoraVerb: notes from the first release | OddSignal Audio">
+    <meta name="twitter:description" content="Shipping a first plugin from Windows with no Mac: cloud builds, a ZIP that silently broke installs, and a macOS binary that almost nobody could run.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Building EvoraVerb: notes from the first release",
+      "description": "Shipping a first plugin from Windows with no Mac: cloud builds, a ZIP that silently broke installs, and a macOS binary that almost nobody could run.",
+      "datePublished": "2026-08-21",
+      "image": "https://oddsignalaudio.com/og-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oddsignalaudio.com/favicon_io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": "https://oddsignalaudio.com/blog-building-evoraverb.html"
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <article class="post">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span>Development</span>
+                    <span class="dim">21 August 2026</span>
+                </div>
+                <h1>Building EvoraVerb: notes from the first release</h1>
+                <p class="post-lead">EvoraVerb is the first thing ODDSIGNAL AUDIO has released. Most of what went wrong had nothing to do with audio.</p>
+            </header>
+
+            <div class="post-body">
+<h2>It was called LushVerb</h2>
+<p>The project started under a different name and kept it through the whole first phase of development. Renaming it to EvoraVerb late meant chasing the old name through build scripts, artifact paths and bundle identifiers &mdash; and a run of failed builds that were all the same mistake in different files.</p>
+<p>The internal CMake target is still called LushVerb today. It has no effect on anything the user sees, and renaming it now would break more than it would tidy.</p>
+
+<h2>Building for macOS without a Mac</h2>
+<p>We develop on Windows. macOS plugins can only be compiled on macOS, which normally means buying a Mac before you can ship to half your potential users.</p>
+<p>Instead the macOS builds run on GitHub Actions, on their hosted macOS runners. Push to the main branch, and a VST3 and an Audio Unit come out the other end. It works well, and it took a dozen failed runs to get there: deprecated action versions, JUCE accidentally tracked in git instead of cloned, Xcode putting artifacts in different paths than expected, and the file names that changed with the rename.</p>
+<p>JUCE is now pinned to version 9.0.1 in the workflow. Cloning whatever is on master means the macOS binary can be built from a different framework version than the Windows one, and a build can break overnight without a single commit.</p>
+
+<h2>The ZIP that broke every install</h2>
+<p>GitHub Actions hands you build artifacts as ZIP files. ZIP does not store Unix permissions.</p>
+<p>So the plugin arrived on the tester's Mac without its executable bit. macOS refuses to load it, the DAW shows nothing, and no error anywhere explains why. The fix is to <code>tar</code> the bundles before uploading them, because tar does preserve permissions, and to hand out the tarball rather than the ZIP.</p>
+
+<div class="post-note">
+<p>A whole class of "it does not work on my machine" reports come from this. The plugin is fine; the delivery format quietly stripped something it needed.</p>
+</div>
+
+<h2>A universal binary that was not</h2>
+<p>The worst one was invisible until we went looking.</p>
+<p>The CMake configuration never set a deployment target or a list of architectures. Without them, a build inherits whatever machine compiled it. The GitHub runner is Apple Silicon on a current macOS, so the binaries came out <strong>arm64 only, requiring macOS 26.5</strong>.</p>
+<p>That combination excludes every Intel Mac and every Mac more than a few months behind on updates. The build succeeded, the plugin ran perfectly on a modern Mac, and almost nobody else could load it. Worse, it fails the same silent way as the permissions bug: the plugin simply does not appear.</p>
+<p>Two lines, placed before <code>project()</code> so CMake actually reads them, fixed it:</p>
+<ul>
+    <li><code>CMAKE_OSX_DEPLOYMENT_TARGET</code> set to 11.0</li>
+    <li><code>CMAKE_OSX_ARCHITECTURES</code> set to <code>arm64;x86_64</code></li>
+</ul>
+<p>The lesson we took from it is that a green build is not a working build. We now read the Mach-O headers of every macOS release before it goes out and check the architectures and minimum version by hand.</p>
+
+<h2>Where it is going</h2>
+<p>Version 1.1 is what you can download today. In progress is 1.2, adding typed value entry and user presets &mdash; both from beta feedback, both things that only become obvious once other people use what you made.</p>
+<p>Apple Developer signing and notarisation are the next thing on the list, so that Gatekeeper stops asking. AAX is further out; it needs Avid's SDK and a PACE signature.</p>
+</div>
+
+            <nav class="post-nav">
+                <a href="blog.html">&larr; All posts</a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=31"></script>
+    <script src="i18n.js?v=31"></script>
+    <script src="script.js?v=31"></script>
+</body>
+</html>

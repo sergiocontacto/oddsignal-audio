@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inside the tank: eight delay lines and a Householder matrix | OddSignal Audio</title>
+
+    <meta name="description" content="How EvoraVerb's feedback delay network works: mutually prime delay lengths, an energy-preserving Householder matrix, true stereo injection and feedback derived from the real mean delay.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog-inside-the-fdn.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Inside the tank: eight delay lines and a Householder matrix | OddSignal Audio">
+    <meta property="og:description" content="How EvoraVerb's feedback delay network works: mutually prime delay lengths, an energy-preserving Householder matrix, true stereo injection and feedback derived from the real mean delay.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog-inside-the-fdn.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inside the tank: eight delay lines and a Householder matrix | OddSignal Audio">
+    <meta name="twitter:description" content="How EvoraVerb's feedback delay network works: mutually prime delay lengths, an energy-preserving Householder matrix, true stereo injection and feedback derived from the real mean delay.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Inside the tank: eight delay lines and a Householder matrix",
+      "description": "How EvoraVerb's feedback delay network works: mutually prime delay lengths, an energy-preserving Householder matrix, true stereo injection and feedback derived from the real mean delay.",
+      "datePublished": "2026-08-20",
+      "image": "https://oddsignalaudio.com/og-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oddsignalaudio.com/favicon_io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": "https://oddsignalaudio.com/blog-inside-the-fdn.html"
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <article class="post">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span>DSP</span>
+                    <span class="dim">20 August 2026</span>
+                </div>
+                <h1>Inside the tank: eight delay lines and a Householder matrix</h1>
+                <p class="post-lead">The core of EvoraVerb is a feedback delay network. Eight delay lines, each feeding all the others through a matrix. Here is what is actually inside it and why each choice is there.</p>
+            </header>
+
+            <div class="post-body">
+<h2>Why a network and not a room</h2>
+<p>There are two ways to build a reverb. You can measure a real space and convolve your signal with that measurement, which sounds exactly like that space and nothing else. Or you can build a network of delays that feed back into each other until the echoes are too dense to count, which sounds like a space that never existed but can be any size you want.</p>
+<p>EvoraVerb takes the second route. It costs a fraction of the CPU of a convolution and, more importantly, its size is a parameter rather than a different impulse response.</p>
+
+<h2>Eight lines that do not agree</h2>
+<p>The tank holds eight delay lines with base lengths of roughly 29.7, 37.1, 41.3, 47.9, 53.7, 59.3, 67.1 and 73.9 milliseconds. Those numbers are not round on purpose: they are chosen to be mutually prime so their resonances never line up.</p>
+<p>Delay lengths that share factors reinforce each other at the same frequencies, and a listener hears that as a metallic ring sitting on top of the tail. Keeping them coprime spreads the resonances instead of stacking them.</p>
+<p>The whole set scales between 0.4× and 2.0× with the size parameter, so the relationship between the lines holds at every room size.</p>
+
+<h2>The matrix</h2>
+<p>What turns eight delays into a reverb rather than eight echoes is what happens between them. Every sample, the outputs of all eight lines are mixed through a <strong>Householder matrix</strong> and fed back in.</p>
+<p>Two properties make it the right choice. It is energy preserving, so the matrix itself neither builds up nor loses signal and the decay time is set purely by the feedback gain. And it spreads every line into all the others, so an impulse that enters one line is present in all eight within a single pass. Echo density rises fast, which is exactly what makes a tail sound continuous instead of granular.</p>
+
+<h2>Feedback derived from the real delay</h2>
+<p>The feedback gain sets how long the tail lasts. The usual shortcut is to compute it once from a nominal delay length and leave it there.</p>
+<p>EvoraVerb computes it from the <strong>actual mean delay of the eight lines at that sample</strong>, capped at 0.97. It costs a little more arithmetic, and it means a decay of 6 seconds is 6 seconds whether the room is small or huge. With a fixed approximation, changing size drags the decay time with it and the control stops meaning what it says.</p>
+
+<h2>True stereo, and how it collapses</h2>
+<p>Left goes into the even lines, right into the odd ones, with the sign alternating in pairs so the energy spreads without cancelling.</p>
+<p>That gives a genuinely stereo injection rather than a mono sum sprayed across the outputs. And because the Householder matrix mixes all eight lines every pass, the two channels blend inside the tank on their own, over time. Early in the tail the image is wide and clearly stereo; by the end the channels have fused, which is what happens in a real room.</p>
+
+<h2>What the tank is fed</h2>
+<p>One detail matters more than any of the above: the FDN is not fed the dry signal.</p>
+<p>The input passes through a stereo pre-delay, then a bank of eight early reflections per channel, then four allpass diffusion stages, and only then reaches the tank. By that point the signal is already a dense cloud spread over tens of milliseconds.</p>
+<p>Feed a bare impulse into eight resonators and you hear eight resonators. Feed them a cloud and they only have to sustain and blur something that already exists. That single ordering decision is most of the difference between a tail that sounds like a room and one that sounds like a comb filter.</p>
+</div>
+
+            <nav class="post-nav">
+                <a href="blog.html">&larr; All posts</a>
+                <a href="blog-three-layer-modulation.html">Next: Three layers of modulation, and why one LFO is not enough &rarr;</a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=31"></script>
+    <script src="i18n.js?v=31"></script>
+    <script src="script.js?v=31"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What it takes to keep a twelve second tail stable | OddSignal Audio</title>
+
+    <meta name="description" content="DC accumulation, denormals, a soft clip in the feedback loop, per-line spectral tilt and crossfaded delay changes. The unglamorous engineering behind a long reverb tail.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog-stable-tails.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="What it takes to keep a twelve second tail stable | OddSignal Audio">
+    <meta property="og:description" content="DC accumulation, denormals, a soft clip in the feedback loop, per-line spectral tilt and crossfaded delay changes. The unglamorous engineering behind a long reverb tail.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog-stable-tails.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What it takes to keep a twelve second tail stable | OddSignal Audio">
+    <meta name="twitter:description" content="DC accumulation, denormals, a soft clip in the feedback loop, per-line spectral tilt and crossfaded delay changes. The unglamorous engineering behind a long reverb tail.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "What it takes to keep a twelve second tail stable",
+      "description": "DC accumulation, denormals, a soft clip in the feedback loop, per-line spectral tilt and crossfaded delay changes. The unglamorous engineering behind a long reverb tail.",
+      "datePublished": "2026-08-21",
+      "image": "https://oddsignalaudio.com/og-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oddsignalaudio.com/favicon_io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": "https://oddsignalaudio.com/blog-stable-tails.html"
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <article class="post">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span>Engineering</span>
+                    <span class="dim">21 August 2026</span>
+                </div>
+                <h1>What it takes to keep a twelve second tail stable</h1>
+                <p class="post-lead">Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.</p>
+            </header>
+
+            <div class="post-body">
+<h2>Energy that never leaves</h2>
+<p>A feedback delay network is a loop with a gain just under one. Anything that enters and is not filtered out stays for the length of the decay, going round and round.</p>
+<p>The obvious version of that problem is instability. The subtle version is direct current: an offset near zero hertz that no one can hear, circulating with everything else and slowly biasing the whole tank. On a two second decay it never accumulates enough to matter. On twelve seconds it does, and the tail starts behaving oddly for reasons no listening test explains.</p>
+<p>EvoraVerb runs a very slow lowpass on each line that tracks its mean level, and subtracts a small proportion of it &mdash; a coefficient of 0.0008, removing about 35 per cent. It is a DC blocker written to be gentle enough that the low end of the reverb survives intact.</p>
+
+<h2>Denormals</h2>
+<p>At the end of a long decay, sample values get extremely small. Below roughly 10<sup>-38</sup>, floating point numbers enter a subnormal range that x86 processors handle in microcode rather than in hardware.</p>
+<p>The audible result is a plugin that behaves perfectly for eleven seconds and then spikes the CPU as the tail fades out, which is a genuinely confusing bug to be handed. The engine is wrapped in JUCE's <code>ScopedNoDenormals</code> and adds a tiny offset in the loop so values never fall into that range.</p>
+
+<h2>A limiter you should never hear</h2>
+<p>There is a soft clip in the feedback path, threshold 0.9, <code>tanh</code> above it.</p>
+<p>Under any normal use it does nothing at all: reverb tails do not approach full scale. It exists for the corner case where a dense input meets a very long decay and the loop accumulates faster than the damping removes. Rather than let that run away, it saturates gently. It is a seatbelt, not a sound design choice.</p>
+
+<h2>Eight lines that fade differently</h2>
+<p>Each line has its own one-pole lowpass in the feedback path for high-frequency damping, and each is given a slightly different spectral tilt, between 0.90 and 1.10.</p>
+<p>If all eight damp identically, the whole tank decays with a single timbre. It is subtle and it is exactly what makes a reverb sound synthetic: real rooms have surfaces that absorb differently, so different parts of the sound die at different rates. Detuning the damping by ten per cent per line reproduces that unevenness for almost nothing.</p>
+
+<h2>Changing a delay without a glissando</h2>
+<p>Moving the size control changes the length of all eight delay lines. Doing that naively &mdash; sliding the read pointer to its new position &mdash; drags the audio already stored in the buffer with it, and you hear a pitch sweep, the same mechanism as a tape machine changing speed.</p>
+<p>The base delays therefore do not slide. They jump, with a 30 millisecond crossfade between the old and new read positions. Long enough not to click, short enough that the knob feels immediate.</p>
+
+<h2>Ramps, and no allocation</h2>
+<p>Every parameter is smoothed before it reaches the engine, with a time constant chosen for what that parameter does:</p>
+<ul>
+    <li><strong>Decay</strong>, 250 ms, because it changes the loop gain</li>
+    <li><strong>Size</strong>, 150 ms, because it alters the geometry the most</li>
+    <li><strong>Modulation depth and width</strong>, 80 ms</li>
+    <li><strong>Pre-delay and damping</strong>, 50 ms</li>
+    <li><strong>Mix</strong>, 20 ms, so the gesture feels instant</li>
+</ul>
+<p>The damping filter smooths its <em>coefficient</em> rather than its cutoff frequency, which avoids an exponential per sample while keeping the sweep free of steps.</p>
+<p>And nothing is allocated while audio is running. Every buffer is reserved when the plugin is prepared, 285 milliseconds per line at 48 kHz. Allocating on the audio thread is the classic way to produce dropouts that only appear on someone else's machine.</p>
+</div>
+
+            <nav class="post-nav">
+                <a href="blog.html">&larr; All posts</a>
+                <a href="blog-building-evoraverb.html">Next: Building EvoraVerb: notes from the first release &rarr;</a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=31"></script>
+    <script src="i18n.js?v=31"></script>
+    <script src="script.js?v=31"></script>
+</body>
+</html>

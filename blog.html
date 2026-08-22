@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog &mdash; DSP, engineering and development | OddSignal Audio</title>
+
+    <meta name="description" content="Notes on how EvoraVerb is built: the feedback delay network, three-layer modulation, keeping long tails stable, and what it takes to ship a plugin.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Blog &mdash; DSP, engineering and development | OddSignal Audio">
+    <meta property="og:description" content="Notes on how EvoraVerb is built: the feedback delay network, three-layer modulation, keeping long tails stable, and what it takes to ship a plugin.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog &mdash; DSP, engineering and development | OddSignal Audio">
+    <meta name="twitter:description" content="Notes on how EvoraVerb is built: the feedback delay network, three-layer modulation, keeping long tails stable, and what it takes to ship a plugin.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <section class="blog-index">
+        <div class="container">
+            <h1>Blog</h1>
+            <p class="lead">Notes on how our plugins are built. What is inside the reverb engine, the decisions behind it, and what shipping a first release actually involves.</p>
+
+            <div class="post-list">
+                <a class="post-item" href="blog-two-knobs.html">
+                    <div class="post-meta">
+                        <span>Design</span>
+                        <span class="dim">20 August 2026</span>
+                    </div>
+                    <h2>Why EvoraVerb ships with two knobs</h2>
+                    <p>A reverb has at least six parameters that genuinely change the sound. We put five of them behind a single control, and then spent a release working out how to give them back without breaking anything.</p>
+                </a>
+                <a class="post-item" href="blog-inside-the-fdn.html">
+                    <div class="post-meta">
+                        <span>DSP</span>
+                        <span class="dim">20 August 2026</span>
+                    </div>
+                    <h2>Inside the tank: eight delay lines and a Householder matrix</h2>
+                    <p>The core of EvoraVerb is a feedback delay network. Eight delay lines, each feeding all the others through a matrix. Here is what is actually inside it and why each choice is there.</p>
+                </a>
+                <a class="post-item" href="blog-three-layer-modulation.html">
+                    <div class="post-meta">
+                        <span>DSP</span>
+                        <span class="dim">21 August 2026</span>
+                    </div>
+                    <h2>Three layers of modulation, and why one LFO is not enough</h2>
+                    <p>Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.</p>
+                </a>
+                <a class="post-item" href="blog-stable-tails.html">
+                    <div class="post-meta">
+                        <span>Engineering</span>
+                        <span class="dim">21 August 2026</span>
+                    </div>
+                    <h2>What it takes to keep a twelve second tail stable</h2>
+                    <p>Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.</p>
+                </a>
+                <a class="post-item" href="blog-building-evoraverb.html">
+                    <div class="post-meta">
+                        <span>Development</span>
+                        <span class="dim">21 August 2026</span>
+                    </div>
+                    <h2>Building EvoraVerb: notes from the first release</h2>
+                    <p>EvoraVerb is the first thing ODDSIGNAL AUDIO has released. Most of what went wrong had nothing to do with audio.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=31"></script>
+    <script src="i18n.js?v=31"></script>
+    <script src="script.js?v=31"></script>
+</body>
+</html>

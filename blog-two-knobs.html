@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why EvoraVerb ships with two knobs | OddSignal Audio</title>
+
+    <meta name="description" content="A reverb has six parameters that matter. We hid five of them behind one control, then handed them back. How the Amount macro works and why the EQ stays out of it.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog-two-knobs.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Why EvoraVerb ships with two knobs | OddSignal Audio">
+    <meta property="og:description" content="A reverb has six parameters that matter. We hid five of them behind one control, then handed them back. How the Amount macro works and why the EQ stays out of it.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog-two-knobs.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why EvoraVerb ships with two knobs | OddSignal Audio">
+    <meta name="twitter:description" content="A reverb has six parameters that matter. We hid five of them behind one control, then handed them back. How the Amount macro works and why the EQ stays out of it.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Why EvoraVerb ships with two knobs",
+      "description": "A reverb has six parameters that matter. We hid five of them behind one control, then handed them back. How the Amount macro works and why the EQ stays out of it.",
+      "datePublished": "2026-08-20",
+      "image": "https://oddsignalaudio.com/og-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oddsignalaudio.com/favicon_io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": "https://oddsignalaudio.com/blog-two-knobs.html"
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner -->
+    <a class="announce" href="https://docs.google.com/forms/d/e/1FAIpQLSd4c4m7aoWWw9Xp4ycHf6-kTtp8rOblmSOoskTWMGcURXY_tA/viewform" target="_blank" rel="noopener">
+        <span class="announce-tag">New</span>
+        <span class="announce-text">EvoraVerb beta is now available to download for free. Join the beta tester program.</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <article class="post">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span>Design</span>
+                    <span class="dim">20 August 2026</span>
+                </div>
+                <h1>Why EvoraVerb ships with two knobs</h1>
+                <p class="post-lead">A reverb has at least six parameters that genuinely change the sound. We put five of them behind a single control, and then spent a release working out how to give them back without breaking anything.</p>
+            </header>
+
+            <div class="post-body">
+<h2>The problem with a dozen knobs</h2>
+<p>Open most algorithmic reverbs and you get size, decay, damping, pre-delay, diffusion, modulation depth, modulation rate, width, and a couple of filters. Every one of them is legitimate. Together they define a space where most of the combinations sound wrong.</p>
+<p>That is the part nobody mentions. A reverb with twelve controls does not offer twelve dimensions of usable sound; it offers twelve dimensions in which a small region sounds like a room and the rest sounds like a broken delay. Learning an instrument like that is fine. Reaching for it in the middle of a mix is not.</p>
+
+<h2>What Amount actually moves</h2>
+<p>Amount is not a dry/wet control and it is not a single parameter with a fancy name. It is a macro that rescales six internal values at once, each along its own curve:</p>
+<ul>
+    <li><strong>Size</strong> from 0.20 to 0.95</li>
+    <li><strong>Decay</strong> from 0.8 to 12 seconds</li>
+    <li><strong>Damping</strong> from 0.55 down to 0.30, so the space opens up in the highs as it grows</li>
+    <li><strong>Pre-delay</strong> from 10 to 35 milliseconds</li>
+    <li><strong>Modulation depth</strong> from 0.15 to 0.55</li>
+    <li><strong>Width</strong> from 0.70 to 1.00</li>
+</ul>
+<p>The curves matter more than the endpoints. Damping moving <em>against</em> size is what keeps a long setting from turning into mud: a bigger room with the same damping just sounds duller, so the filter has to open as the space grows. Width widening with size does the same job for the stereo image.</p>
+
+<div class="post-note">
+<p>The point of the macro is not fewer controls. It is that there is no wrong position. Anywhere you leave the knob, the six values underneath are a combination that works.</p>
+</div>
+
+<h2>Then we gave them back</h2>
+<p>Two knobs is a good default and a bad ceiling. Somebody mixing a specific vocal wants 6 seconds of decay in a small room, which is not a point the macro passes through. So the advanced panel exposes those same six parameters directly.</p>
+<p>That immediately creates a conflict: if Amount keeps writing to the six while you are editing them by hand, every macro move wipes your work. The rule we settled on is simple. <strong>Amount only writes to the six while the advanced panel is closed.</strong> Open it and the macro steps aside.</p>
+<p>The second half of that decision is subtler. The default value of each advanced parameter is exactly what the macro produced with Amount at 50 per cent. Opening the panel on an untouched instance therefore changes nothing at all: the numbers you see are the numbers you were already hearing.</p>
+
+<h2>What deliberately stayed out</h2>
+<p>The low cut and high cut do not move with Amount, and that was a decision rather than an omission.</p>
+<p>Amount describes a <em>space</em>: how big it is, how long it rings, how diffuse it becomes. Where you cut frequencies is not a property of the space, it is a property of the material going into it. A vocal and a kick in the same room need different filtering. Tying those filters to a knob that describes the room would make them move for the wrong reason.</p>
+<p>The presets follow the same logic. They set Amount and Mix; the filters stay where you left them.</p>
+</div>
+
+            <nav class="post-nav">
+                <a href="blog.html">&larr; All posts</a>
+                <a href="blog-inside-the-fdn.html">Next: Inside the tank: eight delay lines and a Householder matrix &rarr;</a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=31"></script>
+    <script src="i18n.js?v=31"></script>
+    <script src="script.js?v=31"></script>
+</body>
+</html>
