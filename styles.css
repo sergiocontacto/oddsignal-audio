@@ -1160,3 +1160,106 @@ code {
         font-size: 14px;
     }
 }
+
+/* ============================================================
+   Paginas legales (privacy.html, terms.html, refund.html)
+   Mismo aire que la ficha tecnica de EvoraVerb, pero aqui vive
+   en styles.css porque lo comparten tres paginas.
+   ============================================================ */
+.legal { padding: 64px 0; }
+.legal .container { max-width: 780px; }
+
+/* El aleman encadena palabras muy largas (DATENSCHUTZERKLAERUNG) y en
+   movil se salian de la pantalla: que puedan partirse. */
+.legal h1,
+.legal h2,
+.legal h3,
+.legal p,
+.legal li,
+.legal td { overflow-wrap: break-word; hyphens: auto; }
+
+.legal h1 { font-size: 42px; margin-bottom: 16px; }
+
+.legal .updated {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 40px;
+}
+
+.legal .lead {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+}
+
+.legal h2 {
+    font-size: 22px;
+    margin: 56px 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.legal h3 {
+    font-size: 14px;
+    margin: 30px 0 10px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+}
+
+/* El resto del sitio va en mayusculas, pero un texto legal hay que poder
+   leerlo de corrido: aqui los parrafos van en caja normal y solo los
+   titulos mantienen las mayusculas de la marca. */
+.legal p,
+.legal li,
+.legal td { text-transform: none; }
+
+.legal p { margin-bottom: 16px; line-height: 1.8; font-size: 15px; }
+.legal ul { margin: 0 0 16px 20px; }
+.legal li { margin-bottom: 10px; line-height: 1.8; font-size: 15px; }
+
+.legal a { color: var(--color-accent); }
+
+.legal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+}
+.legal th, .legal td {
+    text-align: left;
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+}
+.legal th {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-weight: 600;
+}
+.legal td:first-child { color: var(--color-accent); width: 32%; }
+
+/* Bloque de identidad del titular: lo exige la LSSI en Espana. */
+.legal .identity {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 24px 0 8px;
+}
+.legal .identity p { margin-bottom: 8px; font-size: 14px; }
+.legal .identity p:last-child { margin-bottom: 0; }
+
+@media (max-width: 768px) {
+    .legal { padding: 40px 0; }
+    .legal h1 { font-size: 26px; }
+    .legal h2 { font-size: 18px; margin: 40px 0 14px; }
+    .legal .lead { font-size: 16px; }
+    .legal .identity { padding: 20px 22px; }
+    .legal th, .legal td { padding: 9px 8px; }
+    .legal td:first-child { width: 40%; }
+}
