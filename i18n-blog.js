@@ -20,8 +20,6 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "Las colas largas son donde las reverbs artificiales se delatan, y la culpable casi siempre es la modulación. No su presencia, sino su regularidad.",
     "What it takes to keep a twelve second tail stable": "Lo que cuesta mantener estable una cola de doce segundos",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "La mayor parte del trabajo en una reverb larga no está en que suene bien. Está en evitar que un lazo realimentado que dura doce segundos se destruya a sí mismo en silencio.",
-    "Building EvoraVerb: notes from the first release": "Construir EvoraVerb: notas de la primera versión",
-    "EvoraVerb is the first thing ODDSIGNAL AUDIO has released. Most of what went wrong had nothing to do with audio.": "EvoraVerb es lo primero que ha publicado ODDSIGNAL AUDIO. Casi todo lo que salió mal no tenía nada que ver con el audio.",
     "← All posts": "← Todos los artículos"
   },
   fr: {
@@ -41,8 +39,6 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "C'est sur les longues queues que les réverbérations artificielles se trahissent, et la coupable est presque toujours la modulation. Pas sa présence, sa régularité.",
     "What it takes to keep a twelve second tail stable": "Ce qu'il faut pour stabiliser une queue de douze secondes",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "L'essentiel du travail dans une réverbération longue ne consiste pas à la faire sonner. Il consiste à empêcher une boucle de rebouclage de douze secondes de se détruire discrètement.",
-    "Building EvoraVerb: notes from the first release": "Construire EvoraVerb : notes de la première version",
-    "EvoraVerb is the first thing ODDSIGNAL AUDIO has released. Most of what went wrong had nothing to do with audio.": "EvoraVerb est la première sortie d'ODDSIGNAL AUDIO. La plupart des problèmes rencontrés n'avaient rien à voir avec l'audio.",
     "← All posts": "← Tous les articles"
   },
   de: {
@@ -62,8 +58,6 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "Bei langen Hallfahnen verraten sich künstliche Hallgeräte, und schuld ist fast immer die Modulation. Nicht dass sie da ist, sondern ihre Regelmäßigkeit.",
     "What it takes to keep a twelve second tail stable": "Was es braucht, eine zwölf Sekunden lange Hallfahne stabil zu halten",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "Die meiste Arbeit an einem langen Hall steckt nicht darin, ihn gut klingen zu lassen. Sie steckt darin, eine zwölf Sekunden laufende Rückkopplungsschleife davon abzuhalten, sich still selbst zu zerstören.",
-    "Building EvoraVerb: notes from the first release": "EvoraVerb bauen: Notizen zur ersten Veröffentlichung",
-    "EvoraVerb is the first thing ODDSIGNAL AUDIO has released. Most of what went wrong had nothing to do with audio.": "EvoraVerb ist das Erste, was ODDSIGNAL AUDIO veröffentlicht hat. Das meiste, was schiefging, hatte nichts mit Audio zu tun.",
     "← All posts": "← Alle Beiträge"
   },
   it: {
@@ -83,8 +77,6 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "È sulle code lunghe che i riverberi artificiali si tradiscono, e la colpevole è quasi sempre la modulazione. Non la sua presenza, ma la sua regolarità.",
     "What it takes to keep a twelve second tail stable": "Cosa serve per tenere stabile una coda di dodici secondi",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "Gran parte del lavoro in un riverbero lungo non sta nel farlo suonare bene. Sta nell'impedire che un anello di retroazione che dura dodici secondi si distrugga da solo in silenzio.",
-    "Building EvoraVerb: notes from the first release": "Costruire EvoraVerb: appunti dalla prima versione",
-    "EvoraVerb is the first thing ODDSIGNAL AUDIO has released. Most of what went wrong had nothing to do with audio.": "EvoraVerb è la prima cosa pubblicata da ODDSIGNAL AUDIO. Quasi tutto ciò che è andato storto non aveva nulla a che fare con l'audio.",
     "← All posts": "← Tutti gli articoli"
   }
 };
