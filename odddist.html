@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How ODDDIST Works &mdash; Free Distortion Plugin</title>
+
+    <meta name="description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 plugin for Windows.">
+    <link rel="canonical" href="https://oddsignalaudio.com/odddist.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="How ODDDIST Works &mdash; Free Distortion Plugin">
+    <meta property="og:description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 plugin for Windows.">
+    <meta property="og:url" content="https://oddsignalaudio.com/odddist.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How ODDDIST Works &mdash; Free Distortion Plugin">
+    <meta name="twitter:description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 plugin for Windows.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=45">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <style>
+        .doc { padding: 64px 0; }
+        .doc .container { max-width: 820px; }
+
+        .doc h1 { font-size: 44px; margin-bottom: 20px; }
+        .doc h2 {
+            font-size: 24px;
+            margin: 64px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .doc h3 { font-size: 15px; margin: 32px 0 10px; color: var(--color-accent); letter-spacing: 0.12em; }
+        .doc p { margin-bottom: 18px; }
+        .doc .lead { font-size: 19px; line-height: 1.8; }
+
+        .doc table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+        .doc th, .doc td {
+            text-align: left;
+            padding: 11px 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .doc th {
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            opacity: 0.6;
+            font-weight: 600;
+        }
+        .doc td:first-child { color: var(--color-accent); }
+
+        .chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 24px 0 32px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+        }
+        .chain span {
+            padding: 8px 13px;
+            border: 1px solid var(--color-border);
+            border-radius: 3px;
+            background: rgba(17, 24, 35, 0.5);
+        }
+        .chain span.on { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .faq { border-bottom: 1px solid var(--color-border); padding: 22px 0; }
+        .faq h3 { margin: 0 0 10px; color: var(--color-text); font-size: 15px; letter-spacing: 0.06em; }
+        .faq p { margin: 0; font-size: 14px; }
+
+        .doc-cta { margin-top: 64px; text-align: center; }
+
+        @media (max-width: 768px) {
+            .doc { padding: 40px 0; }
+            .doc h1 { font-size: 30px; }
+            .doc h2 { font-size: 19px; margin: 44px 0 16px; }
+            .doc .lead { font-size: 16px; }
+            .doc table { font-size: 12px; }
+            .doc th, .doc td { padding: 9px 8px; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How do I get ODDDIST?","acceptedAnswer":{"@type":"Answer","text":"ODDDIST is free. Download the installer, run it, and it's ready to load in your DAW — no account, no license key."}},
+        {"@type":"Question","name":"Which formats does it support?","acceptedAnswer":{"@type":"Answer","text":"VST3 and a standalone application, for Windows."}},
+        {"@type":"Question","name":"Does it add latency?","acceptedAnswer":{"@type":"Answer","text":"A small, fixed amount from the internal 4x oversampling on the drive stage. It's reported to your host at all times, in both Off and React modes, so nothing shifts when you switch modes mid-session."}},
+        {"@type":"Question","name":"What does ODD ENGINE actually do?","acceptedAnswer":{"@type":"Answer","text":"It analyzes your incoming signal in real time and adapts the behavior of the drive stage to it, instead of applying one fixed curve regardless of input. Turn it off for classic static saturation, or turn it on to let the plugin react to your material."}},
+        {"@type":"Question","name":"Can I use it on a mono track?","acceptedAnswer":{"@type":"Answer","text":"Not directly — ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send."}},
+        {"@type":"Question","name":"Is it really free, permanently?","acceptedAnswer":{"@type":"Answer","text":"Yes. No trial period, no feature gating, no time limit."}}
+      ]
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link active">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner: ODDDIST gratis, enlaza al catalogo. -->
+    <a class="announce" href="products.html">
+        <span class="announce-tag">FREE</span>
+        <span class="announce-text">🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <section class="doc">
+        <div class="container">
+
+            <h1>How ODDDIST works</h1>
+            <p class="lead">ODDDIST is a distortion and saturation plugin built around ODD ENGINE, a real-time analysis stage that adapts the character of the drive to the signal you feed it, instead of running a single fixed transfer curve. Five controls on the surface; an adaptive core underneath.</p>
+
+            <img src="./plugin-odddist.png" alt="ODDDIST plugin interface showing the Drive, Tone, Saturation, Mix and Output controls" width="1024" height="1536" loading="lazy" decoding="async" style="max-width:380px;width:100%;height:auto;margin:40px auto;display:block;">
+
+            <h2>Five controls</h2>
+            <p>No hidden macro here &mdash; every knob maps to one internal parameter, so what you see is what you're driving.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Control</th><th>Range</th><th>Default</th><th>What it does</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Drive</td><td>0 &ndash; 100%</td><td>35%</td><td>Input gain into the saturation stage</td></tr>
+                    <tr><td>Tone</td><td>0 &ndash; 100%</td><td>50%</td><td>Spectral balance of the driven signal</td></tr>
+                    <tr><td>Saturation</td><td>0 &ndash; 100%</td><td>35%</td><td>Depth of the nonlinear shaping</td></tr>
+                    <tr><td>Mix</td><td>0 &ndash; 100%</td><td>65%</td><td>Dry/wet balance</td></tr>
+                    <tr><td>Output</td><td>0 &ndash; 100%</td><td>50%</td><td>Post-stage level compensation</td></tr>
+                </tbody>
+            </table>
+
+            <p>Input and output trims sit next to the meters, each &minus;24 to +24 dB, for gain-staging without another plugin in the chain.</p>
+
+            <h2>ODD ENGINE</h2>
+            <p>Static saturation applies the same transfer curve regardless of what hits it &mdash; a whispered vocal and a screamed one get identical treatment. ODD ENGINE changes that: it continuously analyzes the incoming signal and uses that reading to shape the behavior of the drive stage in real time, so the response adapts to the dynamics of the material instead of staying fixed.</p>
+            <p>The engine sits on a dedicated macro, <strong>ODD</strong> (0 &ndash; 100%), which controls how strongly the adaptive behavior is applied on top of your Drive/Tone/Saturation settings.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Mode</th><th>Behavior</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Off</td><td>ODD ENGINE fully bypassed: bit-exact, zero added CPU cost. Pure static saturation.</td></tr>
+                    <tr><td>React</td><td>ODD ENGINE active. The drive stage responds to the incoming signal's dynamics in real time.</td></tr>
+                </tbody>
+            </table>
+
+            <p>We're not disclosing the exact analysis/response algorithm &mdash; that's the part of ODDDIST that's actually ours &mdash; but the architecture around it is straightforward: it's a real-time control path feeding the same saturation stage you already hear in Off mode, not a separate effect bolted on top.</p>
+
+            <h2>The signal chain</h2>
+            <p>Every stage sits between the same input and output trims, so nothing downstream of ODD ENGINE ever sees a signal it wasn't designed for.</p>
+
+            <div class="chain">
+                <span>Input L/R</span>
+                <span>Input trim</span>
+                <span class="on">ODD ENGINE analysis</span>
+                <span>Saturation stage</span>
+                <span>Tone shaping</span>
+                <span>Dry/wet mix</span>
+                <span>Output trim</span>
+            </div>
+
+            <h3>Anti-aliasing</h3>
+            <p>The nonlinear shaping stage runs oversampled internally (4x, via a two-stage half-band polyphase IIR filter) to keep harmonics generated by the drive from folding back as aliasing. This adds a small, fixed latency, which ODDDIST reports to your host at all times &mdash; whether ODD ENGINE is On or Off &mdash; so switching modes never forces a latency renegotiation mid-session.</p>
+
+            <h2>What makes it different</h2>
+
+            <h3>Built for real-time</h3>
+            <p>No memory is allocated while audio is running. Every parameter is ramped to avoid zipper noise under automation, and the signal path is denormal-safe.</p>
+
+            <h3>True bypass when off</h3>
+            <p>ODD ENGINE's Off mode isn't &ldquo;engine active at zero,&rdquo; it's a real bypass of the adaptive path. Static saturation only, no analysis overhead.</p>
+
+            <h3>An interface that scales with your session</h3>
+            <p>The plugin window is freely resizable inside your host, with a locked aspect ratio so the layout never distorts.</p>
+
+            <h2>Formats and system requirements</h2>
+            <table>
+                <tbody>
+                    <tr><td>Formats</td><td>VST3, Standalone</td></tr>
+                    <tr><td>Windows</td><td>Windows 10 or later, 64-bit</td></tr>
+                    <tr><td>Channels</td><td>Stereo in, stereo out only</td></tr>
+                    <tr><td>Oversampling</td><td>4x on the drive stage (React and Off both report the same fixed latency)</td></tr>
+                    <tr><td>Processing</td><td>32-bit floating point</td></tr>
+                    <tr><td>Sample rate</td><td>Follows the host</td></tr>
+                    <tr><td>MIDI</td><td>Not used</td></tr>
+                    <tr><td>Automatable parameters</td><td>7</td></tr>
+                    <tr><td>Session state</td><td>Saved with your project</td></tr>
+                    <tr><td>Presets</td><td>10 factory presets, ordered from subtle to extreme, plus your own</td></tr>
+                    <tr><td>Price</td><td>Free</td></tr>
+                    <tr><td>Version</td><td>1.0.0</td></tr>
+                </tbody>
+            </table>
+
+            <h2>Frequently asked questions</h2>
+
+            <div class="faq">
+                <h3>How do I get ODDDIST?</h3>
+                <p>ODDDIST is free. Download the installer, run it, and it's ready to load in your DAW &mdash; no account, no license key.</p>
+            </div>
+            <div class="faq">
+                <h3>Which formats does it support?</h3>
+                <p>VST3 and a standalone application, for Windows.</p>
+            </div>
+            <div class="faq">
+                <h3>Does it add latency?</h3>
+                <p>A small, fixed amount from the internal 4x oversampling on the drive stage. It's reported to your host at all times, in both Off and React modes, so nothing shifts when you switch modes mid-session.</p>
+            </div>
+            <div class="faq">
+                <h3>What does ODD ENGINE actually do?</h3>
+                <p>It analyzes your incoming signal in real time and adapts the behavior of the drive stage to it, instead of applying one fixed curve regardless of input. Turn it off for classic static saturation, or turn it on to let the plugin react to your material.</p>
+            </div>
+            <div class="faq">
+                <h3>Can I use it on a mono track?</h3>
+                <p>Not directly &mdash; ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send.</p>
+            </div>
+            <div class="faq">
+                <h3>Is it really free, permanently?</h3>
+                <p>Yes. No trial period, no feature gating, no time limit.</p>
+            </div>
+
+            <div class="doc-cta">
+                <a href="#" class="btn btn-primary">Download ODDDIST &mdash; Free</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="refund.html">Refunds</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-odddist.js?v=1"></script>
+    <script src="i18n.js?v=44"></script>
+    <script src="script.js?v=41"></script>
+</body>
+</html>

@@ -19,7 +19,8 @@ const translations = {
         "Download": "Download",
         "Forgot your password?": "Forgot your password?",
         "New": "New",
-        "🔥 EvoraVerb 50% off — $19.99 instead of $39.99, until 21 September 🎧": "🔥 EvoraVerb 50% off — $19.99 instead of $39.99, until 21 September 🎧",
+        "FREE": "FREE",
+        "🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️": "🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️",
         "Contact": "Contact",
         "About": "About",
         "Privacy": "Privacy",
@@ -50,7 +51,15 @@ const translations = {
         "We typically respond to inquiries within 24-48 hours during business days.": "We typically respond to inquiries within 24-48 hours during business days.",
         "Follow Us": "Follow Us",
         "Stay updated with the latest news and announcements.": "Stay updated with the latest news and announcements.",
-        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. All rights reserved."
+        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. All rights reserved.",
+        "Distortion, reengineered.": "Distortion, reengineered.",
+        "A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.": "A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.",
+        "ODDDIST is completely free.": "ODDDIST is completely free.",
+        "Download ODDDIST — Free": "Download ODDDIST — Free",
+        "VST3 · Windows & macOS": "VST3 · Windows & macOS",
+        "ODD Engine": "ODD Engine",
+        "Completely Free": "Completely Free",
+        "Info": "Info"
     },
     es: {
         "BLOG": "BLOG",
@@ -72,7 +81,8 @@ const translations = {
         "Download": "Descargar",
         "Forgot your password?": "¿Olvidaste la contraseña?",
         "New": "Nuevo",
-        "🔥 EvoraVerb 50% off — $19.99 instead of $39.99, until 21 September 🎧": "🔥 EvoraVerb al 50% — $19.99 en vez de $39.99, hasta el 21 de septiembre 🎧",
+        "FREE": "GRATIS",
+        "🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️": "🔥 ODDDIST — Distorsión, ahora completamente GRATIS. Con tecnología ODD ENGINE. 🎛️",
         "Contact": "Contacto",
         "About": "Acerca de",
         "Privacy": "Privacidad",
@@ -103,7 +113,15 @@ const translations = {
         "We typically respond to inquiries within 24-48 hours during business days.": "Típicamente respondemos consultas dentro de 24-48 horas durante días de negocio.",
         "Follow Us": "Síguenos",
         "Stay updated with the latest news and announcements.": "Mantente actualizado con las últimas noticias y anuncios.",
-        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Todos los derechos reservados."
+        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Todos los derechos reservados.",
+        "Distortion, reengineered.": "Distorsión, reinventada.",
+        "A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.": "Un nuevo enfoque de la distorsión, pensado para productores, diseñadores de sonido y artistas que buscan mucho más que saturación.",
+        "ODDDIST is completely free.": "ODDDIST es completamente gratuito.",
+        "Download ODDDIST — Free": "Descargar ODDDIST — Gratis",
+        "VST3 · Windows & macOS": "VST3 · Windows & macOS",
+        "ODD Engine": "ODD Engine",
+        "Completely Free": "Completamente Gratis",
+        "Info": "Info"
     },
     fr: {
         "BLOG": "BLOG",
@@ -125,7 +143,8 @@ const translations = {
         "Download": "Télécharger",
         "Forgot your password?": "Mot de passe oublié ?",
         "New": "Nouveau",
-        "🔥 EvoraVerb 50% off — $19.99 instead of $39.99, until 21 September 🎧": "🔥 EvoraVerb à -50% — 19,99 $ au lieu de 39,99 $, jusqu'au 21 septembre 🎧",
+        "FREE": "GRATUIT",
+        "🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️": "🔥 ODDDIST — Distortion, désormais entièrement GRATUITE. Propulsé par ODD ENGINE. 🎛️",
         "Contact": "Contact",
         "About": "À propos",
         "Privacy": "Confidentialité",
@@ -156,7 +175,15 @@ const translations = {
         "We typically respond to inquiries within 24-48 hours during business days.": "Nous répondons généralement aux demandes dans les 24-48 heures pendant les jours ouvrables.",
         "Follow Us": "Suivez-nous",
         "Stay updated with the latest news and announcements.": "Restez à jour avec les dernières actualités et annonces.",
-        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tous droits réservés."
+        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tous droits réservés.",
+        "Distortion, reengineered.": "Distorsion, réinventée.",
+        "A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.": "Une nouvelle approche de la distorsion, conçue pour les producteurs, sound designers et artistes qui veulent plus qu'une simple saturation.",
+        "ODDDIST is completely free.": "ODDDIST est entièrement gratuit.",
+        "Download ODDDIST — Free": "Télécharger ODDDIST — Gratuit",
+        "VST3 · Windows & macOS": "VST3 · Windows & macOS",
+        "ODD Engine": "ODD Engine",
+        "Completely Free": "Entièrement Gratuit",
+        "Info": "Info"
     },
     de: {
         "BLOG": "BLOG",
@@ -178,7 +205,8 @@ const translations = {
         "Download": "Herunterladen",
         "Forgot your password?": "Passwort vergessen?",
         "New": "Neu",
-        "🔥 EvoraVerb 50% off — $19.99 instead of $39.99, until 21 September 🎧": "🔥 EvoraVerb 50% günstiger — 19,99 $ statt 39,99 $, bis 21. September 🎧",
+        "FREE": "KOSTENLOS",
+        "🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️": "🔥 ODDDIST — Distortion, jetzt völlig KOSTENLOS. Angetrieben von ODD ENGINE. 🎛️",
         "Contact": "Kontakt",
         "About": "Über uns",
         "Privacy": "Datenschutz",
@@ -209,7 +237,15 @@ const translations = {
         "We typically respond to inquiries within 24-48 hours during business days.": "Wir antworten normalerweise auf Anfragen innerhalb von 24-48 Stunden an Geschäftstagen.",
         "Follow Us": "Folgen Sie Uns",
         "Stay updated with the latest news and announcements.": "Bleiben Sie mit den neuesten Nachrichten und Ankündigungen auf dem Laufenden.",
-        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Alle Rechte vorbehalten."
+        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Alle Rechte vorbehalten.",
+        "Distortion, reengineered.": "Distortion, neu gedacht.",
+        "A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.": "Ein neuer Ansatz für Distortion, entwickelt für Produzenten, Sound-Designer und Künstler, die mehr wollen als nur Sättigung.",
+        "ODDDIST is completely free.": "ODDDIST ist völlig kostenlos.",
+        "Download ODDDIST — Free": "ODDDIST herunterladen — Kostenlos",
+        "VST3 · Windows & macOS": "VST3 · Windows & macOS",
+        "ODD Engine": "ODD Engine",
+        "Completely Free": "Völlig Kostenlos",
+        "Info": "Info"
     },
     it: {
         "BLOG": "BLOG",
@@ -231,7 +267,8 @@ const translations = {
         "Download": "Scarica",
         "Forgot your password?": "Password dimenticata?",
         "New": "Novità",
-        "🔥 EvoraVerb 50% off — $19.99 instead of $39.99, until 21 September 🎧": "🔥 EvoraVerb al 50% — 19,99 $ invece di 39,99 $, fino al 21 settembre 🎧",
+        "FREE": "GRATIS",
+        "🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️": "🔥 ODDDIST — Distorsione, ora completamente GRATUITA. Basato su ODD ENGINE. 🎛️",
         "Contact": "Contatti",
         "About": "Chi siamo",
         "Privacy": "Privacy",
@@ -262,7 +299,15 @@ const translations = {
         "We typically respond to inquiries within 24-48 hours during business days.": "Normalmente rispondiamo alle richieste entro 24-48 ore durante i giorni lavorativi.",
         "Follow Us": "Seguici",
         "Stay updated with the latest news and announcements.": "Rimani aggiornato con le ultime notizie e annunci.",
-        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tutti i diritti riservati."
+        "© 2025 OddSignal Audio. All rights reserved.": "© 2025 OddSignal Audio. Tutti i diritti riservati.",
+        "Distortion, reengineered.": "Distorsione, reinventata.",
+        "A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.": "Un nuovo approccio alla distorsione, pensato per producer, sound designer e artisti che vogliono molto più della semplice saturazione.",
+        "ODDDIST is completely free.": "ODDDIST è completamente gratuito.",
+        "Download ODDDIST — Free": "Scarica ODDDIST — Gratis",
+        "VST3 · Windows & macOS": "VST3 · Windows & macOS",
+        "ODD Engine": "ODD Engine",
+        "Completely Free": "Completamente Gratis",
+        "Info": "Info"
     }
 };
 
