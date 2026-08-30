@@ -1026,6 +1026,12 @@ code {
     width: auto;
     height: auto;
     object-fit: contain;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.product-card-img-wrap:hover img {
+    opacity: 0.85;
+    transform: scale(1.02);
 }
 
 .product-card h3 {
