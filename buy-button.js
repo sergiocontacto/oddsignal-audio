@@ -1,7 +1,8 @@
 /* Shopify Buy Button: incrusta el checkout de Shopify (bdf1pk-21.myshopify.com)
-   en el producto EvoraVerb de esta web estática. La web sigue siendo estática;
-   Shopify solo actúa de carrito + cobro + entrega del archivo digital.
-   Colores ajustados a la marca ODDSIGNAL (--color-accent de styles.css). */
+   en los productos de esta web estática (EvoraVerb y ODDDIST). La web sigue
+   siendo estática; Shopify solo actúa de carrito + cobro + entrega del
+   archivo digital. Colores ajustados a la marca ODDSIGNAL (--color-accent
+   de styles.css). */
 (function () {
   var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
   if (window.ShopifyBuy) {
@@ -20,20 +21,12 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
     script.onload = ShopifyBuyInit;
   }
-  function ShopifyBuyInit() {
-    var client = ShopifyBuy.buildClient({
-      domain: 'bdf1pk-21.myshopify.com',
-      storefrontAccessToken: 'fcaf24b787ace57d9e12da81b1a3aaaf',
-    });
-    ShopifyBuy.UI.onReady(client).then(function (ui) {
-      var node = document.getElementById('product-component-evoraverb');
-      if (!node) return;
-      ui.createComponent('product', {
-        id: '15647380701508',
-        node: node,
-        moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
-        options: {
-          product: {
+
+  // Las dos tarjetas de producto comparten el mismo estilo de boton; solo
+  // cambian el id de producto, el nodo destino y el texto del boton.
+  function productOptions(buttonText) {
+    return {
+      product: {
             styles: {
               product: {
                 '@media (min-width: 601px)': {
@@ -88,7 +81,7 @@
             layout: 'horizontal',
             contents: { img: false, imgWithCarousel: false, description: false },
             width: 'auto',
-            text: { button: 'Buy Now' },
+            text: { button: buttonText },
           },
           productSet: {
             styles: {
@@ -137,7 +130,32 @@
               },
             },
           },
-        },
+    };
+  }
+
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'bdf1pk-21.myshopify.com',
+      storefrontAccessToken: 'fcaf24b787ace57d9e12da81b1a3aaaf',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      var products = [
+        { id: '15647380701508', nodeId: 'product-component-evoraverb', buttonText: 'Buy Now' },
+        { id: '15651571532100', nodeId: 'product-component-odddist', buttonText: 'Download' },
+      ];
+      products.forEach(function (p) {
+        var node = document.getElementById(p.nodeId);
+        if (!node) return;
+        // El HOME quiere un texto distinto ("Download Free") al del resto
+        // de sitios donde vive el mismo producto; se marca con un atributo
+        // en vez de duplicar la config por pagina.
+        var buttonText = node.getAttribute('data-button-text') || p.buttonText;
+        ui.createComponent('product', {
+          id: p.id,
+          node: node,
+          moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
+          options: productOptions(buttonText),
+        });
       });
     });
   }
