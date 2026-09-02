@@ -32,6 +32,7 @@ window.EXTRA_TRANSLATIONS = window.EXTRA_TRANSLATIONS || {};
     "could not decode this file": "no se pudo decodificar este archivo",
     "Microphone live": "Micrófono activo",
     "Could not access microphone": "No se pudo acceder al micrófono",
+    "Audio failed to start — reload the page": "El audio no arrancó — recarga la página",
     "A JavaScript reconstruction of EvoraVerb's engine (Web Audio, AudioWorklet), not the plugin binary itself — built so you can hear the design before you install the real thing. Needs a browser with Web Audio support (Chrome, Edge, Firefox, recent Safari).":
       "Una reconstrucción en JavaScript del motor de EvoraVerb (Web Audio, AudioWorklet), no el binario del plugin — pensada para que oigas el diseño antes de instalar el real. Necesita un navegador con soporte de Web Audio (Chrome, Edge, Firefox, Safari reciente).",
     "Read how EvoraVerb works →": "Lee cómo funciona EvoraVerb →",
@@ -66,6 +67,7 @@ window.EXTRA_TRANSLATIONS = window.EXTRA_TRANSLATIONS || {};
     "could not decode this file": "impossible de décoder ce fichier",
     "Microphone live": "Microphone actif",
     "Could not access microphone": "Impossible d'accéder au microphone",
+    "Audio failed to start — reload the page": "Le moteur audio n'a pas démarré — rechargez la page",
     "A JavaScript reconstruction of EvoraVerb's engine (Web Audio, AudioWorklet), not the plugin binary itself — built so you can hear the design before you install the real thing. Needs a browser with Web Audio support (Chrome, Edge, Firefox, recent Safari).":
       "Une reconstruction en JavaScript du moteur d'EvoraVerb (Web Audio, AudioWorklet), pas le binaire du plugin lui-même — conçue pour que vous entendiez le design avant d'installer le vrai plugin. Nécessite un navigateur compatible Web Audio (Chrome, Edge, Firefox, Safari récent).",
     "Read how EvoraVerb works →": "Découvrez comment fonctionne EvoraVerb →",
@@ -100,6 +102,7 @@ window.EXTRA_TRANSLATIONS = window.EXTRA_TRANSLATIONS || {};
     "could not decode this file": "diese Datei konnte nicht dekodiert werden",
     "Microphone live": "Mikrofon aktiv",
     "Could not access microphone": "Zugriff auf das Mikrofon nicht möglich",
+    "Audio failed to start — reload the page": "Audio-Engine konnte nicht starten — Seite neu laden",
     "A JavaScript reconstruction of EvoraVerb's engine (Web Audio, AudioWorklet), not the plugin binary itself — built so you can hear the design before you install the real thing. Needs a browser with Web Audio support (Chrome, Edge, Firefox, recent Safari).":
       "Eine JavaScript-Nachbildung der EvoraVerb-Engine (Web Audio, AudioWorklet), nicht das Plugin selbst — damit du das Design hören kannst, bevor du das echte Plugin installierst. Erfordert einen Browser mit Web-Audio-Unterstützung (Chrome, Edge, Firefox, aktuelles Safari).",
     "Read how EvoraVerb works →": "Lies, wie EvoraVerb funktioniert →",
@@ -134,6 +137,7 @@ window.EXTRA_TRANSLATIONS = window.EXTRA_TRANSLATIONS || {};
     "could not decode this file": "impossibile decodificare questo file",
     "Microphone live": "Microfono attivo",
     "Could not access microphone": "Impossibile accedere al microfono",
+    "Audio failed to start — reload the page": "Il motore audio non si è avviato — ricarica la pagina",
     "A JavaScript reconstruction of EvoraVerb's engine (Web Audio, AudioWorklet), not the plugin binary itself — built so you can hear the design before you install the real thing. Needs a browser with Web Audio support (Chrome, Edge, Firefox, recent Safari).":
       "Una ricostruzione in JavaScript del motore di EvoraVerb (Web Audio, AudioWorklet), non il binario del plugin — pensata per farti ascoltare il design prima di installare quello vero. Richiede un browser con supporto Web Audio (Chrome, Edge, Firefox, Safari recente).",
     "Read how EvoraVerb works →": "Scopri come funziona EvoraVerb →",

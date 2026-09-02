@@ -537,8 +537,24 @@
                 pushAmountToEngine();
                 startMeter();
             });
+            workletReady.catch(function (err) {
+                console.error('EvoraVerb demo: audio engine failed to start', err);
+                setStatus(t('Audio failed to start — reload the page'), false);
+            });
             return workletReady;
         }
+
+        /* En movil, si el motor se crea por primera vez justo en el click
+           que dispara sonido, la carga en red del AudioWorklet puede tardar
+           lo bastante para que el navegador ya no considere ese resume()
+           parte del gesto (Safari/iOS es el mas estricto con esto) — el
+           contexto se queda "resumido" pero sin ningun nodo sonando a
+           tiempo. Arrancando el motor en el primer toque en cualquier
+           parte de la pagina, el AudioWorklet ya esta cargado (o en cache)
+           mucho antes de que el usuario pulse un boton de sonido. */
+        function warmUpEngine() { try { ensureEngine(); } catch (e) {} }
+        document.addEventListener('pointerdown', warmUpEngine, { once: true, passive: true });
+        document.addEventListener('touchstart', warmUpEngine, { once: true, passive: true });
 
         function startMeter() {
             var data = new Uint8Array(analyser.fftSize);
