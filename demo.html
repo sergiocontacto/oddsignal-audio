@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try EvoraVerb &mdash; Live Browser Demo</title>
+
+    <meta name="description" content="Play with the real EvoraVerb reverb engine directly in your browser. Trigger a chord, upload your own audio or use your microphone &mdash; no download required.">
+    <link rel="canonical" href="https://oddsignalaudio.com/demo.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Try EvoraVerb &mdash; Live Browser Demo">
+    <meta property="og:description" content="Play with the real EvoraVerb reverb engine directly in your browser. Trigger a chord, upload your own audio or use your microphone.">
+    <meta property="og:url" content="https://oddsignalaudio.com/demo.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Try EvoraVerb &mdash; Live Browser Demo">
+    <meta name="twitter:description" content="Play with the real EvoraVerb reverb engine directly in your browser. No download required.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=46">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <style>
+        /* Tipografia del propio plugin, solo para las lecturas numericas
+           de la consola: el resto de la pagina sigue en Clash Display. */
+        @font-face {
+            font-family: 'Plugin Inter';
+            src: url('./Inter-Regular.ttf') format('truetype');
+            font-weight: 400; font-display: swap;
+        }
+        @font-face {
+            font-family: 'Plugin Inter';
+            src: url('./Inter-SemiBold.ttf') format('truetype');
+            font-weight: 600; font-display: swap;
+        }
+
+        .demo-hero {
+            position: relative;
+            padding: 72px 0 40px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .demo-hero-tex {
+            position: absolute; inset: -20% -10% auto -10%; height: 140%;
+            background-image: url('./evoraverb-texture.png');
+            background-size: cover; background-position: center 45%;
+            opacity: .35; filter: saturate(1.1);
+            mask-image: radial-gradient(60% 60% at 50% 35%, #000 0%, transparent 75%);
+            -webkit-mask-image: radial-gradient(60% 60% at 50% 35%, #000 0%, transparent 75%);
+            pointer-events: none;
+        }
+        .demo-hero > .container { position: relative; z-index: 1; }
+        .demo-eyebrow {
+            font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
+            color: var(--color-accent); margin-bottom: 18px;
+        }
+        .demo-logo {
+            width: min(420px, 78vw); height: auto; display: block; margin: 0 auto 22px;
+            filter: drop-shadow(0 0 40px rgba(25,35,253,.25));
+        }
+        .demo-hero p.lead {
+            max-width: 640px; margin: 0 auto; font-size: 17px; line-height: 1.85;
+            color: var(--color-text-secondary);
+        }
+
+        /* CONSOLA INTERACTIVA */
+        .console-wrap { padding: 20px 0 64px; }
+        .console {
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background-color: rgba(17, 24, 35, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        .console-grid {
+            display: grid;
+            grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr);
+        }
+        .console-panel { padding: 40px; }
+        .console-panel + .console-panel { border-left: 1px solid var(--color-border); }
+
+        .panel-kicker {
+            font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+            color: var(--color-accent); margin-bottom: 22px;
+        }
+
+        .knob-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; user-select: none; }
+        .knob-img {
+            width: min(190px, 46vw); height: auto;
+            cursor: grab; touch-action: none;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,.55));
+            transform: rotate(-132deg);
+        }
+        .knob-img:active { cursor: grabbing; }
+        .knob-readout {
+            font-family: 'Plugin Inter', var(--font-primary); font-weight: 600;
+            font-size: 15px; letter-spacing: 0.06em; text-transform: none;
+            color: var(--color-text);
+        }
+        .knob-hint {
+            font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+            opacity: .5;
+        }
+
+        .field { margin-top: 30px; }
+        .field-label {
+            display: flex; justify-content: space-between; align-items: baseline;
+            font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+            opacity: .6; margin-bottom: 10px;
+        }
+        .field-label b {
+            font-family: 'Plugin Inter', var(--font-primary); font-weight: 600;
+            color: var(--color-text); text-transform: none; opacity: 1; letter-spacing: 0;
+        }
+        input[type=range] {
+            -webkit-appearance: none; appearance: none;
+            width: 100%; height: 2px; background: var(--color-border); outline: none; cursor: pointer;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--color-accent); border: 2px solid var(--color-bg); cursor: pointer; margin-top: -7px;
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--color-bg);
+            background: var(--color-accent); cursor: pointer;
+        }
+        input[type=range]::-moz-range-track { height: 2px; background: var(--color-border); }
+
+        .macro {
+            margin-top: 30px;
+            border: 1px solid var(--color-border);
+            background: rgba(10,14,23,.4);
+            border-radius: 4px;
+        }
+        .macro-row {
+            display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center;
+            padding: 10px 14px; border-bottom: 1px solid var(--color-border);
+            font-size: 11px; letter-spacing: 0.06em;
+        }
+        .macro-row:last-child { border-bottom: none; }
+        .macro-row span { opacity: .65; }
+        .macro-row b {
+            font-family: 'Plugin Inter', var(--font-primary); font-weight: 600;
+            text-transform: none; letter-spacing: 0; color: var(--color-text);
+            min-width: 6ch; text-align: right;
+        }
+
+        .source-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+        .tab-btn {
+            padding: 9px 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+            border: 1px solid var(--color-border); border-radius: 4px; background: transparent;
+            color: var(--color-text-secondary); cursor: pointer; transition: all .2s ease;
+        }
+        .tab-btn:hover { border-color: var(--color-accent); color: var(--color-text); }
+        .tab-btn.active { border-color: var(--color-accent); color: var(--color-accent); background: rgba(25,35,253,.12); }
+
+        .source-pane { display: none; }
+        .source-pane.active { display: block; }
+        .source-pane p { font-size: 14px; margin-bottom: 18px; }
+        .chord-pads { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .upload-box {
+            border: 1px dashed var(--color-border); border-radius: 4px;
+            padding: 26px; text-align: center; font-size: 13px;
+        }
+        .upload-box label { cursor: pointer; }
+        .upload-box input { display: none; }
+        .upload-name {
+            margin-top: 12px; font-family: 'Plugin Inter', var(--font-primary);
+            font-size: 11px; text-transform: none; color: var(--color-accent); word-break: break-all;
+        }
+
+        .transport { display: flex; align-items: center; gap: 18px; margin-top: 30px; flex-wrap: wrap; }
+        .meter { flex: 1; min-width: 100px; height: 6px; background: var(--color-border); border-radius: 3px; overflow: hidden; }
+        .meter i { display: block; width: 0%; height: 100%; background: linear-gradient(to right, var(--color-accent), var(--color-accent-hover)); transition: width .06s linear; }
+        .status {
+            font-family: 'Plugin Inter', var(--font-primary); font-size: 11px;
+            text-transform: none; letter-spacing: 0.02em; opacity: .55;
+        }
+        .status.live { color: #3ad07f; opacity: 1; }
+
+        .demo-note {
+            margin-top: 26px; font-size: 12px; line-height: 1.8; text-align: center;
+            opacity: .55; max-width: 62ch; margin-left: auto; margin-right: auto;
+        }
+        .demo-note a { color: var(--color-text-secondary); text-decoration: underline; }
+
+        .demo-cta { margin-top: 48px; text-align: center; }
+        .demo-cta p { margin-bottom: 20px; }
+
+        /* Los botones globales del sitio se levantan (translateY) al pasar
+           el raton, lo que aqui desplaza toda la fila de pads/tabs. En esta
+           consola se mantiene solo el brillo, sin desplazamiento. */
+        .console-panel .btn:hover,
+        .demo-cta .btn:hover {
+            transform: none;
+        }
+
+        @media (max-width: 860px) {
+            .console-grid { grid-template-columns: 1fr; }
+            .console-panel { padding: 28px 24px; }
+            .console-panel + .console-panel { border-left: none; border-top: 1px solid var(--color-border); }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="demo.html" class="nav-link active">DEMO</a></li>
+                <li><a href="blog.html" class="nav-link">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner: ODDDIST gratis, enlaza al catalogo. -->
+    <a class="announce" href="products.html">
+        <span class="announce-tag">FREE</span>
+        <span class="announce-text">🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <!-- Hero -->
+    <section class="demo-hero">
+        <div class="demo-hero-tex"></div>
+        <div class="container">
+            <p class="demo-eyebrow">Live in your browser</p>
+            <img class="demo-logo" src="./evoraverb-plugin-logo.png" alt="EvoraVerb">
+            <p class="lead">This runs the actual EvoraVerb design &mdash; pre-delay, eight-tap early reflections, an allpass diffuser and an 8-line feedback delay network with three-layer modulation &mdash; rebuilt in Web Audio. No install, no account.</p>
+        </div>
+    </section>
+
+    <!-- Consola -->
+    <section class="console-wrap">
+        <div class="container" style="max-width: 1040px;">
+            <div class="console">
+                <div class="console-grid">
+
+                    <!-- PANEL: MOTOR -->
+                    <div class="console-panel">
+                        <p class="panel-kicker">Engine &middot; Amount</p>
+
+                        <div class="knob-wrap">
+                            <img class="knob-img" id="knobImg" src="./evoraverb-knob.png" alt="AMOUNT knob" tabindex="0" role="slider"
+                                 aria-label="Amount" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35">
+                            <div class="knob-readout" id="knobLabel">AMOUNT — 35%</div>
+                            <div class="knob-hint">Drag to turn</div>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-label"><span>Mix</span><b id="mixVal">35%</b></div>
+                            <input type="range" id="mixSlider" min="0" max="100" value="35">
+                        </div>
+
+                        <div class="macro">
+                            <div class="macro-row"><span>Size</span><b id="v-size">0.46</b></div>
+                            <div class="macro-row"><span>Decay</span><b id="v-decay">4.7 s</b></div>
+                            <div class="macro-row"><span>Damping</span><b id="v-damp">0.46</b></div>
+                            <div class="macro-row"><span>Pre-delay</span><b id="v-pre">19 ms</b></div>
+                            <div class="macro-row"><span>Mod depth</span><b id="v-mod">0.29</b></div>
+                            <div class="macro-row"><span>Width</span><b id="v-width">0.81</b></div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL: FUENTE -->
+                    <div class="console-panel">
+                        <p class="panel-kicker">Audio source</p>
+
+                        <div class="source-tabs">
+                            <button class="tab-btn active" data-source="chord">Test chord</button>
+                            <button class="tab-btn" data-source="upload">Upload audio</button>
+                            <button class="tab-btn" data-source="mic">Microphone</button>
+                        </div>
+
+                        <div class="source-pane active" data-pane="chord">
+                            <p>Trigger a chord synthesized right here in the browser and listen to how the tail wraps around it.</p>
+                            <div class="chord-pads">
+                                <button class="btn btn-primary" id="playChordMinor">Minor chord</button>
+                                <button class="btn btn-secondary" id="playChordMajor">Major chord</button>
+                                <button class="btn btn-secondary" id="playPluck">Short pulse</button>
+                            </div>
+                        </div>
+
+                        <div class="source-pane" data-pane="upload">
+                            <div class="upload-box">
+                                <label for="fileInput">📁 Click to choose an audio file &mdash; it will loop</label>
+                                <input type="file" id="fileInput" accept="audio/*">
+                                <div class="upload-name" id="uploadName"></div>
+                            </div>
+                        </div>
+
+                        <div class="source-pane" data-pane="mic">
+                            <p>Use your microphone as a live source. Your browser will ask for permission.</p>
+                            <button class="btn btn-primary" id="micToggle">Enable microphone</button>
+                        </div>
+
+                        <div class="transport">
+                            <button class="btn btn-secondary" id="stopBtn" disabled>■ Stop</button>
+                            <div class="meter"><i id="meterBar"></i></div>
+                            <span class="status" id="statusText">Engine idle</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="demo-note">A JavaScript reconstruction of EvoraVerb's engine (Web Audio, AudioWorklet), not the plugin binary itself &mdash; built so you can hear the design before you install the real thing. Needs a browser with Web Audio support (Chrome, Edge, Firefox, recent Safari).</p>
+            <p class="demo-note"><a href="evoraverb.html">Read how EvoraVerb works &rarr;</a></p>
+
+            <div class="demo-cta">
+                <p>Like what you hear? Get the full VST3 / Audio Unit / Standalone plugin.</p>
+                <div id="product-component-evoraverb" style="max-width:380px;margin:0 auto;"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="refund.html">Refunds</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-demo.js?v=1"></script>
+    <script src="i18n.js?v=44"></script>
+    <script src="script.js?v=41"></script>
+    <script src="buy-button.js?v=5"></script>
+
+    <script>
+    (function () {
+        "use strict";
+
+        /* currentLang y translations los declara i18n.js (cargado justo
+           antes) como bindings de script de nivel superior: no cuelgan de
+           window, pero siguen siendo visibles aqui porque es el mismo
+           documento. Con esto los textos que este script escribe a mano
+           (estado, medidor, boton de microfono...) tambien cambian de
+           idioma. */
+        function t(key) {
+            try {
+                return (translations[currentLang] && translations[currentLang][key]) || key;
+            } catch (e) {
+                return key;
+            }
+        }
+
+        var MACRO = {
+            size:  [0.20, 0.95],
+            decay: [0.8, 12.0],
+            damp:  [0.55, 0.30],
+            pre:   [10, 35],
+            mod:   [0.15, 0.55],
+            width: [0.70, 1.00]
+        };
+        var lerp = function (r, t) { return r[0] + (r[1] - r[0]) * t; };
+
+        var knobImg  = document.getElementById('knobImg');
+        var label    = document.getElementById('knobLabel');
+        var out = {
+            size:  document.getElementById('v-size'),
+            decay: document.getElementById('v-decay'),
+            damp:  document.getElementById('v-damp'),
+            pre:   document.getElementById('v-pre'),
+            mod:   document.getElementById('v-mod'),
+            width: document.getElementById('v-width')
+        };
+
+        var amount = 0.35;
+        var MIN_DEG = -132, MAX_DEG = 132;
+
+        function renderKnob() {
+            var deg = MIN_DEG + (MAX_DEG - MIN_DEG) * amount;
+            knobImg.style.transform = 'rotate(' + deg.toFixed(2) + 'deg)';
+            var pct = Math.round(amount * 100);
+            label.textContent = 'AMOUNT — ' + pct + '%';
+            knobImg.setAttribute('aria-valuenow', pct);
+            out.size.textContent  = lerp(MACRO.size,  amount).toFixed(2);
+            out.decay.textContent = lerp(MACRO.decay, amount).toFixed(1) + ' s';
+            out.damp.textContent  = lerp(MACRO.damp,  amount).toFixed(2);
+            out.pre.textContent   = Math.round(lerp(MACRO.pre, amount)) + ' ms';
+            out.mod.textContent   = lerp(MACRO.mod,   amount).toFixed(2);
+            out.width.textContent = lerp(MACRO.width, amount).toFixed(2);
+        }
+
+        var dragging = false, lastY = 0;
+        var setAmount = function (v) {
+            amount = Math.min(1, Math.max(0, v));
+            renderKnob();
+            pushAmountToEngine();
+        };
+
+        knobImg.addEventListener('pointerdown', function (e) {
+            dragging = true; lastY = e.clientY;
+            knobImg.setPointerCapture(e.pointerId);
+            e.preventDefault();
+        });
+        knobImg.addEventListener('pointermove', function (e) {
+            if (!dragging) return;
+            setAmount(amount + (lastY - e.clientY) / 220);
+            lastY = e.clientY;
+        });
+        var stopDrag = function () { dragging = false; };
+        knobImg.addEventListener('pointerup', stopDrag);
+        knobImg.addEventListener('pointercancel', stopDrag);
+        knobImg.addEventListener('keydown', function (e) {
+            var step = e.shiftKey ? 0.01 : 0.05;
+            if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { setAmount(amount + step); e.preventDefault(); }
+            if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') { setAmount(amount - step); e.preventDefault(); }
+            if (e.key === 'Home') { setAmount(0); e.preventDefault(); }
+            if (e.key === 'End') { setAmount(1); e.preventDefault(); }
+        });
+
+        renderKnob();
+
+        /* MIX */
+        var mix = 0.35;
+        var mixSlider = document.getElementById('mixSlider');
+        var mixVal = document.getElementById('mixVal');
+        mixSlider.addEventListener('input', function () {
+            mix = mixSlider.value / 100;
+            mixVal.textContent = mixSlider.value + '%';
+            applyMix();
+        });
+
+        /* ==================================================================
+           AUDIO ENGINE
+           ================================================================== */
+        var ctx = null, workletReady = null;
+        var instrumentBus, dryGain, wetGain, wetPre, masterGain, analyser, reverbNode;
+        var currentSourceNode = null, micStream = null;
+        var meterBar = document.getElementById('meterBar');
+        var statusText = document.getElementById('statusText');
+        var stopBtn = document.getElementById('stopBtn');
+        var rafId = null;
+
+        function applyMix() {
+            if (!ctx) return;
+            var now = ctx.currentTime;
+            var dryLevel = Math.cos(mix * Math.PI / 2);
+            var wetLevel = Math.sin(mix * Math.PI / 2);
+            dryGain.gain.cancelScheduledValues(now);
+            dryGain.gain.setValueAtTime(dryGain.gain.value, now);
+            dryGain.gain.linearRampToValueAtTime(dryLevel, now + 0.02);
+            wetGain.gain.cancelScheduledValues(now);
+            wetGain.gain.setValueAtTime(wetGain.gain.value, now);
+            wetGain.gain.linearRampToValueAtTime(wetLevel, now + 0.02);
+        }
+
+        function pushAmountToEngine() {
+            if (!ctx || !reverbNode) return;
+            var now = ctx.currentTime;
+            var p = reverbNode.parameters.get('amount');
+            p.cancelScheduledValues(now);
+            p.setValueAtTime(p.value, now);
+            p.linearRampToValueAtTime(amount, now + 0.15);
+        }
+
+        function ensureEngine() {
+            if (ctx) return workletReady;
+            ctx = new (window.AudioContext || window.webkitAudioContext)();
+            instrumentBus = ctx.createGain();
+            instrumentBus.gain.value = 1;
+
+            dryGain = ctx.createGain();
+            wetPre = ctx.createGain();
+            wetGain = ctx.createGain();
+            masterGain = ctx.createGain();
+            masterGain.gain.value = 0.9;
+            analyser = ctx.createAnalyser();
+            analyser.fftSize = 512;
+
+            workletReady = ctx.audioWorklet.addModule('evoraverb-processor.js').then(function () {
+                reverbNode = new AudioWorkletNode(ctx, 'evoraverb-processor', {
+                    numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2]
+                });
+                instrumentBus.connect(dryGain);
+                instrumentBus.connect(wetPre);
+                wetPre.connect(reverbNode);
+                reverbNode.connect(wetGain);
+                dryGain.connect(masterGain);
+                wetGain.connect(masterGain);
+                masterGain.connect(analyser);
+                analyser.connect(ctx.destination);
+                applyMix();
+                pushAmountToEngine();
+                startMeter();
+            });
+            return workletReady;
+        }
+
+        function startMeter() {
+            var data = new Uint8Array(analyser.fftSize);
+            function tick() {
+                analyser.getByteTimeDomainData(data);
+                var peak = 0;
+                for (var i = 0; i < data.length; i++) {
+                    var v = Math.abs(data[i] - 128) / 128;
+                    if (v > peak) peak = v;
+                }
+                meterBar.style.width = Math.min(100, peak * 130) + '%';
+                rafId = requestAnimationFrame(tick);
+            }
+            if (!rafId) tick();
+        }
+
+        function setStatus(text, live) {
+            statusText.textContent = text;
+            statusText.className = 'status' + (live ? ' live' : '');
+            stopBtn.disabled = !live;
+        }
+
+        function stopAllSources() {
+            if (currentSourceNode) {
+                try { currentSourceNode.stop && currentSourceNode.stop(); } catch (e) {}
+                try { currentSourceNode.disconnect(); } catch (e) {}
+                currentSourceNode = null;
+            }
+            if (micStream) {
+                micStream.getTracks().forEach(function (track) { track.stop(); });
+                micStream = null;
+                micToggle.textContent = t('Enable microphone');
+                micToggle.classList.remove('active-mic');
+            }
+            setStatus(t('Engine idle'), false);
+        }
+        stopBtn.addEventListener('click', stopAllSources);
+
+        /* Tabs de fuente */
+        var tabs = document.querySelectorAll('.tab-btn');
+        var panes = document.querySelectorAll('.source-pane');
+        tabs.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                tabs.forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var key = btn.getAttribute('data-source');
+                panes.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-pane') === key); });
+                if (key !== 'mic') stopMicOnly();
+            });
+        });
+
+        function stopMicOnly() {
+            if (micStream) {
+                micStream.getTracks().forEach(function (track) { track.stop(); });
+                micStream = null;
+                micToggle.textContent = t('Enable microphone');
+                if (currentSourceNode) { try { currentSourceNode.disconnect(); } catch (e) {} currentSourceNode = null; }
+                setStatus(t('Engine idle'), false);
+            }
+        }
+
+        /* Acorde de prueba */
+        function playChord(freqs, dur) {
+            ensureEngine().then(function () {
+                if (ctx.state === 'suspended') ctx.resume();
+                var now = ctx.currentTime;
+                var voiceBus = ctx.createGain();
+                voiceBus.gain.value = 0.22;
+                voiceBus.connect(instrumentBus);
+                freqs.forEach(function (f, idx) {
+                    var osc = ctx.createOscillator();
+                    osc.type = idx === 0 ? 'sawtooth' : 'triangle';
+                    osc.frequency.value = f;
+                    var env = ctx.createGain();
+                    env.gain.setValueAtTime(0, now);
+                    env.gain.linearRampToValueAtTime(1, now + 0.012);
+                    env.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                    osc.connect(env);
+                    env.connect(voiceBus);
+                    osc.start(now);
+                    osc.stop(now + dur + 0.05);
+                });
+                var playingLabel = t('Playing chord…');
+                setStatus(playingLabel, true);
+                setTimeout(function () {
+                    if (statusText.textContent === playingLabel) setStatus(t('Engine idle'), false);
+                }, dur * 1000 + 300);
+            });
+        }
+
+        document.getElementById('playChordMinor').addEventListener('click', function () {
+            playChord([220.00, 261.63, 329.63, 392.00], 2.4);
+        });
+        document.getElementById('playChordMajor').addEventListener('click', function () {
+            playChord([220.00, 277.18, 329.63, 440.00], 2.4);
+        });
+        document.getElementById('playPluck').addEventListener('click', function () {
+            playChord([440.00], 0.7);
+        });
+
+        /* Subir audio */
+        var fileInput = document.getElementById('fileInput');
+        var uploadName = document.getElementById('uploadName');
+        fileInput.addEventListener('change', function () {
+            var file = fileInput.files[0];
+            if (!file) return;
+            uploadName.textContent = file.name;
+            ensureEngine().then(function () {
+                if (ctx.state === 'suspended') ctx.resume();
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    ctx.decodeAudioData(e.target.result.slice(0)).then(function (buf) {
+                        stopAllSources();
+                        var src = ctx.createBufferSource();
+                        src.buffer = buf;
+                        src.loop = true;
+                        src.connect(instrumentBus);
+                        src.start(0);
+                        currentSourceNode = src;
+                        setStatus(t('Playing:') + ' ' + file.name, true);
+                    }).catch(function () {
+                        uploadName.textContent = file.name + ' — ' + t('could not decode this file');
+                    });
+                };
+                reader.readAsArrayBuffer(file);
+            });
+        });
+
+        /* Microfono */
+        var micToggle = document.getElementById('micToggle');
+        micToggle.addEventListener('click', function () {
+            if (micStream) { stopAllSources(); return; }
+            ensureEngine().then(function () {
+                if (ctx.state === 'suspended') ctx.resume();
+                navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false } })
+                    .then(function (stream) {
+                        stopAllSources();
+                        micStream = stream;
+                        var src = ctx.createMediaStreamSource(stream);
+                        src.connect(instrumentBus);
+                        currentSourceNode = src;
+                        micToggle.textContent = t('Disable microphone');
+                        setStatus(t('Microphone live'), true);
+                    })
+                    .catch(function () {
+                        setStatus(t('Could not access microphone'), false);
+                    });
+            });
+        });
+
+    })();
+    </script>
+</body>
+</html>
