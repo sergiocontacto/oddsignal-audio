@@ -494,6 +494,22 @@
         function ensureEngine() {
             if (ctx) return workletReady;
             ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+            /* iOS Safari (and several Android WebViews) only unlock audio
+               when resume() runs synchronously inside the user-gesture
+               handler. Calling it later, after the worklet module has
+               loaded over the network, is too late: the context stays
+               suspended forever with no error, so it just stays silent.
+               A one-sample silent buffer played right here reinforces the
+               unlock on engines that need an actual playing node. */
+            if (ctx.state === 'suspended') ctx.resume();
+            try {
+                var unlockSrc = ctx.createBufferSource();
+                unlockSrc.buffer = ctx.createBuffer(1, 1, ctx.sampleRate);
+                unlockSrc.connect(ctx.destination);
+                unlockSrc.start(0);
+            } catch (e) {}
+
             instrumentBus = ctx.createGain();
             instrumentBus.gain.value = 1;
 
