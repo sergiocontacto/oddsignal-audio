@@ -75,7 +75,12 @@ window.EXTRA_TRANSLATIONS = {
     "Not directly — ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send.": "No directamente — ODDDIST es estéreo a estéreo. Para una fuente mono, colócalo en un bus o send estéreo.",
     "Is it really free, permanently?": "¿Es gratis de verdad, para siempre?",
     "Yes. No trial period, no feature gating, no time limit.": "Sí. Sin periodo de prueba, sin funciones bloqueadas, sin límite de tiempo.",
-    "Windows 10 or later, 64-bit": "Windows 10 o superior, 64 bits"
+    "Windows 10 or later, 64-bit": "Windows 10 o superior, 64 bits",
+    "From the blog": "Del blog",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Por qué la saturación estática no basta: la idea detrás de ODD ENGINE",
+    "The ODD fader: how much adaptation is too much": "El fader ODD: cuánta adaptación es demasiada",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Gratis no significa sencillo: la ingeniería detrás de ODDDIST",
+    "5 ways to use ODDDIST beyond vocals": "5 formas de usar ODDDIST más allá de las voces"
   },
   fr: {
     "How ODDDIST works": "Comment fonctionne ODDDIST",
@@ -148,7 +153,12 @@ window.EXTRA_TRANSLATIONS = {
     "Not directly — ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send.": "Pas directement — ODDDIST est stéréo vers stéréo. Pour une source mono, placez-le sur un bus ou un départ stéréo.",
     "Is it really free, permanently?": "Est-il vraiment gratuit, pour toujours ?",
     "Yes. No trial period, no feature gating, no time limit.": "Oui. Pas de période d'essai, pas de fonctions bridées, pas de limite de temps.",
-    "Windows 10 or later, 64-bit": "Windows 10 ou ultérieur, 64 bits"
+    "Windows 10 or later, 64-bit": "Windows 10 ou ultérieur, 64 bits",
+    "From the blog": "Sur le blog",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Pourquoi la saturation statique ne suffit pas : l'idée derrière ODD ENGINE",
+    "The ODD fader: how much adaptation is too much": "Le curseur ODD : jusqu'où l'adaptation peut-elle aller",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Gratuit ne veut pas dire simple : l'ingénierie derrière ODDDIST",
+    "5 ways to use ODDDIST beyond vocals": "5 façons d'utiliser ODDDIST au-delà des voix"
   },
   de: {
     "How ODDDIST works": "Wie ODDDIST funktioniert",
@@ -221,7 +231,12 @@ window.EXTRA_TRANSLATIONS = {
     "Not directly — ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send.": "Nicht direkt — ODDDIST ist Stereo zu Stereo. Bei einer Mono-Quelle platziere es auf einem Stereo-Bus oder -Send.",
     "Is it really free, permanently?": "Ist es wirklich dauerhaft kostenlos?",
     "Yes. No trial period, no feature gating, no time limit.": "Ja. Keine Testphase, keine gesperrten Funktionen, kein Zeitlimit.",
-    "Windows 10 or later, 64-bit": "Windows 10 oder neuer, 64-Bit"
+    "Windows 10 or later, 64-bit": "Windows 10 oder neuer, 64-Bit",
+    "From the blog": "Aus dem Blog",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Warum statische Sättigung nicht reicht: die Idee hinter ODD ENGINE",
+    "The ODD fader: how much adaptation is too much": "Der ODD-Regler: wie viel Anpassung ist zu viel",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Kostenlos heißt nicht einfach: die Technik hinter ODDDIST",
+    "5 ways to use ODDDIST beyond vocals": "5 Wege, ODDDIST jenseits von Vocals zu nutzen"
   },
   it: {
     "How ODDDIST works": "Come funziona ODDDIST",
@@ -294,6 +309,11 @@ window.EXTRA_TRANSLATIONS = {
     "Not directly — ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send.": "Non direttamente — ODDDIST è stereo in, stereo out. Per una sorgente mono, posizionalo su un bus o un send stereo.",
     "Is it really free, permanently?": "È davvero gratuito, per sempre?",
     "Yes. No trial period, no feature gating, no time limit.": "Sì. Nessun periodo di prova, nessuna funzione limitata, nessun limite di tempo.",
-    "Windows 10 or later, 64-bit": "Windows 10 o successivo, 64 bit"
+    "Windows 10 or later, 64-bit": "Windows 10 o successivo, 64 bit",
+    "From the blog": "Dal blog",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Perché la saturazione statica non basta: l'idea dietro ODD ENGINE",
+    "The ODD fader: how much adaptation is too much": "Il fader ODD: quanto adattamento è troppo",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Gratis non significa semplice: l'ingegneria dietro ODDDIST",
+    "5 ways to use ODDDIST beyond vocals": "5 modi per usare ODDDIST oltre le voci"
   }
 };

@@ -34,6 +34,7 @@ window.EXTRA_TRANSLATIONS = Object.assign(window.EXTRA_TRANSLATIONS || {}, (func
       "rather than its cutoff frequency, which avoids an exponential per sample while keeping the sweep free of steps.": "en lugar de su frecuencia de corte, lo que evita una exponencial por muestra manteniendo el barrido libre de escalones.",
       "And nothing is allocated while audio is running. Every buffer is reserved when the plugin is prepared, 285 milliseconds per line at 48 kHz. Allocating on the audio thread is the classic way to produce dropouts that only appear on someone else's machine.": "Y no se reserva nada mientras el audio está sonando. Cada búfer se aparta al preparar el plugin, 285 milisegundos por línea a 48 kHz. Reservar memoria en el hilo de audio es la forma clásica de producir cortes que solo aparecen en la máquina de otro.",
       "Next: Building EvoraVerb: notes from the first release →": "Siguiente: Construir EvoraVerb: notas de la primera versión →",
+      "Next: Why static saturation isn't enough: the idea behind ODD ENGINE →": "Siguiente: Por qué la saturación estática no basta: la idea detrás de ODD ENGINE →",
     },
     fr: {
       "Energy that never leaves": "De l'énergie qui ne part jamais",
@@ -67,6 +68,7 @@ window.EXTRA_TRANSLATIONS = Object.assign(window.EXTRA_TRANSLATIONS || {}, (func
       "rather than its cutoff frequency, which avoids an exponential per sample while keeping the sweep free of steps.": "plutôt que sa fréquence de coupure, ce qui évite une exponentielle par échantillon tout en gardant le balayage sans paliers.",
       "And nothing is allocated while audio is running. Every buffer is reserved when the plugin is prepared, 285 milliseconds per line at 48 kHz. Allocating on the audio thread is the classic way to produce dropouts that only appear on someone else's machine.": "Et rien n'est alloué pendant que l'audio tourne. Chaque tampon est réservé à la préparation du plugin, 285 millisecondes par ligne à 48 kHz. Allouer sur le thread audio est la façon classique de produire des coupures qui n'apparaissent que sur la machine de quelqu'un d'autre.",
       "Next: Building EvoraVerb: notes from the first release →": "Suivant : Construire EvoraVerb : notes de la première version →",
+      "Next: Why static saturation isn't enough: the idea behind ODD ENGINE →": "Suivant : Pourquoi la saturation statique ne suffit pas : l'idée derrière ODD ENGINE →",
     },
     de: {
       "Energy that never leaves": "Energie, die nie verschwindet",
@@ -100,6 +102,7 @@ window.EXTRA_TRANSLATIONS = Object.assign(window.EXTRA_TRANSLATIONS || {}, (func
       "rather than its cutoff frequency, which avoids an exponential per sample while keeping the sweep free of steps.": "statt seiner Grenzfrequenz, was eine Exponentialfunktion pro Sample spart und den Sweep dennoch stufenlos hält.",
       "And nothing is allocated while audio is running. Every buffer is reserved when the plugin is prepared, 285 milliseconds per line at 48 kHz. Allocating on the audio thread is the classic way to produce dropouts that only appear on someone else's machine.": "Und während Audio läuft, wird nichts belegt. Jeder Puffer wird beim Vorbereiten des Plugins reserviert, 285 Millisekunden pro Linie bei 48 kHz. Auf dem Audio-Thread zu allozieren ist der klassische Weg zu Aussetzern, die nur auf fremden Rechnern auftreten.",
       "Next: Building EvoraVerb: notes from the first release →": "Weiter: EvoraVerb bauen: Notizen zur ersten Veröffentlichung →",
+      "Next: Why static saturation isn't enough: the idea behind ODD ENGINE →": "Weiter: Warum statische Sättigung nicht reicht: die Idee hinter ODD ENGINE →",
     },
     it: {
       "Energy that never leaves": "Energia che non se ne va mai",
@@ -133,6 +136,7 @@ window.EXTRA_TRANSLATIONS = Object.assign(window.EXTRA_TRANSLATIONS || {}, (func
       "rather than its cutoff frequency, which avoids an exponential per sample while keeping the sweep free of steps.": "invece della sua frequenza di taglio, il che evita un'esponenziale per campione mantenendo lo sweep senza scalini.",
       "And nothing is allocated while audio is running. Every buffer is reserved when the plugin is prepared, 285 milliseconds per line at 48 kHz. Allocating on the audio thread is the classic way to produce dropouts that only appear on someone else's machine.": "E non viene allocato nulla mentre l'audio è in esecuzione. Ogni buffer è riservato quando il plugin viene preparato, 285 millisecondi per linea a 48 kHz. Allocare sul thread audio è il modo classico di produrre interruzioni che compaiono solo sulla macchina di qualcun altro.",
       "Next: Building EvoraVerb: notes from the first release →": "Successivo: Costruire EvoraVerb: appunti dalla prima versione →",
+      "Next: Why static saturation isn't enough: the idea behind ODD ENGINE →": "Successivo: Perché la saturazione statica non basta: l'idea dietro ODD ENGINE →",
     },
   };
   var base = window.EXTRA_TRANSLATIONS || {};

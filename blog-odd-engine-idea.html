@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why static saturation isn't enough: the idea behind ODD ENGINE | OddSignal Audio</title>
+
+    <meta name="description" content="Static saturation runs one fixed curve regardless of input. ODD ENGINE reads the incoming signal and lets that steer the drive stage instead. The idea behind ODDDIST's adaptive mode.">
+    <link rel="canonical" href="https://oddsignalaudio.com/blog-odd-engine-idea.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Why static saturation isn't enough: the idea behind ODD ENGINE | OddSignal Audio">
+    <meta property="og:description" content="Static saturation runs one fixed curve regardless of input. ODD ENGINE reads the incoming signal and lets that steer the drive stage instead. The idea behind ODDDIST's adaptive mode.">
+    <meta property="og:url" content="https://oddsignalaudio.com/blog-odd-engine-idea.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why static saturation isn't enough: the idea behind ODD ENGINE | OddSignal Audio">
+    <meta name="twitter:description" content="Static saturation runs one fixed curve regardless of input. ODD ENGINE reads the incoming signal and lets that steer the drive stage instead. The idea behind ODDDIST's adaptive mode.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=46">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Why static saturation isn't enough: the idea behind ODD ENGINE",
+      "description": "Static saturation runs one fixed curve regardless of input. ODD ENGINE reads the incoming signal and lets that steer the drive stage instead. The idea behind ODDDIST's adaptive mode.",
+      "datePublished": "2026-09-02",
+      "image": "https://oddsignalaudio.com/og-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ODDSIGNAL AUDIO",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oddsignalaudio.com/favicon_io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": "https://oddsignalaudio.com/blog-odd-engine-idea.html"
+    }
+    </script>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner: ODDDIST gratis, enlaza al catalogo. -->
+    <a class="announce" href="products.html">
+        <span class="announce-tag">FREE</span>
+        <span class="announce-text">🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <article class="post">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span>Design</span>
+                    <span class="dim">2 September 2026</span>
+                </div>
+                <h1>Why static saturation isn't enough: the idea behind ODD ENGINE</h1>
+                <p class="post-lead">Static saturation is honest about what it does: pick a transfer curve, run everything through it. ODD ENGINE started from asking what happens if the plugin is allowed to know what's coming in first.</p>
+            </header>
+
+            <div class="post-body">
+<h2>One curve for every signal</h2>
+<p>Static saturation applies the same curve regardless of level or dynamics. A whispered vocal and a screamed one get identical treatment, at whatever level Drive puts them at. That is not a flaw exactly — it is what "static" means — but it puts the entire burden of matching character to material on the person turning the knob.</p>
+<p><a href="odddist.html">ODDDIST</a> ships with that mode. Turn ODD ENGINE off and you get exactly that: one curve, bit-exact, zero added cost. It is a real setting, not a placeholder for the interesting one.</p>
+
+<h2>What changes when it's on</h2>
+<p>React mode reads the signal hitting the plugin, continuously, and uses that reading to steer the drive stage while it processes — not a pre-pass, not a lookahead, a control path running alongside the audio. The same Drive and Saturation settings end up behaving differently on a quiet passage than on a loud one, because the input itself is part of what decides the outcome.</p>
+
+<div class="post-note">
+<p>We are not publishing the exact analysis method. That is deliberate — it is the one part of ODDDIST that isn't a straightforward implementation of ideas everyone already knows, and the product page says so plainly. What we can tell you here is the shape of the decision, not the formula.</p>
+</div>
+
+<h2>Why bypass had to be real</h2>
+<p>An adaptive mode is only worth trusting if turning it off actually turns it off. If Off quietly ran a cheap version of the same analysis in the background, every A/B test against static saturation would be comparing two shades of the same thing. ODD ENGINE's Off mode skips the analysis path entirely: no CPU spent on it, no code executed for it, the audio takes the same route it always did.</p>
+
+<h2>One fader, not a rabbit hole</h2>
+<p>The adaptive behavior sits behind a single macro, ODD, from 0 to 100 percent. It doesn't add new destinations to reach; it scales how strongly React mode leans on what it hears, on top of whatever Drive, Tone and Saturation are already set to. That fader turned out to be its own design question, worth a post on its own.</p>
+</div>
+
+            <nav class="post-nav">
+                <a href="blog.html">&larr; All posts</a>
+                <a href="blog-odd-fader.html">Next: The ODD fader: how much adaptation is too much &rarr;</a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="refund.html">Refunds</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script src="i18n-blog.js?v=42"></script>
+    <script src="i18n-post-odd-engine-idea.js?v=1"></script>
+    <script src="i18n.js?v=44"></script>
+    <script src="script.js?v=41"></script>
+</body>
+</html>

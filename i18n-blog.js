@@ -5,7 +5,7 @@
 window.EXTRA_TRANSLATIONS = {
   es: {
     "Blog": "Blog",
-    "Notes on how our plugins are built. What is inside the reverb engine, the decisions behind it, and what shipping a first release actually involves.": "Apuntes sobre cómo construimos nuestros plugins. Qué hay dentro del motor de reverb, las decisiones detrás y lo que supone de verdad publicar una primera versión.",
+    "Notes on how our plugins are built. What is inside the reverb and distortion engines, the decisions behind them, and what shipping each release actually involves.": "Apuntes sobre cómo construimos nuestros plugins. Qué hay dentro de los motores de reverb y distorsión, las decisiones detrás de ellos y lo que supone de verdad publicar cada versión.",
     "Design": "Diseño",
     "DSP": "DSP",
     "Engineering": "Ingeniería",
@@ -20,11 +20,22 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "Las colas largas son donde las reverbs artificiales se delatan, y la culpable casi siempre es la modulación. No su presencia, sino su regularidad.",
     "What it takes to keep a twelve second tail stable": "Lo que cuesta mantener estable una cola de doce segundos",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "La mayor parte del trabajo en una reverb larga no está en que suene bien. Está en evitar que un lazo realimentado que dura doce segundos se destruya a sí mismo en silencio.",
-    "← All posts": "← Todos los artículos"
+    "← All posts": "← Todos los artículos",
+    "Guide": "Guía",
+    "2 September 2026": "2 de septiembre de 2026",
+    "3 September 2026": "3 de septiembre de 2026",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Por qué la saturación estática no basta: la idea detrás de ODD ENGINE",
+    "Static saturation is honest about what it does: pick a transfer curve, run everything through it. ODD ENGINE started from asking what happens if the plugin is allowed to know what's coming in first.": "La saturación estática es honesta sobre lo que hace: elige una curva de transferencia y pasa todo por ella. ODD ENGINE nació de preguntarse qué pasa si se deja que el plugin sepa primero qué está entrando.",
+    "The ODD fader: how much adaptation is too much": "El fader ODD: cuánta adaptación es demasiada",
+    "One macro, one job: how much the drive stage listens to what's coming in. That simplicity turned out to hide a real design question about where zero and a hundred should actually sit.": "Un macro, una función: cuánto escucha la etapa de distorsión lo que entra. Esa sencillez escondía una cuestión de diseño real sobre dónde deberían quedar realmente el cero y el cien.",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Gratis no significa sencillo: la ingeniería detrás de ODDDIST",
+    "Oversampling, denormal handling, real-time-safe allocation, true bypass: none of it is exclusive to paid plugins. It's just work most people never see, whether they paid for it or not.": "Sobremuestreo, gestión de denormales, reserva de memoria segura en tiempo real, bypass real: nada de esto es exclusivo de los plugins de pago. Es simplemente trabajo que casi nadie ve, lo hayas pagado o no.",
+    "5 ways to use ODDDIST beyond vocals": "5 formas de usar ODDDIST más allá de las voces",
+    "ODDDIST tends to get reached for on vocals first, because that's where saturation usually lives in a mix. The same five controls and the ODD macro work just as well on almost anything else with a transient to grab onto.": "ODDDIST suele ser lo primero a lo que se recurre para voces, porque ahí es donde suele vivir la saturación en una mezcla. Los mismos cinco controles y el macro ODD funcionan igual de bien en casi cualquier otra cosa que tenga un transitorio al que agarrarse."
   },
   fr: {
     "Blog": "Blog",
-    "Notes on how our plugins are built. What is inside the reverb engine, the decisions behind it, and what shipping a first release actually involves.": "Notes sur la fabrication de nos plugins. Ce qu'il y a dans le moteur de réverbération, les décisions qui le sous-tendent et ce que publier une première version implique réellement.",
+    "Notes on how our plugins are built. What is inside the reverb and distortion engines, the decisions behind them, and what shipping each release actually involves.": "Notes sur la fabrication de nos plugins. Ce qu'il y a dans les moteurs de réverbération et de distorsion, les décisions qui les sous-tendent et ce qu'implique réellement la publication de chaque version.",
     "Design": "Conception",
     "DSP": "DSP",
     "Engineering": "Ingénierie",
@@ -39,11 +50,22 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "C'est sur les longues queues que les réverbérations artificielles se trahissent, et la coupable est presque toujours la modulation. Pas sa présence, sa régularité.",
     "What it takes to keep a twelve second tail stable": "Ce qu'il faut pour stabiliser une queue de douze secondes",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "L'essentiel du travail dans une réverbération longue ne consiste pas à la faire sonner. Il consiste à empêcher une boucle de rebouclage de douze secondes de se détruire discrètement.",
-    "← All posts": "← Tous les articles"
+    "← All posts": "← Tous les articles",
+    "Guide": "Guide",
+    "2 September 2026": "2 septembre 2026",
+    "3 September 2026": "3 septembre 2026",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Pourquoi la saturation statique ne suffit pas : l'idée derrière ODD ENGINE",
+    "Static saturation is honest about what it does: pick a transfer curve, run everything through it. ODD ENGINE started from asking what happens if the plugin is allowed to know what's coming in first.": "La saturation statique est honnête sur ce qu'elle fait : choisir une courbe de transfert et y faire passer tout le signal. ODD ENGINE est né d'une question : que se passe-t-il si l'on permet au plugin de savoir d'abord ce qui arrive ?",
+    "The ODD fader: how much adaptation is too much": "Le curseur ODD : jusqu'où l'adaptation peut-elle aller",
+    "One macro, one job: how much the drive stage listens to what's coming in. That simplicity turned out to hide a real design question about where zero and a hundred should actually sit.": "Une macro, une seule fonction : à quel point l'étage de distorsion écoute ce qui entre. Cette simplicité cachait en réalité une vraie question de conception sur l'endroit où devraient se situer le zéro et le cent.",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Gratuit ne veut pas dire simple : l'ingénierie derrière ODDDIST",
+    "Oversampling, denormal handling, real-time-safe allocation, true bypass: none of it is exclusive to paid plugins. It's just work most people never see, whether they paid for it or not.": "Suréchantillonnage, gestion des dénormaux, allocation sûre en temps réel, vrai bypass : rien de tout cela n'est réservé aux plugins payants. C'est simplement du travail que presque personne ne voit, qu'on l'ait payé ou non.",
+    "5 ways to use ODDDIST beyond vocals": "5 façons d'utiliser ODDDIST au-delà des voix",
+    "ODDDIST tends to get reached for on vocals first, because that's where saturation usually lives in a mix. The same five controls and the ODD macro work just as well on almost anything else with a transient to grab onto.": "ODDDIST est souvent le premier réflexe pour les voix, parce que c'est généralement là que vit la saturation dans un mixage. Les mêmes cinq réglages et la macro ODD fonctionnent tout aussi bien sur presque tout ce qui a un transitoire à saisir."
   },
   de: {
     "Blog": "Blog",
-    "Notes on how our plugins are built. What is inside the reverb engine, the decisions behind it, and what shipping a first release actually involves.": "Notizen darüber, wie unsere Plugins entstehen. Was in der Hall-Engine steckt, welche Entscheidungen dahinterstehen und was eine erste Veröffentlichung wirklich bedeutet.",
+    "Notes on how our plugins are built. What is inside the reverb and distortion engines, the decisions behind them, and what shipping each release actually involves.": "Notizen darüber, wie unsere Plugins entstehen. Was in den Hall- und Distortion-Engines steckt, welche Entscheidungen dahinterstehen und was jede Veröffentlichung wirklich bedeutet.",
     "Design": "Gestaltung",
     "DSP": "DSP",
     "Engineering": "Technik",
@@ -58,11 +80,22 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "Bei langen Hallfahnen verraten sich künstliche Hallgeräte, und schuld ist fast immer die Modulation. Nicht dass sie da ist, sondern ihre Regelmäßigkeit.",
     "What it takes to keep a twelve second tail stable": "Was es braucht, eine zwölf Sekunden lange Hallfahne stabil zu halten",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "Die meiste Arbeit an einem langen Hall steckt nicht darin, ihn gut klingen zu lassen. Sie steckt darin, eine zwölf Sekunden laufende Rückkopplungsschleife davon abzuhalten, sich still selbst zu zerstören.",
-    "← All posts": "← Alle Beiträge"
+    "← All posts": "← Alle Beiträge",
+    "Guide": "Anleitung",
+    "2 September 2026": "2. September 2026",
+    "3 September 2026": "3. September 2026",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Warum statische Sättigung nicht reicht: die Idee hinter ODD ENGINE",
+    "Static saturation is honest about what it does: pick a transfer curve, run everything through it. ODD ENGINE started from asking what happens if the plugin is allowed to know what's coming in first.": "Statische Sättigung ist ehrlich in dem, was sie tut: eine Übertragungskurve wählen und alles hindurchlaufen lassen. ODD ENGINE entstand aus der Frage, was passiert, wenn man dem Plugin erlaubt, zuerst zu wissen, was eingeht.",
+    "The ODD fader: how much adaptation is too much": "Der ODD-Regler: wie viel Anpassung ist zu viel",
+    "One macro, one job: how much the drive stage listens to what's coming in. That simplicity turned out to hide a real design question about where zero and a hundred should actually sit.": "Ein Makro, eine Aufgabe: wie sehr die Verzerrungsstufe auf das hört, was hereinkommt. Diese Einfachheit verbarg eine echte Designfrage darüber, wo Null und Hundert eigentlich liegen sollten.",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Kostenlos heißt nicht einfach: die Technik hinter ODDDIST",
+    "Oversampling, denormal handling, real-time-safe allocation, true bypass: none of it is exclusive to paid plugins. It's just work most people never see, whether they paid for it or not.": "Oversampling, Denormal-Behandlung, echtzeitsichere Speicherreservierung, echter Bypass: nichts davon ist bezahlten Plugins vorbehalten. Es ist einfach Arbeit, die die meisten Leute nie sehen, egal ob sie dafür bezahlt haben oder nicht.",
+    "5 ways to use ODDDIST beyond vocals": "5 Wege, ODDDIST jenseits von Vocals zu nutzen",
+    "ODDDIST tends to get reached for on vocals first, because that's where saturation usually lives in a mix. The same five controls and the ODD macro work just as well on almost anything else with a transient to grab onto.": "ODDDIST wird meist zuerst für Vocals herangezogen, weil dort Sättigung in einem Mix üblicherweise ihren Platz hat. Dieselben fünf Regler und das ODD-Makro funktionieren genauso gut auf fast allem anderen, das einen Transienten zum Anpacken bietet."
   },
   it: {
     "Blog": "Blog",
-    "Notes on how our plugins are built. What is inside the reverb engine, the decisions behind it, and what shipping a first release actually involves.": "Appunti su come costruiamo i nostri plugin. Cosa c'è dentro il motore di riverbero, le decisioni che ci stanno dietro e cosa comporta davvero pubblicare una prima versione.",
+    "Notes on how our plugins are built. What is inside the reverb and distortion engines, the decisions behind them, and what shipping each release actually involves.": "Appunti su come costruiamo i nostri plugin. Cosa c'è dentro i motori di riverbero e distorsione, le decisioni che ci stanno dietro e cosa comporta davvero pubblicare ogni versione.",
     "Design": "Progettazione",
     "DSP": "DSP",
     "Engineering": "Ingegneria",
@@ -77,6 +110,17 @@ window.EXTRA_TRANSLATIONS = {
     "Long tails are where artificial reverbs give themselves away, and the culprit is almost always the modulation. Not its presence, its regularity.": "È sulle code lunghe che i riverberi artificiali si tradiscono, e la colpevole è quasi sempre la modulazione. Non la sua presenza, ma la sua regolarità.",
     "What it takes to keep a twelve second tail stable": "Cosa serve per tenere stabile una coda di dodici secondi",
     "Most of the work in a long reverb is not in making it sound good. It is in stopping a feedback loop that runs for twelve seconds from quietly destroying itself.": "Gran parte del lavoro in un riverbero lungo non sta nel farlo suonare bene. Sta nell'impedire che un anello di retroazione che dura dodici secondi si distrugga da solo in silenzio.",
-    "← All posts": "← Tutti gli articoli"
+    "← All posts": "← Tutti gli articoli",
+    "Guide": "Guida",
+    "2 September 2026": "2 settembre 2026",
+    "3 September 2026": "3 settembre 2026",
+    "Why static saturation isn't enough: the idea behind ODD ENGINE": "Perché la saturazione statica non basta: l'idea dietro ODD ENGINE",
+    "Static saturation is honest about what it does: pick a transfer curve, run everything through it. ODD ENGINE started from asking what happens if the plugin is allowed to know what's coming in first.": "La saturazione statica è onesta su ciò che fa: sceglie una curva di trasferimento e ci fa passare tutto. ODD ENGINE è nato chiedendosi cosa succede se si permette al plugin di sapere prima cosa sta arrivando.",
+    "The ODD fader: how much adaptation is too much": "Il fader ODD: quanto adattamento è troppo",
+    "One macro, one job: how much the drive stage listens to what's coming in. That simplicity turned out to hide a real design question about where zero and a hundred should actually sit.": "Un macro, un solo compito: quanto lo stadio di distorsione ascolta ciò che sta entrando. Quella semplicità nascondeva una vera questione di design su dove dovrebbero stare davvero lo zero e il cento.",
+    "Free doesn't mean simple: the engineering behind ODDDIST": "Gratis non significa semplice: l'ingegneria dietro ODDDIST",
+    "Oversampling, denormal handling, real-time-safe allocation, true bypass: none of it is exclusive to paid plugins. It's just work most people never see, whether they paid for it or not.": "Oversampling, gestione dei denormali, allocazione sicura in tempo reale, bypass vero: niente di tutto ciò è esclusivo dei plugin a pagamento. È semplicemente lavoro che quasi nessuno vede, che lo si sia pagato o no.",
+    "5 ways to use ODDDIST beyond vocals": "5 modi per usare ODDDIST oltre le voci",
+    "ODDDIST tends to get reached for on vocals first, because that's where saturation usually lives in a mix. The same five controls and the ODD macro work just as well on almost anything else with a transient to grab onto.": "ODDDIST viene solitamente scelto per primo sulle voci, perché è lì che di solito vive la saturazione in un mix. Gli stessi cinque controlli e il macro ODD funzionano altrettanto bene su quasi tutto il resto che abbia un transiente a cui aggrapparsi."
   }
 };
