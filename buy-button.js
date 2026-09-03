@@ -142,6 +142,7 @@
       var products = [
         { id: '15647380701508', nodeId: 'product-component-evoraverb', buttonText: 'Buy Now' },
         { id: '15651571532100', nodeId: 'product-component-odddist', buttonText: 'Download' },
+        { id: '15656714142020', nodeId: 'product-component-evoraverb-demo', buttonText: 'Download Free' },
       ];
       products.forEach(function (p) {
         var node = document.getElementById(p.nodeId);
