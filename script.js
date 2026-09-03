@@ -159,3 +159,59 @@ if (document.getElementById('contact-form')) {
         this.reset();
     });
 }
+
+// ========================================
+// NEWSLETTER (Shopify's native customer form)
+// ========================================
+// El sitio es estatico (GitHub Pages), sin backend propio. En vez de
+// montar uno solo para guardar emails, se manda el alta directamente al
+// formulario de clientes que trae Shopify de serie (el mismo que usan los
+// temas de Shopify para "suscribete a nuestro boletin"): un POST con
+// form_type=customer da de alta o actualiza el cliente y lo marca como
+// suscrito al email marketing, sin tocar ninguna API ni token.
+//
+// Ese endpoint no responde con cabeceras CORS, asi que el fetch va en
+// modo no-cors: no se puede leer la respuesta real (exito o error de
+// Shopify), pero el alta se procesa igual en su servidor. El mensaje que
+// se muestra es optimista por esa razon — solo falla si el propio fetch
+// no llega a salir (sin red, dominio caido, etc).
+document.querySelectorAll('[data-newsletter-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var input = form.querySelector('input[name="email"]');
+        var email = input.value.trim();
+        if (!email) return;
+
+        var message = form.parentElement.querySelector('[data-newsletter-message]');
+        var button = form.querySelector('button');
+        button.disabled = true;
+
+        var body = new URLSearchParams({
+            form_type: 'customer',
+            utf8: '✓',
+            'contact[tags]': 'newsletter',
+            'contact[email]': email
+        });
+
+        fetch('https://bdf1pk-21.myshopify.com/contact', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body.toString()
+        }).then(function () {
+            if (message) {
+                message.textContent = "You're on the list, thanks!";
+                message.className = 'newsletter-strip__message is-success';
+            }
+            form.reset();
+        }).catch(function () {
+            if (message) {
+                message.textContent = 'Something went wrong, please try again.';
+                message.className = 'newsletter-strip__message is-error';
+            }
+        }).finally(function () {
+            button.disabled = false;
+        });
+    });
+});

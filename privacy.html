@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="How OddSignal Audio handles your data. No analytics, no tracking cookies, no ad networks.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
 
-    <link rel="stylesheet" href="styles.css?v=46">
+    <link rel="stylesheet" href="styles.css?v=47">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -83,6 +83,9 @@
             <h3>YOUR LANGUAGE CHOICE</h3>
             <p>When you pick a language in the selector, the choice is saved in your browser local storage so the site remembers it next time. It never leaves your device and it never reaches us. It is not a cookie and it identifies nobody.</p>
 
+            <h3>THE NEWSLETTER</h3>
+            <p>Signing up for the newsletter in the site footer means giving us your email address. We use it to tell you when we release something new, and nothing else. The form hands your email to Shopify, our commerce provider, which stores it and sends the emails on our behalf. The legal basis is your consent, and every email includes a way to unsubscribe, which removes you from the list immediately.</p>
+
             <h3>THE BETA TESTER FORM</h3>
             <p>Signing up for the beta means filling in a form hosted by Google Forms. You give us your name, email address, the DAW you work in and your operating system. We use it to send you builds, to know which platforms to test against, and to tell you when there is a new version. The legal basis is your consent, and you can withdraw it at any time by asking us to remove you.</p>
 
@@ -117,6 +120,10 @@
                     <td>Handles our email correspondence.</td>
                 </tr>
                 <tr>
+                    <td>Shopify</td>
+                    <td>Stores newsletter sign-ups and sends our email updates.</td>
+                </tr>
+                <tr>
                     <td>Lemon Squeezy</td>
                     <td>Processes payments as seller of record, once the store opens.</td>
                 </tr>
@@ -149,6 +156,17 @@
         </div>
     </section>
 
+    <section class="newsletter-strip">
+        <div class="container newsletter-strip__inner">
+            <p class="newsletter-strip__label">Get an email when we ship something new. No spam, unsubscribe anytime.</p>
+            <form class="newsletter-strip__form" data-newsletter-form>
+                <input type="email" name="email" class="newsletter-strip__input" placeholder="you@example.com" required aria-label="Email address">
+                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            </form>
+            <p class="newsletter-strip__message" data-newsletter-message aria-live="polite"></p>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
@@ -165,6 +183,6 @@
     </footer>
     <script src="i18n-legal.js?v=41"></script>
     <script src="i18n.js?v=44"></script>
-    <script src="script.js?v=41"></script>
+    <script src="script.js?v=42"></script>
 </body>
 </html>
