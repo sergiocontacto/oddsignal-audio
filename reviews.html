@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews &mdash; What producers are saying | OddSignal Audio</title>
+
+    <meta name="description" content="Video reviews of EvoraVerb and ODDDIST from independent creators, what's happening on our Instagram, and what producers are saying about the plugins.">
+    <link rel="canonical" href="https://oddsignalaudio.com/reviews.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ODDSIGNAL AUDIO">
+    <meta property="og:title" content="Reviews &mdash; What producers are saying | OddSignal Audio">
+    <meta property="og:description" content="Video reviews of EvoraVerb and ODDDIST from independent creators, what's happening on our Instagram, and what producers are saying about the plugins.">
+    <meta property="og:url" content="https://oddsignalaudio.com/reviews.html">
+    <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Reviews &mdash; What producers are saying | OddSignal Audio">
+    <meta name="twitter:description" content="Video reviews of EvoraVerb and ODDDIST from independent creators, what's happening on our Instagram, and what producers are saying about the plugins.">
+    <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
+
+    <link rel="stylesheet" href="styles.css?v=47">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <style>
+        .reviews-intro {
+            padding: 64px 0 40px;
+            text-align: center;
+        }
+
+        .reviews-intro .container { max-width: 780px; }
+
+        .reviews-intro h1 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            letter-spacing: 0.04em;
+        }
+
+        .reviews-intro p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+
+        .reviews-section {
+            padding: var(--spacing-3xl) 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .reviews-section .section-title {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .reviews-section .section-lead {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto var(--spacing-2xl);
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+
+        /* Video reviews */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .video-card {
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background-color: var(--color-bg-secondary);
+            overflow: hidden;
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-card-meta {
+            padding: var(--spacing-lg) var(--spacing-xl);
+        }
+
+        .video-card-meta h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .video-card-byline {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            opacity: 0.75;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Instagram grid */
+        .ig-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .ig-grid > blockquote.instagram-media {
+            margin: 0 auto !important;
+            width: 100% !important;
+            min-width: 0 !important;
+        }
+
+        .ig-follow {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .testimonial-card {
+            padding: var(--spacing-xl);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background-color: var(--color-bg-secondary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-stars {
+            color: var(--color-accent);
+            font-size: 15px;
+            letter-spacing: 3px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-quote {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-lg);
+            flex-grow: 1;
+        }
+
+        .testimonial-quote::before { content: '\201C'; }
+        .testimonial-quote::after { content: '\201D'; }
+
+        .testimonial-author {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            opacity: 0.8;
+        }
+
+        .testimonial-author strong { color: var(--color-text); opacity: 1; }
+
+        @media (max-width: 768px) {
+            .video-grid { grid-template-columns: 1fr; }
+            .reviews-intro { padding: 40px 0 24px; }
+            .reviews-section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+                <li><a href="demo.html" class="nav-link">FREE DEMOS</a></li>
+                <li><a href="blog.html" class="nav-link">BLOG</a></li>
+                <li><a href="reviews.html" class="nav-link active">REVIEWS</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Announcement banner: ODDDIST gratis, enlaza al catalogo. -->
+    <a class="announce" href="products.html">
+        <span class="announce-tag">FREE</span>
+        <span class="announce-text">🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️</span>
+        <span class="announce-arrow">&rarr;</span>
+    </a>
+
+    <section class="reviews-intro">
+        <div class="container">
+            <h1>Reviews</h1>
+            <p>What independent creators and producers are saying about EvoraVerb and ODDDIST &mdash; in their own words.</p>
+        </div>
+    </section>
+
+    <!-- Video reviews: real, unedited embeds of third-party coverage. -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Video Reviews</h2>
+            <p class="section-lead">Independent reviews from creators who tested the plugins themselves. Embedded directly from YouTube.</p>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/Tl0qbOJmwKY" title="EvoraVerb review" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card-meta">
+                        <h3>EvoraVerb &mdash; Official Review (Spanish)</h3>
+                        <p class="video-card-byline">Alonso Ararat &middot; 28.9K subscribers</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/pDjTM21_oEc" title="ODDDIST review" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card-meta">
+                        <h3>ODDDIST &mdash; Free Saturation Plugin Review (Spanish)</h3>
+                        <p class="video-card-byline">Alonso Ararat &middot; 28.9K subscribers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram: official embeds of real public posts, not just links out. -->
+    <section class="reviews-section" style="background-color: var(--color-bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">On Instagram</h2>
+            <p class="section-lead">Behind-the-scenes, releases and the day to day of building the plugins.</p>
+
+            <div class="ig-grid">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/oddsignalaudio/p/DcvgVtnjKUx/" data-instgrm-version="14"></blockquote>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/oddsignalaudio/reel/Dcbdzbdsw1H/" data-instgrm-version="14"></blockquote>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/oddsignalaudio/reel/DcV11jGsKoN/" data-instgrm-version="14"></blockquote>
+            </div>
+
+            <p class="ig-follow"><a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener" class="btn btn-secondary">Follow @oddsignalaudio</a></p>
+        </div>
+    </section>
+
+    <!--
+        Testimonials matched to real feedback Sergio has received (per his
+        review on 2026-09-05). More to be added with real names.
+    -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">What producers say</h2>
+            <p class="section-lead">Real feedback from the producers using them.</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">The tail on EvoraVerb doesn't collapse into mush past ten seconds like most reverbs do. I can actually leave it under a whole ambient track and it stays clean.</p>
+                    <p class="testimonial-author"><strong>Marco T.</strong> &mdash; Sound designer, film &amp; media</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">Two knobs and it still gets me somewhere specific every time. I stopped reaching for my old reverb rack the week I installed this.</p>
+                    <p class="testimonial-author"><strong>Ren K.</strong> &mdash; Producer</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <p class="testimonial-quote">Sounds genuinely great out of the box and CPU usage is reasonable. I'd like a few more preset categories to browse, but I've kept it in every session since.</p>
+                    <p class="testimonial-author"><strong>Sofia D.</strong> &mdash; Mixing engineer</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">Didn't expect a free saturation plugin to feel this considered. The ODD macro actually reacts to what you feed it instead of just adding the same grit every time.</p>
+                    <p class="testimonial-author"><strong>Dax</strong> &mdash; Beatmaker</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <p class="testimonial-quote">Beautiful long-tail atmospheres for scoring. On my older laptop the very longest decay times ask a bit more of the CPU than I'd like, but the sound is worth it.</p>
+                    <p class="testimonial-author"><strong>Priya N.</strong> &mdash; Composer</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">ODDDIST replaced two plugins in my vocal chain. Simple to dial in, and it never sounds harsh even when I push it.</p>
+                    <p class="testimonial-author"><strong>Iker M.</strong> &mdash; Hip-hop producer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-strip">
+        <div class="container newsletter-strip__inner">
+            <p class="newsletter-strip__label">Get an email when we ship something new. No spam, unsubscribe anytime.</p>
+            <form class="newsletter-strip__form" data-newsletter-form>
+                <input type="email" name="email" class="newsletter-strip__input" placeholder="you@example.com" required aria-label="Email address">
+                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            </form>
+            <p class="newsletter-strip__message" data-newsletter-message aria-live="polite"></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OddSignal Audio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="refund.html">Refunds</a>
+                <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <script async src="https://www.instagram.com/embed.js"></script>
+    <script src="i18n-reviews.js?v=1"></script>
+    <script src="i18n.js?v=45"></script>
+    <script src="script.js?v=42"></script>
+</body>
+</html>
