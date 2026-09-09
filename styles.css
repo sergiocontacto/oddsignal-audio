@@ -730,6 +730,42 @@ code {
     letter-spacing: 0.14em;
 }
 
+.price-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-family: 'Clash Display', 'Inter', system-ui, sans-serif;
+}
+
+.price-line .price-now {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.price-line .price-was {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+
+.price-line .price-badge {
+    padding: 3px 9px;
+    border-radius: 999px;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+}
+
+.product-card-cta .price-line {
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
 .announce-arrow {
     flex-shrink: 0;
     transition: transform 0.25s ease;
