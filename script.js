@@ -215,3 +215,40 @@ document.querySelectorAll('[data-newsletter-form]').forEach(function (form) {
         });
     });
 });
+
+// ========================================
+// WELCOME POPUP (home page only, once per visitor)
+// ========================================
+(function () {
+    var popup = document.querySelector('[data-welcome-popup]');
+    if (!popup) return;
+
+    var STORAGE_KEY = 'welcomePopupSeen';
+    var seen = false;
+    try { seen = !!localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (seen) return;
+
+    function dismiss() {
+        popup.hidden = true;
+        try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    }
+
+    setTimeout(function () {
+        popup.hidden = false;
+    }, 4000);
+
+    popup.querySelectorAll('[data-welcome-popup-close]').forEach(function (el) {
+        el.addEventListener('click', dismiss);
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !popup.hidden) dismiss();
+    });
+
+    var popupForm = popup.querySelector('[data-newsletter-form]');
+    if (popupForm) {
+        popupForm.addEventListener('submit', function () {
+            setTimeout(dismiss, 1200);
+        });
+    }
+})();
