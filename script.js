@@ -175,6 +175,12 @@ if (document.getElementById('contact-form')) {
 // Shopify), pero el alta se procesa igual en su servidor. El mensaje que
 // se muestra es optimista por esa razon — solo falla si el propio fetch
 // no llega a salir (sin red, dominio caido, etc).
+// Mensajes creados desde JS: i18n.js solo traduce lo que ya esta en la pagina.
+function uiText(key) {
+    if (typeof translations === 'undefined') return key;
+    return translations[currentLang][key] || key;
+}
+
 document.querySelectorAll('[data-newsletter-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -190,7 +196,7 @@ document.querySelectorAll('[data-newsletter-form]').forEach(function (form) {
         var body = new URLSearchParams({
             form_type: 'customer',
             utf8: '✓',
-            'contact[tags]': 'newsletter',
+            'contact[tags]': form.getAttribute('data-tags') || 'newsletter',
             'contact[email]': email
         });
 
@@ -201,13 +207,13 @@ document.querySelectorAll('[data-newsletter-form]').forEach(function (form) {
             body: body.toString()
         }).then(function () {
             if (message) {
-                message.textContent = "You're on the list, thanks!";
+                message.textContent = uiText("You're on the list, thanks!");
                 message.className = 'newsletter-strip__message is-success';
             }
             form.reset();
         }).catch(function () {
             if (message) {
-                message.textContent = 'Something went wrong, please try again.';
+                message.textContent = uiText('Something went wrong, please try again.');
                 message.className = 'newsletter-strip__message is-error';
             }
         }).finally(function () {

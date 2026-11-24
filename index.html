@@ -17,7 +17,7 @@
     <meta name="description" content="ODDSIGNAL AUDIO: ODDDIST, a free distortion plugin powered by ODD ENGINE, and EvoraVerb, a professional atmospheric reverb with a low CPU footprint.">
     <link rel="canonical" href="https://oddsignalaudio.com/">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a0e17">
+    <meta name="theme-color" content="#0d0b0b">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ODDSIGNAL AUDIO">
@@ -37,6 +37,10 @@
     <meta name="twitter:image:alt" content="ODDSIGNAL AUDIO - Audio Plugins &amp; Tools for Music Production">
 
     <link rel="stylesheet" href="styles.css?v=49">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="ik/home.css?v=4">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -85,7 +89,7 @@
     }
     </script>
 </head>
-<body class="dark-theme">
+<body class="dark-theme ik-home" data-accent="#ff6a21" data-accent-hover="#ff8143">
     <!-- Welcome popup: shown once per visitor on the home page. -->
     <div class="welcome-popup" data-welcome-popup hidden>
         <div class="welcome-popup__overlay" data-welcome-popup-close></div>
@@ -102,57 +106,154 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">HOME</a></li>
-                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
-                <li><a href="demo.html" class="nav-link">FREE DEMOS</a></li>
-                <li><a href="blog.html" class="nav-link">BLOG</a></li>
-                <li><a href="reviews.html" class="nav-link">REVIEWS</a></li>
-                <li><a href="about.html" class="nav-link">ABOUT</a></li>
-                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-                <li class="language-selector">
-                    <select id="language-selector">
-                        <option value="en">EN</option>
-                        <option value="es">ES</option>
-                        <option value="fr">FR</option>
-                        <option value="de">DE</option>
-                        <option value="it">IT</option>
-                    </select>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="ik-top">
+        <header class="ik-header">
+            <div class="ik-header__inner">
+                <a href="index.html" class="ik-logo" data-ik-go="0">
+                    <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio" width="1408" height="278">
+                </a>
+                <span class="ik-divider" aria-hidden="true"></span>
 
-    <!-- Announcement banner: ODDDIST gratis, enlaza al catalogo. -->
-    <a class="announce" href="products.html">
-        <span class="announce-tag">FREE</span>
-        <span class="announce-text">🔥 ODDDIST — Distortion, now completely FREE. Powered by ODD ENGINE. 🎛️</span>
-        <span class="announce-arrow">&rarr;</span>
-    </a>
+                <nav class="ik-nav" id="ik-nav" aria-label="Main">
+                    <ul class="ik-nav__list">
+                        <li class="ik-drop ik-nav--products">
+                            <button type="button" class="ik-navlink" aria-expanded="false"><span>Products</span><svg class="ik-chev" viewBox="0 0 16 10" aria-hidden="true"><path d="M2 2l6 6 6-6"/></svg></button>
+                            <ul class="ik-menu">
+                                <li><a href="index.html" data-ik-go="0">infinityKits</a></li>
+                                <li><a href="odddist.html">ODDDIST</a></li>
+                                <li><a href="evoraverb.html">EvoraVerb</a></li>
+                                <li><a href="products.html">All products</a></li>
+                                <li><a href="demo.html">Free demos</a></li>
+                            </ul>
+                        </li>
+                        <li class="ik-nav--kits"><a href="index.html" class="ik-navlink is-current" data-ik-go="0">infinityKits</a></li>
+                        <li class="ik-drop ik-nav--resources">
+                            <button type="button" class="ik-navlink" aria-expanded="false"><span>Resources</span><svg class="ik-chev" viewBox="0 0 16 10" aria-hidden="true"><path d="M2 2l6 6 6-6"/></svg></button>
+                            <ul class="ik-menu">
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="reviews.html">Reviews</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="about.html">About us</a></li>
+                            </ul>
+                        </li>
+                        <li class="ik-nav--support"><a href="contact.html" class="ik-navlink">Support</a></li>
+                        <li class="ik-only-mobile"><a href="https://bdf1pk-21.myshopify.com/account" class="ik-navlink" rel="noopener">My account</a></li>
+                        <li class="ik-only-mobile ik-nav__lang">
+                            <select data-ik-lang aria-label="Language">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="it">Italiano</option>
+                            </select>
+                        </li>
+                    </ul>
+                </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">ODDDIST</h1>
-                <p class="hero-subtitle">Distortion, reengineered.</p>
-                <p class="hero-description">A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.</p>
-                <p class="hero-note">ODDDIST is completely free.</p>
-                <div id="product-component-odddist" data-button-text="Download Free" style="max-width:190px;margin:0;"></div>
-                <p class="hero-meta">VST3 &middot; Windows &amp; macOS</p>
+                <a class="ik-account" href="https://bdf1pk-21.myshopify.com/account" rel="noopener" aria-label="My account"><svg viewBox="0 0 24 26" aria-hidden="true"><circle cx="12" cy="7.5" r="5.5"/><path d="M2.5 24v-2.5c0-4 3.5-6.5 9.5-6.5s9.5 2.5 9.5 6.5V24z"/></svg></a>
+                <button type="button" class="ik-btn ik-headcta" data-ik-get>Get infinityKits</button>
+                <button type="button" class="ik-burger" aria-controls="ik-nav" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
-            <div class="hero-image">
-                <img src="./plugin-odddist.png" alt="ODDDIST plugin interface" width="1024" height="1536" decoding="async">
+        </header>
+
+        <main class="ik-hero" aria-roledescription="carousel">
+            <div class="ik-slides">
+                <section class="ik-slide ik-slide--kits is-active" aria-label="infinityKits">
+                    <div class="ik-bg" aria-hidden="true"></div>
+                    <div class="ik-copy">
+                        <span class="ik-tag">PLUGIN</span>
+                        <h1 class="ik-title">infinity<span>Kits</span></h1>
+                        <p class="ik-subtitle">Pull drums out of any song</p>
+                        <figure class="ik-shot">
+                            <img src="ik/ik-plugin.webp" alt="infinityKits plugin interface" width="970" height="738" decoding="async">
+                        </figure>
+                        <p class="ik-desc">A plugin that analyses a song, isolates its drums and turns them into a kit ready to use in your DAW. Discover, organise and create new drums from your favourite tracks.</p>
+                        <ul class="ik-features">
+                            <li>
+                                <svg viewBox="0 0 36 36" class="ik-ico--note" aria-hidden="true"><path d="M13 7.500 33 3v22.5a5.500 4.800 0 1 1-3-4.200V11.200L16 14.400V30a5.500 4.800 0 1 1-3-4.200z"/></svg>
+                                <p>Extract the drums from any song</p>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 3 33 11 18 19 3 11z"/><path d="M3 18l15 8 15-8M3 25l15 8 15-8"/></svg>
+                                <p>Turn the drums into a usable kit</p>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 14v8M10 8v20M17 3v30M24 10v16M31 15v6"/></svg>
+                                <p>Edit and shape every single sound</p>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 8h14M25 8h8M3 18h4M15 18h18M3 28h18M29 28h4"/><circle cx="21" cy="8" r="3.500"/><circle cx="11" cy="18" r="3.500"/><circle cx="25" cy="28" r="3.500"/></svg>
+                                <p>Export the kit to your DAW</p>
+                            </li>
+                        </ul>
+                        <button type="button" class="ik-btn ik-cta" data-ik-get><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3v15M7.5 12l6.5 6.5L20.500 12"/><path d="M3 19v6h22v-6"/></svg><span>Get infinityKits</span></button>
+                        <ul class="ik-platforms">
+                            <li class="ik-os ik-os--mac"><svg viewBox="0 0 17 20" aria-hidden="true"><path d="M14.100 10.600c0-2.500 2-3.600 2.100-3.700-1.100-1.700-2.900-1.900-3.500-1.900-1.500-.2-2.900.9-3.600.9s-1.900-.9-3.100-.8C4.400 5.100 2.900 6 2.100 7.400c-1.700 2.900-.4 7.200 1.200 9.600.8 1.2 1.800 2.500 3 2.400 1.200 0 1.700-.8 3.1-.8s1.9.8 3.1.8c1.300 0 2.1-1.2 2.900-2.300.9-1.300 1.300-2.600 1.3-2.700-.1 0-2.600-1-2.600-3.800zM11.800 3.300c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.500-.6.7-1.200 1.9-1 3 1.100.1 2.200-.6 2.9-1.400z"/></svg>macOS</li>
+                            <li class="ik-os ik-os--win"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M0 2.800 8.200 1.700v7.8H0zM9.200 1.500 20 0v9.5H9.200zM0 10.500h8.2v7.800L0 17.2zM9.2 10.5H20V20L9.2 18.5z"/></svg>Windows</li>
+                            <li class="ik-fmt">VST3</li>
+                            <li class="ik-fmt">AU</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="ik-slide ik-slide--dist" aria-label="ODDDIST" inert>
+                    <div class="ik-bg" aria-hidden="true"></div>
+                    <div class="ik-copy">
+                        <span class="ik-tag">FREE</span>
+                        <h2 class="ik-title">ODD<span>DIST</span></h2>
+                        <p class="ik-subtitle">Distortion, reengineered.</p>
+                        <figure class="ik-shot">
+                            <img src="./plugin-odddist.png" alt="ODDDIST plugin interface" width="1024" height="1536" loading="lazy" decoding="async">
+                        </figure>
+                        <p class="ik-desc">A new approach to distortion built for producers, sound designers, and artists who want more than just saturation.</p>
+                        <div class="ik-actions">
+                            <div id="product-component-odddist" class="ik-shopify" data-button-text="Download Free" data-style="solid"></div>
+                            <a class="ik-link" href="odddist.html">View details</a>
+                        </div>
+                        <p class="ik-meta">VST3 &middot; Windows &amp; macOS</p>
+                    </div>
+                </section>
+
+                <section class="ik-slide ik-slide--evora" aria-label="EvoraVerb" inert>
+                    <div class="ik-bg" aria-hidden="true"></div>
+                    <div class="ik-copy">
+                        <span class="ik-tag">PLUGIN</span>
+                        <h2 class="ik-title">Evora<span>Verb</span></h2>
+                        <p class="ik-subtitle">Professional Atmospheric Reverb</p>
+                        <figure class="ik-shot">
+                            <img src="./plugin-evoraverb.webp" alt="EvoraVerb plugin interface" width="1000" height="737" loading="lazy" decoding="async">
+                        </figure>
+                        <p class="ik-desc">Craft lush, ambient spaces with effortless depth and precision. Advanced DSP algorithms deliver natural space simulation with intuitive controls.</p>
+                        <div class="ik-actions">
+                            <div id="product-component-evoraverb" class="ik-shopify" data-style="solid"></div>
+                            <a class="ik-link" href="evoraverb.html">View details</a>
+                        </div>
+                        <p class="ik-meta">Windows &amp; macOS</p>
+                    </div>
+                </section>
             </div>
+
+            <div class="ik-dots">
+                <button type="button" class="is-active" aria-label="infinityKits" aria-current="true"></button>
+                <button type="button" aria-label="ODDDIST"></button>
+                <button type="button" aria-label="EvoraVerb"></button>
+            </div>
+        </main>
+    </div>
+
+    <dialog class="ik-modal" id="ik-modal" aria-labelledby="ik-modal-title">
+        <button type="button" class="ik-modal__close" aria-label="Close">&times;</button>
+        <span class="ik-tag">Coming soon</span>
+        <h2 id="ik-modal-title">infinityKits</h2>
+        <p>Leave your email and we will let you know as soon as you can download it.</p>
+        <div>
+            <form class="ik-modal__form" data-newsletter-form data-tags="newsletter, infinitykits">
+                <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+                <button type="submit" class="ik-btn">Notify me</button>
+            </form>
+            <p class="newsletter-strip__message" data-newsletter-message aria-live="polite"></p>
         </div>
-        <div class="hero-background" style="background-image: url('./fondoweb.png')"></div>
-    </section>
+    </dialog>
 
     <section class="newsletter-strip">
         <div class="container newsletter-strip__inner">
@@ -176,11 +277,21 @@
                 <a href="terms.html">Terms</a>
                 <a href="refund.html">Refunds</a>
                 <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+                <span class="language-selector">
+                    <select id="language-selector" aria-label="Language">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </span>
             </div>
         </div>
     </footer>
-    <script src="i18n.js?v=45"></script>
-    <script src="script.js?v=43"></script>
-    <script src="buy-button.js?v=7"></script>
+    <script src="i18n.js?v=46"></script>
+    <script src="script.js?v=44"></script>
+    <script src="buy-button.js?v=8"></script>
+    <script src="ik/home.js?v=1"></script>
 </body>
 </html>

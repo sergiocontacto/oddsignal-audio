@@ -24,8 +24,31 @@
 
   // Las dos tarjetas de producto comparten el mismo estilo de boton; solo
   // cambian el id de producto, el nodo destino y el texto del boton.
-  function productOptions(buttonText) {
+  // La portada pide su propio color con data-accent en el <body>.
+  var ACCENT = document.body.getAttribute('data-accent') || '#1923fd';
+  var ACCENT_HOVER = document.body.getAttribute('data-accent-hover') || '#474ffd';
+
+  // Boton solido (portada): sustituye al estilo de cristal.
+  function solidButton() {
     return {
+      'font-family': "'Inter', system-ui, sans-serif",
+      'font-size': '17px',
+      'font-weight': '600',
+      'line-height': '1.4',
+      'padding-top': '15px',
+      'padding-bottom': '15px',
+      'padding-left': '36px',
+      'padding-right': '36px',
+      'border-radius': '9px',
+      'background-color': ACCENT,
+      'color': '#ffffff',
+      ':hover': { 'background-color': ACCENT_HOVER },
+      ':focus': { 'background-color': ACCENT_HOVER },
+    };
+  }
+
+  function productOptions(buttonText, solid) {
+    var options = {
       product: {
             styles: {
               product: {
@@ -72,13 +95,13 @@
                 'box-shadow': 'inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.35)',
                 'transition': 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 ':hover': {
-                  'border-color': '#1923fd',
+                  'border-color': ACCENT,
                   'background-color': 'rgba(255, 255, 255, 0.06)',
-                  'box-shadow': 'inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 26px rgba(25, 35, 253, 0.4), 0 14px 28px rgba(0, 0, 0, 0.4)',
+                  'box-shadow': 'inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 26px ' + ACCENT + '66, 0 14px 28px rgba(0, 0, 0, 0.4)',
                   'transform': 'translateY(-2px)',
                 },
                 ':focus': {
-                  'border-color': '#1923fd',
+                  'border-color': ACCENT,
                   'background-color': 'rgba(255, 255, 255, 0.06)',
                 },
               },
@@ -104,9 +127,9 @@
                 },
               },
               button: {
-                'background-color': '#1923fd',
-                ':hover': { 'background-color': '#474ffd' },
-                ':focus': { 'background-color': '#474ffd' },
+                'background-color': ACCENT,
+                ':hover': { 'background-color': ACCENT_HOVER },
+                ':focus': { 'background-color': ACCENT_HOVER },
               },
               title: { 'font-family': "'Clash Display', 'Inter', system-ui, sans-serif", 'font-weight': 'bold', 'font-size': '26px', color: '#0a0e17' },
               price: { 'font-family': "'Clash Display', 'Inter', system-ui, sans-serif", 'font-size': '18px', color: '#0a0e17' },
@@ -119,9 +142,9 @@
           cart: {
             styles: {
               button: {
-                'background-color': '#1923fd',
-                ':hover': { 'background-color': '#474ffd' },
-                ':focus': { 'background-color': '#474ffd' },
+                'background-color': ACCENT,
+                ':hover': { 'background-color': ACCENT_HOVER },
+                ':focus': { 'background-color': ACCENT_HOVER },
               },
             },
             text: { total: 'Subtotal', button: 'Checkout' },
@@ -129,13 +152,15 @@
           toggle: {
             styles: {
               toggle: {
-                'background-color': '#1923fd',
-                ':hover': { 'background-color': '#474ffd' },
-                ':focus': { 'background-color': '#474ffd' },
+                'background-color': ACCENT,
+                ':hover': { 'background-color': ACCENT_HOVER },
+                ':focus': { 'background-color': ACCENT_HOVER },
               },
             },
           },
     };
+    if (solid) options.product.styles.button = solidButton();
+    return options;
   }
 
   function ShopifyBuyInit() {
@@ -156,11 +181,15 @@
         // de sitios donde vive el mismo producto; se marca con un atributo
         // en vez de duplicar la config por pagina.
         var buttonText = node.getAttribute('data-button-text') || p.buttonText;
+        // El texto va dentro del iframe de Shopify, donde i18n.js no llega.
+        if (typeof translations !== 'undefined') {
+          buttonText = translations[currentLang][buttonText] || buttonText;
+        }
         ui.createComponent('product', {
           id: p.id,
           node: node,
           moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
-          options: productOptions(buttonText),
+          options: productOptions(buttonText, node.getAttribute('data-style') === 'solid'),
         });
       });
     });
