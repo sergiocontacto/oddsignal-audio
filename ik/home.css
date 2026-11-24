@@ -80,7 +80,6 @@ body.ik-home::after { display: none; }
 .ik-drop.is-open .ik-chev { transform: rotate(180deg); }
 .ik-menu a { display: block; white-space: nowrap; font-weight: 500; }
 .ik-menu a:hover { color: var(--ik-orange-hi); }
-.ik-account { display: flex; }
 .ik-burger { display: none; }
 
 /* ---------- carrusel ---------- */
@@ -189,9 +188,6 @@ body.ik-home::after { display: none; }
     .ik-drop.is-open .ik-menu { opacity: 1; visibility: visible; transform: none; transition: opacity 0.18s, transform 0.18s; }
     .ik-menu a { padding: 9px 18px; font-size: 14px; }
 
-    .ik-account { position: absolute; left: calc(var(--u) * 1321); top: calc(var(--u) * 26); width: calc(var(--u) * 28); }
-    .ik-account svg { width: 100%; height: calc(var(--u) * 29); stroke-width: 2; }
-    .ik-account:hover { color: var(--ik-orange-hi) !important; }
     .ik-headcta { position: absolute; left: calc(var(--u) * 1391); top: calc(var(--u) * 18); min-width: calc(var(--u) * 215); height: calc(var(--u) * 45); padding: 0 calc(var(--u) * 12); font-size: calc(var(--u) * 19); border-radius: calc(var(--u) * 9); }
 
     .ik-hero { width: calc(var(--u) * 1672); height: calc(var(--u) * 855); margin: 0 auto; }
@@ -258,7 +254,7 @@ body.ik-home::after { display: none; }
     .ik-top { container-type: normal; position: static; }
     .ik-header__inner { display: flex; align-items: center; gap: 10px; height: 64px; padding: 0 12px 0 16px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
     .ik-logo { width: 124px; flex: none; margin-right: auto; }
-    .ik-divider, .ik-account { display: none; }
+    .ik-divider { display: none; }
     .ik-headcta { height: 38px; padding: 0 11px; font-size: 12px; border-radius: 8px; }
 
     .ik-burger { display: flex; flex: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: 0; cursor: pointer; }
