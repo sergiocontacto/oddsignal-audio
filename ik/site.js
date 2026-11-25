@@ -3,7 +3,7 @@
     // Cuando infinityKits este a la venta o se pueda descargar, pon aqui la
     // direccion y todos los botones "Obtener" llevaran a ella. Vacio = se
     // abre la ventana para dejar el email.
-    var INFINITYKITS_URL = '';
+    var INFINITYKITS_URL = 'https://bdf1pk-21.myshopify.com/products/infinitykits-song-to-drum-kit-sampler';
 
     var desktop = window.matchMedia('(min-width: 1100px)');
 
