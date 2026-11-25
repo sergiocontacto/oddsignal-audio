@@ -29,7 +29,7 @@ body.ik-home::after { background: linear-gradient(90deg, rgba(10, 10, 13, 0.5) 0
    ESCRITORIO
    ================================================================= */
 @media (min-width: 1100px) {
-    .ik-hero { width: calc(var(--u) * 1672); height: calc(var(--u) * 859); margin: 0 auto; }
+    .ik-hero { width: calc(var(--u) * 1672); height: calc(var(--u) * 815); margin: 0 auto; }
     .ik-slides, .ik-slide { position: absolute; inset: 0; }
 
     .ik-copy { position: absolute; inset: 0; pointer-events: none; }
@@ -124,4 +124,29 @@ body.ik-home::after { background: linear-gradient(90deg, rgba(10, 10, 13, 0.5) 0
 
 @media (prefers-reduced-motion: reduce) {
     .ik-slide, .ik-slide.is-active { transition: none !important; }
+}
+
+/* ---------- DAWs compatibles ---------- */
+.ik-daws { padding: 30px 20px 36px; border-top: 1px solid var(--color-border); background: rgba(13, 13, 16, 0.6); text-align: center; }
+.ik-daws h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #a8a5a2; }
+.ik-daws__list { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 26px 58px; max-width: 1320px; margin: 24px auto 0; list-style: none; }
+.ik-daws__list li { display: flex; align-items: center; opacity: 0.75; transition: opacity 0.2s; }
+.ik-daws__list li:hover { opacity: 1; }
+.ik-daws__list img { display: block; width: auto; }
+/* cada logo con su altura para que pesen parecido a la vista */
+.ik-daw--ableton { height: 22px; }
+.ik-daw--flstudio { height: 25px; }
+.ik-daw--cubase { height: 34px; }
+.ik-daw--reaper { height: 38px; }
+.ik-daw--bitwig { height: 48px; }
+.ik-daw-name { font-size: 25px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: #d9d6d3; white-space: nowrap; }
+
+@media (max-width: 767.98px) {
+    .ik-daws__list { gap: 22px 32px; }
+    .ik-daw--ableton { height: 17px; }
+    .ik-daw--flstudio { height: 19px; }
+    .ik-daw--cubase { height: 27px; }
+    .ik-daw--reaper { height: 30px; }
+    .ik-daw--bitwig { height: 40px; }
+    .ik-daw-name { font-size: 19px; }
 }
