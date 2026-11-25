@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How ODDDIST Works &mdash; Free Distortion Plugin</title>
 
-    <meta name="description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 plugin for Windows.">
+    <meta name="description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 and AU plugin for Windows and macOS.">
     <link rel="canonical" href="https://oddsignalaudio.com/odddist.html">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#101114">
@@ -22,7 +22,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="ODDSIGNAL AUDIO">
     <meta property="og:title" content="How ODDDIST Works &mdash; Free Distortion Plugin">
-    <meta property="og:description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 plugin for Windows.">
+    <meta property="og:description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 and AU plugin for Windows and macOS.">
     <meta property="og:url" content="https://oddsignalaudio.com/odddist.html">
     <meta property="og:image" content="https://oddsignalaudio.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
@@ -32,11 +32,11 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How ODDDIST Works &mdash; Free Distortion Plugin">
-    <meta name="twitter:description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 plugin for Windows.">
+    <meta name="twitter:description" content="How ODDDIST works: a distortion and saturation plugin built around ODD ENGINE, a real-time adaptive drive stage. Free VST3 and AU plugin for Windows and macOS.">
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
     <meta name="twitter:image:alt" content="How ODDDIST Works - Free Distortion Plugin">
 
-    <link rel="stylesheet" href="styles.css?v=50">
+    <link rel="stylesheet" href="styles.css?v=51">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -125,7 +125,7 @@
       "@type": "FAQPage",
       "mainEntity": [
         {"@type":"Question","name":"How do I get ODDDIST?","acceptedAnswer":{"@type":"Answer","text":"ODDDIST is free. Download the installer, run it, and it's ready to load in your DAW — no account, no license key."}},
-        {"@type":"Question","name":"Which formats does it support?","acceptedAnswer":{"@type":"Answer","text":"VST3 and a standalone application, for Windows."}},
+        {"@type":"Question","name":"Which formats does it support?","acceptedAnswer":{"@type":"Answer","text":"VST3 and a standalone application on Windows; VST3, Audio Unit and a standalone application on macOS."}},
         {"@type":"Question","name":"Does it add latency?","acceptedAnswer":{"@type":"Answer","text":"A small, fixed amount from the internal 4x oversampling on the drive stage. It's reported to your host at all times, in both Off and React modes, so nothing shifts when you switch modes mid-session."}},
         {"@type":"Question","name":"What does ODD ENGINE actually do?","acceptedAnswer":{"@type":"Answer","text":"It analyzes your incoming signal in real time and adapts the behavior of the drive stage to it, instead of applying one fixed curve regardless of input. Turn it off for classic static saturation, or turn it on to let the plugin react to your material."}},
         {"@type":"Question","name":"Can I use it on a mono track?","acceptedAnswer":{"@type":"Answer","text":"Not directly — ODDDIST is stereo in, stereo out. For a mono source, place it on a stereo bus or send."}},
@@ -289,8 +289,9 @@
             <h2>Formats and system requirements</h2>
             <table>
                 <tbody>
-                    <tr><td>Formats</td><td>VST3, Standalone</td></tr>
+                    <tr><td>Formats</td><td>VST3, Audio Unit (macOS only), Standalone</td></tr>
                     <tr><td>Windows</td><td>Windows 10 or later, 64-bit</td></tr>
+                    <tr><td>macOS</td><td>macOS 11 or later, Apple Silicon and Intel</td></tr>
                     <tr><td>Channels</td><td>Stereo in, stereo out only</td></tr>
                     <tr><td>Oversampling</td><td>4x on the drive stage (React and Off both report the same fixed latency)</td></tr>
                     <tr><td>Processing</td><td>32-bit floating point</td></tr>
@@ -312,7 +313,7 @@
             </div>
             <div class="faq">
                 <h3>Which formats does it support?</h3>
-                <p>VST3 and a standalone application, for Windows.</p>
+                <p>VST3 and a standalone application on Windows; VST3, Audio Unit and a standalone application on macOS.</p>
             </div>
             <div class="faq">
                 <h3>Does it add latency?</h3>
@@ -394,7 +395,7 @@
             </div>
         </div>
     </footer>
-    <script src="i18n-odddist.js?v=2"></script>
+    <script src="i18n-odddist.js?v=3"></script>
     <script src="i18n.js?v=47"></script>
     <script src="script.js?v=45"></script>
     <script src="ik/site.js?v=1"></script>

@@ -1483,3 +1483,8 @@ code {
 /* Palabras largas y las tarjetas de Instagram no ensanchan la pagina en movil */
 h1, h2 { overflow-wrap: break-word; }
 iframe.instagram-media { min-width: 0 !important; max-width: 100%; }
+
+/* Las tablas de las fichas se desplazan por dentro en moviles estrechos */
+@media (max-width: 480px) {
+    body .doc table { display: block; overflow-x: auto; }
+}
