@@ -138,12 +138,36 @@
     return options;
   }
 
+  var MONEY_FORMAT = '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D';
+
+  // Para los botones propios de la web («Obtener infinityKits», ik/site.js):
+  // meten el producto en el mismo carrito y lo abren a la derecha.
+  var shopResolve;
+  var shop = new Promise(function (resolve) { shopResolve = resolve; });
+  window.ikAddToCart = function (productId) {
+    return shop.then(function (s) {
+      return Promise.all([s.cart, s.client.product.fetch('gid://shopify/Product/' + productId)]);
+    }).then(function (ready) {
+      var cart = ready[0];
+      var variant = ready[1] && ready[1].variants[0];
+      if (!variant || variant.available === false) throw new Error('Producto no disponible');
+      // Es una descarga: si ya esta en el carrito no se suma otra unidad.
+      var inCart = cart.lineItems.some(function (line) {
+        return line.variant && line.variant.id === variant.id;
+      });
+      return inCart ? cart.open() : cart.addVariantToCart(variant, 1, true);
+    });
+  };
+
   function ShopifyBuyInit() {
     var client = ShopifyBuy.buildClient({
       domain: 'bdf1pk-21.myshopify.com',
       storefrontAccessToken: 'fcaf24b787ace57d9e12da81b1a3aaaf',
     });
     ShopifyBuy.UI.onReady(client).then(function (ui) {
+      // Un solo carrito, creado antes que los productos para saber cuando esta listo.
+      var cart = ui.createCart({ moneyFormat: MONEY_FORMAT, options: productOptions('', false) });
+      shopResolve({ client: client, cart: cart });
       var products = [
         { id: '15647380701508', nodeId: 'product-component-evoraverb', buttonText: 'Buy Now' },
         { id: '15651571532100', nodeId: 'product-component-odddist', buttonText: 'Download' },
@@ -163,7 +187,7 @@
         ui.createComponent('product', {
           id: p.id,
           node: node,
-          moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
+          moneyFormat: MONEY_FORMAT,
           options: productOptions(buttonText, node.getAttribute('data-style') === 'solid'),
         });
       });

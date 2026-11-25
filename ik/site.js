@@ -4,6 +4,9 @@
     // direccion y todos los botones "Obtener" llevaran a ella. Vacio = se
     // abre la ventana para dejar el email.
     var INFINITYKITS_URL = 'https://bdf1pk-21.myshopify.com/products/infinitykits-song-to-drum-kit-sampler';
+    // Producto de la tienda: con el, los botones abren el carrito en la propia
+    // web; la direccion de arriba queda de respaldo si Shopify no responde.
+    var INFINITYKITS_PRODUCT_ID = '15806866293060';
 
     var desktop = window.matchMedia('(min-width: 1100px)');
 
@@ -76,14 +79,48 @@
 
     /* ---------- obtener infinityKits ---------- */
     var modal = document.getElementById('ik-modal');
+
+    // buy-button.js ya viene en las paginas con productos; en el resto se
+    // carga al pulsar el boton.
+    function loadCart() {
+        if (window.ikAddToCart) return Promise.resolve();
+        return new Promise(function (resolve, reject) {
+            var script = document.createElement('script');
+            script.src = 'buy-button.js?v=10';
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+        });
+    }
+
+    var adding = false;
+    function openCart() {
+        if (adding) return;
+        adding = true;
+        document.body.style.cursor = 'progress';
+        var settled = false;
+        function finish(failed) {
+            if (settled) return;
+            settled = true;
+            adding = false;
+            clearTimeout(timer);
+            document.body.style.cursor = '';
+            if (failed) window.location.href = INFINITYKITS_URL;
+        }
+        var timer = setTimeout(function () { finish(true); }, 8000);
+        loadCart()
+            .then(function () { return window.ikAddToCart(INFINITYKITS_PRODUCT_ID); })
+            .then(function () { finish(false); }, function () { finish(true); });
+    }
+
     document.querySelectorAll('[data-ik-get]').forEach(function (button) {
         button.addEventListener('click', function () {
-            if (INFINITYKITS_URL) { window.location.href = INFINITYKITS_URL; return; }
             setMenu(false);
             // que el aviso de bienvenida no salte por encima
             var popup = document.querySelector('[data-welcome-popup]');
             if (popup) popup.remove();
-            modal.showModal();
+            if (INFINITYKITS_URL) openCart();
+            else modal.showModal();
         });
     });
     modal.querySelector('.ik-modal__close').addEventListener('click', function () { modal.close(); });
