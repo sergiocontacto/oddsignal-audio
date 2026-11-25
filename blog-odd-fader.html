@@ -17,7 +17,7 @@
     <meta name="description" content="ODDDIST's ODD macro isn't a wet/dry knob. How the single fader behind ODD ENGINE actually behaves from 0 to 100 percent, and why the factory presets are ordered subtle to extreme.">
     <link rel="canonical" href="https://oddsignalaudio.com/blog-odd-fader.html">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a0e17">
+    <meta name="theme-color" content="#101114">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="ODDSIGNAL AUDIO">
@@ -36,7 +36,11 @@
     <meta name="twitter:image" content="https://oddsignalaudio.com/og-image.jpg">
     <meta name="twitter:image:alt" content="The ODD fader: how much adaptation is too much">
 
-    <link rel="stylesheet" href="styles.css?v=49">
+    <link rel="stylesheet" href="styles.css?v=50">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="ik/site.css?v=1">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -95,31 +99,53 @@
 </head>
 <body class="dark-theme">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio">
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">HOME</a></li>
-                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
-                <li><a href="demo.html" class="nav-link">FREE DEMOS</a></li>
-                <li><a href="blog.html" class="nav-link active">BLOG</a></li>
-                <li><a href="reviews.html" class="nav-link">REVIEWS</a></li>
-                <li><a href="about.html" class="nav-link">ABOUT</a></li>
-                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-                <li class="language-selector">
-                    <select id="language-selector">
-                        <option value="en">EN</option>
-                        <option value="es">ES</option>
-                        <option value="fr">FR</option>
-                        <option value="de">DE</option>
-                        <option value="it">IT</option>
-                    </select>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="ik-top">
+        <header class="ik-header">
+            <div class="ik-header__inner">
+                <a href="index.html" class="ik-logo">
+                    <img src="./LOGO-BLANCO-TRANSPARENTE.png" alt="OddSignal Audio" width="1408" height="278">
+                </a>
+                                <nav class="ik-nav" id="ik-nav" aria-label="Main">
+                    <ul class="ik-nav__list">
+                        <li class="ik-drop ik-nav--products">
+                            <button type="button" class="ik-navlink" aria-expanded="false"><span>Products</span><svg class="ik-chev" viewBox="0 0 16 10" aria-hidden="true"><path d="M2 2l6 6 6-6"/></svg></button>
+                            <ul class="ik-menu">
+                                <li><a href="index.html">infinityKits</a></li>
+                                <li><a href="odddist.html">ODDDIST</a></li>
+                                <li><a href="evoraverb.html">EvoraVerb</a></li>
+                                <li><a href="products.html">All products</a></li>
+                                <li><a href="demo.html">Free demos</a></li>
+                            </ul>
+                        </li>
+                        <li class="ik-nav--kits"><a href="index.html" class="ik-navlink">infinityKits</a></li>
+                        <li class="ik-drop ik-nav--resources">
+                            <button type="button" class="ik-navlink is-current" aria-expanded="false"><span>Resources</span><svg class="ik-chev" viewBox="0 0 16 10" aria-hidden="true"><path d="M2 2l6 6 6-6"/></svg></button>
+                            <ul class="ik-menu">
+                                <li><a href="blog.html" aria-current="page">Blog</a></li>
+                                <li><a href="reviews.html">Reviews</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="about.html">About us</a></li>
+                            </ul>
+                        </li>
+                        <li class="ik-nav--support"><a href="contact.html" class="ik-navlink">Support</a></li>
+                        <li class="ik-only-mobile"><a href="https://bdf1pk-21.myshopify.com/account" class="ik-navlink" rel="noopener">My account</a></li>
+                        <li class="ik-only-mobile ik-nav__lang">
+                            <select data-ik-lang aria-label="Language">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="it">Italiano</option>
+                            </select>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button type="button" class="ik-btn ik-headcta" data-ik-get>Get infinityKits</button>
+                <button type="button" class="ik-burger" aria-controls="ik-nav" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </header>
+    </div>
 
     <!-- Announcement banner: ODDDIST gratis, enlaza al catalogo. -->
     <a class="announce" href="products.html">
@@ -165,6 +191,20 @@
         </div>
     </article>
 
+    <dialog class="ik-modal" id="ik-modal" aria-labelledby="ik-modal-title">
+        <button type="button" class="ik-modal__close" aria-label="Close">&times;</button>
+        <span class="ik-tag">Coming soon</span>
+        <h2 id="ik-modal-title">infinityKits</h2>
+        <p>Leave your email and we will let you know as soon as you can download it.</p>
+        <div>
+            <form class="ik-modal__form" data-newsletter-form data-tags="newsletter, infinitykits">
+                <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+                <button type="submit" class="ik-btn">Notify me</button>
+            </form>
+            <p class="newsletter-strip__message" data-newsletter-message aria-live="polite"></p>
+        </div>
+    </dialog>
+
     <section class="newsletter-strip">
         <div class="container newsletter-strip__inner">
             <p class="newsletter-strip__label">Get an email when we ship something new. No spam, unsubscribe anytime.</p>
@@ -187,12 +227,22 @@
                 <a href="terms.html">Terms</a>
                 <a href="refund.html">Refunds</a>
                 <a href="https://www.instagram.com/oddsignalaudio" target="_blank" rel="noopener">Instagram</a>
+                <span class="language-selector">
+                    <select id="language-selector" aria-label="Language">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                </span>
             </div>
         </div>
     </footer>
     <script src="i18n-blog.js?v=42"></script>
     <script src="i18n-post-odd-fader.js?v=1"></script>
-    <script src="i18n.js?v=45"></script>
-    <script src="script.js?v=43"></script>
+    <script src="i18n.js?v=47"></script>
+    <script src="script.js?v=45"></script>
+    <script src="ik/site.js?v=1"></script>
 </body>
 </html>

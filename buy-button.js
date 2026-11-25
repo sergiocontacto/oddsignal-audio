@@ -24,30 +24,31 @@
 
   // Las dos tarjetas de producto comparten el mismo estilo de boton; solo
   // cambian el id de producto, el nodo destino y el texto del boton.
-  // La portada pide su propio color con data-accent en el <body>.
-  var ACCENT = document.body.getAttribute('data-accent') || '#1923fd';
-  var ACCENT_HOVER = document.body.getAttribute('data-accent-hover') || '#474ffd';
+  var ACCENT = '#ecd0b3';
+  var ACCENT_HOVER = '#f7e4d1';
+  var INK = '#17120e'; // texto sobre el dorado
 
-  // Boton solido (portada): sustituye al estilo de cristal.
-  function solidButton() {
+  // Mismo boton dorado que el resto de la web; en la portada, mas grande.
+  function goldButton(large) {
     return {
       'font-family': "'Inter', system-ui, sans-serif",
-      'font-size': '17px',
+      'font-size': large ? '17px' : '14px',
       'font-weight': '600',
       'line-height': '1.4',
-      'padding-top': '15px',
-      'padding-bottom': '15px',
-      'padding-left': '36px',
-      'padding-right': '36px',
+      'white-space': 'nowrap',
+      'padding-top': large ? '15px' : '12px',
+      'padding-bottom': large ? '15px' : '12px',
+      'padding-left': large ? '36px' : '28px',
+      'padding-right': large ? '36px' : '28px',
       'border-radius': '9px',
       'background-color': ACCENT,
-      'color': '#ffffff',
-      ':hover': { 'background-color': ACCENT_HOVER },
-      ':focus': { 'background-color': ACCENT_HOVER },
+      'color': INK,
+      ':hover': { 'background-color': ACCENT_HOVER, 'color': INK },
+      ':focus': { 'background-color': ACCENT_HOVER, 'color': INK },
     };
   }
 
-  function productOptions(buttonText, solid) {
+  function productOptions(buttonText, large) {
     var options = {
       product: {
             styles: {
@@ -75,36 +76,6 @@
               compareAt: { display: 'none' },
               unitPrice: { display: 'none' },
               buttonWrapper: { margin: '0' },
-              button: {
-                'font-family': "'Clash Display', 'Inter', system-ui, sans-serif",
-                'font-size': '11px',
-                'font-weight': '700',
-                'letter-spacing': '0.08em',
-                'text-transform': 'uppercase',
-                'line-height': '1.6',
-                'padding-top': '12px',
-                'padding-bottom': '12px',
-                'padding-left': '28px',
-                'padding-right': '28px',
-                'border-radius': '999px',
-                'border': '1px solid rgba(255, 255, 255, 0.14)',
-                'background-color': 'rgba(255, 255, 255, 0.06)',
-                'backdrop-filter': 'blur(16px)',
-                '-webkit-backdrop-filter': 'blur(16px)',
-                'color': '#ffffff',
-                'box-shadow': 'inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.35)',
-                'transition': 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                ':hover': {
-                  'border-color': ACCENT,
-                  'background-color': 'rgba(255, 255, 255, 0.06)',
-                  'box-shadow': 'inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 26px ' + ACCENT + '66, 0 14px 28px rgba(0, 0, 0, 0.4)',
-                  'transform': 'translateY(-2px)',
-                },
-                ':focus': {
-                  'border-color': ACCENT,
-                  'background-color': 'rgba(255, 255, 255, 0.06)',
-                },
-              },
             },
             layout: 'horizontal',
             contents: { img: false, imgWithCarousel: false, description: false },
@@ -128,13 +99,14 @@
               },
               button: {
                 'background-color': ACCENT,
-                ':hover': { 'background-color': ACCENT_HOVER },
-                ':focus': { 'background-color': ACCENT_HOVER },
+                'color': INK,
+                ':hover': { 'background-color': ACCENT_HOVER, 'color': INK },
+                ':focus': { 'background-color': ACCENT_HOVER, 'color': INK },
               },
-              title: { 'font-family': "'Clash Display', 'Inter', system-ui, sans-serif", 'font-weight': 'bold', 'font-size': '26px', color: '#0a0e17' },
-              price: { 'font-family': "'Clash Display', 'Inter', system-ui, sans-serif", 'font-size': '18px', color: '#0a0e17' },
-              compareAt: { 'font-family': "'Clash Display', 'Inter', system-ui, sans-serif", 'font-size': '15px', color: '#0a0e17' },
-              unitPrice: { 'font-family': "'Clash Display', 'Inter', system-ui, sans-serif", 'font-size': '15px', color: '#0a0e17' },
+              title: { 'font-family': "'Inter', system-ui, sans-serif", 'font-weight': 'bold', 'font-size': '26px', color: INK },
+              price: { 'font-family': "'Inter', system-ui, sans-serif", 'font-size': '18px', color: INK },
+              compareAt: { 'font-family': "'Inter', system-ui, sans-serif", 'font-size': '15px', color: INK },
+              unitPrice: { 'font-family': "'Inter', system-ui, sans-serif", 'font-size': '15px', color: INK },
             },
             text: { button: 'Buy Now' },
           },
@@ -143,8 +115,9 @@
             styles: {
               button: {
                 'background-color': ACCENT,
-                ':hover': { 'background-color': ACCENT_HOVER },
-                ':focus': { 'background-color': ACCENT_HOVER },
+                'color': INK,
+                ':hover': { 'background-color': ACCENT_HOVER, 'color': INK },
+                ':focus': { 'background-color': ACCENT_HOVER, 'color': INK },
               },
             },
             text: { total: 'Subtotal', button: 'Checkout' },
@@ -156,10 +129,12 @@
                 ':hover': { 'background-color': ACCENT_HOVER },
                 ':focus': { 'background-color': ACCENT_HOVER },
               },
+              count: { color: INK, ':hover': { color: INK } },
+              iconPath: { fill: INK },
             },
           },
     };
-    if (solid) options.product.styles.button = solidButton();
+    options.product.styles.button = goldButton(large);
     return options;
   }
 

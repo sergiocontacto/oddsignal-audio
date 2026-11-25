@@ -1,23 +1,17 @@
-/* FONTS */
-@font-face {
-    font-family: 'Clash Display';
-    src: url('./ClashDisplay-Semibold.otf') format('opentype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-
 /* VARIABLES */
 :root {
-    --color-bg: #0a0e17;
-    --color-bg-secondary: #111823;
+    --color-bg: #101114;
+    --color-bg-secondary: #17171a;
+    --color-surface: rgba(21, 21, 24, 0.72);
     --color-text: #ffffff;
-    --color-text-secondary: #ffffff;
-    --color-accent: #1923fd;
-    --color-accent-hover: #474ffd;
-    --color-border: #1a2332;
-    --font-primary: 'Clash Display', 'Inter', system-ui, sans-serif;
-    --font-mono: 'Clash Display', 'IBM Plex Mono', monospace;
+    --color-text-secondary: #d9d6d3;
+    --color-accent: #ecd0b3;
+    --color-accent-hover: #f7e4d1;
+    --color-border: #2f2e30;
+    --ik-ink: #17120e;
+    --gold: linear-gradient(180deg, #f6dfc7 0%, #e4c0a0 100%);
+    --font-primary: 'Inter', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
@@ -43,7 +37,6 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
-    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -53,23 +46,22 @@ body {
     position: relative;
 }
 
-/* Blurred background texture */
+/* Fondo de ondas, el mismo en toda la web. Va fijo: el contenido pasa por
+   encima. */
 body::before {
     content: '';
     position: fixed;
-    top: -5%;
-    left: -5%;
-    width: 110%;
-    height: 110%;
-    background-image: url('./fondoweb1.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100lvh;
+    background: url('./ik/ik-bg.webp') center / cover no-repeat;
     z-index: -2;
     pointer-events: none;
 }
 
-/* Dark overlay for readability */
+/* Velo para que el texto se lea (la portada pone el suyo) */
 body::after {
     content: '';
     position: fixed;
@@ -77,9 +69,13 @@ body::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 14, 23, 0.5);
+    background: rgba(11, 11, 14, 0.5);
     z-index: -1;
     pointer-events: none;
+}
+
+@media (orientation: portrait) {
+    body::before { background-position: 30% center; }
 }
 
 /* ANIMATIONS */
@@ -96,10 +92,10 @@ body::after {
 
 @keyframes glowPulse {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(25, 35, 253, 0.3);
+        box-shadow: 0 0 20px rgba(236, 208, 179, 0.3);
     }
     50% {
-        box-shadow: 0 0 40px rgba(25, 35, 253, 0.6);
+        box-shadow: 0 0 40px rgba(236, 208, 179, 0.6);
     }
 }
 
@@ -160,8 +156,8 @@ body::after {
 /* TYPOGRAPHY */
 h1, h2, h3, h4 {
     font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: 0.04em;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
 }
 
 h1 { font-size: 56px; }
@@ -172,8 +168,7 @@ h4 { font-size: 18px; }
 p {
     color: var(--color-text-secondary);
     font-size: 16px;
-    line-height: 1.9;
-    letter-spacing: 0.06em;
+    line-height: 1.75;
 }
 
 a {
@@ -186,69 +181,7 @@ a:hover {
     color: var(--color-accent-hover);
 }
 
-/* NAVBAR */
-.navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: transparent;
-    z-index: 1000;
-    border-bottom: 1px solid transparent;
-    transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-/* Arriba del todo se deja transparente. En cuanto se hace scroll toma
-   fondo: si no, el contenido pasa por detras y el menu se vuelve
-   ilegible. La clase la pone script.js. */
-.navbar.scrolled {
-    background-color: rgba(10, 14, 23, 0.85);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom-color: var(--color-border);
-}
-
-.nav-container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo img {
-    height: 32px;
-    width: auto;
-    transition: opacity 0.2s ease;
-}
-
-.nav-logo:hover img {
-    opacity: 0.8;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: var(--spacing-2xl);
-    align-items: center;
-}
-
-.nav-link {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-secondary);
-    transition: color 0.2s ease;
-    border-bottom: 2px solid transparent;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-}
-
+/* IDIOMA */
 .language-selector select {
     background-color: var(--color-bg-secondary);
     color: var(--color-text);
@@ -294,7 +227,7 @@ code {
     width: 100%;
     max-width: 440px;
     padding: var(--spacing-2xl);
-    background: rgba(17, 24, 35, 0.6);
+    background: rgba(21, 21, 24, 0.6);
     border: 1px solid var(--color-border);
     border-radius: 4px;
 }
@@ -356,7 +289,7 @@ code {
 .auth-field input,
 .auth-field select {
     padding: 11px 14px;
-    background-color: rgba(10, 14, 23, 0.6);
+    background-color: rgba(13, 13, 16, 0.6);
     border: 1px solid var(--color-border);
     border-radius: 3px;
     color: var(--color-text);
@@ -418,8 +351,8 @@ code {
     font-size: 11px;
     line-height: 1.6;
     letter-spacing: 0.06em;
-    background: rgba(25, 35, 253, 0.15);
-    border: 1px solid rgba(25, 35, 253, 0.4);
+    background: rgba(236, 208, 179, 0.15);
+    border: 1px solid rgba(236, 208, 179, 0.4);
 }
 
 .auth-message--ok {
@@ -453,7 +386,7 @@ code {
 .account-block {
     margin-bottom: var(--spacing-xl);
     padding: var(--spacing-xl);
-    background: rgba(17, 24, 35, 0.5);
+    background: rgba(21, 21, 24, 0.5);
     border: 1px solid var(--color-border);
     border-radius: 4px;
 }
@@ -487,6 +420,7 @@ code {
 
 .badge--ok {
     background: var(--color-accent);
+    color: var(--ik-ink);
 }
 
 .download-row {
@@ -581,7 +515,7 @@ code {
 
 .post-body code {
     padding: 2px 6px;
-    background: rgba(10, 14, 23, 0.7);
+    background: rgba(13, 13, 16, 0.7);
     border: 1px solid var(--color-border);
     border-radius: 3px;
     font-family: var(--font-mono);
@@ -704,9 +638,9 @@ code {
     justify-content: center;
     gap: 14px;
     padding: 10px 20px;
-    background-color: rgba(25, 35, 253, 0.14);
-    border-top: 1px solid rgba(25, 35, 253, 0.35);
-    border-bottom: 1px solid rgba(25, 35, 253, 0.35);
+    background-color: rgba(236, 208, 179, 0.14);
+    border-top: 1px solid rgba(236, 208, 179, 0.35);
+    border-bottom: 1px solid rgba(236, 208, 179, 0.35);
     color: var(--color-text);
     font-size: 11px;
     font-weight: 600;
@@ -716,7 +650,7 @@ code {
 }
 
 .announce:hover {
-    background-color: rgba(25, 35, 253, 0.24);
+    background-color: rgba(236, 208, 179, 0.24);
     color: var(--color-text);
 }
 
@@ -725,7 +659,7 @@ code {
     padding: 3px 9px;
     border-radius: 999px;
     background-color: var(--color-accent);
-    color: #fff;
+    color: var(--ik-ink);
     font-size: 10px;
     letter-spacing: 0.14em;
 }
@@ -736,7 +670,7 @@ code {
     justify-content: center;
     gap: 10px;
     margin-bottom: 14px;
-    font-family: 'Clash Display', 'Inter', system-ui, sans-serif;
+    font-family: var(--font-primary);
 }
 
 .price-line .price-now {
@@ -756,7 +690,7 @@ code {
     padding: 3px 9px;
     border-radius: 999px;
     background-color: var(--color-accent);
-    color: #fff;
+    color: var(--ik-ink);
     font-size: 10px;
     letter-spacing: 0.1em;
 }
@@ -783,7 +717,7 @@ code {
 .welcome-popup__overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 14, 23, 0.85);
+    background: rgba(13, 13, 16, 0.85);
     backdrop-filter: blur(4px);
 }
 
@@ -830,7 +764,7 @@ code {
     padding: 4px 10px;
     border-radius: 999px;
     background-color: var(--color-accent);
-    color: #fff;
+    color: var(--ik-ink);
     font-size: 10px;
     letter-spacing: 0.14em;
     margin-bottom: var(--spacing-md);
@@ -903,13 +837,12 @@ code {
     position: relative;
     isolation: isolate;
     padding: 12px 28px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.14);
     cursor: pointer;
-    border-radius: 999px;
+    border-radius: 9px;
     text-decoration: none;
     color: var(--color-text);
     background: rgba(255, 255, 255, 0.06);
@@ -937,19 +870,21 @@ code {
     border-color: var(--color-accent);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.25),
-        0 0 26px rgba(25, 35, 253, 0.4),
+        0 0 26px rgba(236, 208, 179, 0.4),
         0 14px 28px rgba(0, 0, 0, 0.4);
 }
 
 .btn-primary {
-    background: rgba(25, 35, 253, 0.35);
-    border-color: rgba(25, 35, 253, 0.55);
-    color: white;
+    background: var(--gold);
+    border-color: transparent;
+    color: var(--ik-ink);
     animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .btn-primary:hover {
-    background: rgba(25, 35, 253, 0.5);
+    background: var(--gold);
+    color: var(--ik-ink);
+    filter: brightness(1.05);
 }
 
 .btn-secondary {
@@ -1070,7 +1005,7 @@ code {
     width: 100%;
     height: auto;
     max-width: 500px;
-    filter: drop-shadow(0 0 40px rgba(25, 35, 253, 0.2));
+    filter: drop-shadow(0 0 40px rgba(236, 208, 179, 0.2));
     transition: all 0.3s ease;
     transform: rotateY(0deg) rotateX(0deg);
 }
@@ -1078,7 +1013,7 @@ code {
 /* FEATURES SECTION */
 .features {
     padding: var(--spacing-3xl) 0;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-surface);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -1097,8 +1032,8 @@ code {
 .feature-card {
     padding: var(--spacing-xl);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-bg);
+    border-radius: 12px;
+    background-color: var(--color-surface);
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     animation: floatIn 0.6s ease-out both;
     position: relative;
@@ -1112,7 +1047,7 @@ code {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(25, 35, 253, 0.1), transparent);
+    background: radial-gradient(circle at 30% 50%, rgba(236, 208, 179, 0.1), transparent);
     transition: left 0.5s ease;
 }
 
@@ -1122,14 +1057,14 @@ code {
 
 .feature-card:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 0 40px rgba(25, 35, 253, 0.2), 0 20px 50px rgba(25, 35, 253, 0.1);
+    box-shadow: 0 0 40px rgba(236, 208, 179, 0.2), 0 20px 50px rgba(236, 208, 179, 0.1);
     transform: translateY(-8px) rotateY(2deg);
 }
 
 /* PRODUCTS CATALOG (products.html) */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: var(--spacing-xl);
 }
 
@@ -1139,15 +1074,15 @@ code {
     align-items: center;
     padding: var(--spacing-xl);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-bg);
+    border-radius: 12px;
+    background-color: var(--color-surface);
     text-align: center;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .product-card:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 0 40px rgba(25, 35, 253, 0.2), 0 20px 50px rgba(25, 35, 253, 0.1);
+    box-shadow: 0 0 40px rgba(236, 208, 179, 0.2), 0 20px 50px rgba(236, 208, 179, 0.1);
     transform: translateY(-8px);
 }
 
@@ -1242,6 +1177,7 @@ code {
 .newsletter-strip {
     padding: var(--spacing-xl) 0;
     border-top: 1px solid var(--color-border);
+    background: rgba(13, 13, 16, 0.6);
 }
 
 .newsletter-strip__inner {
@@ -1294,8 +1230,8 @@ code {
 /* FOOTER */
 .footer {
     padding: var(--spacing-2xl) 0;
-    border-top: none;
-    background-color: transparent;
+    border-top: 1px solid var(--color-border);
+    background-color: rgba(13, 13, 16, 0.75);
     margin-top: auto;
 }
 
@@ -1307,13 +1243,22 @@ code {
 
 .footer p {
     font-size: 13px;
-    color: var(--color-text-secondary);
+    color: #9d9a98;
+}
+
+.footer a {
+    color: #cfccc9;
+}
+
+.footer a:hover {
+    color: var(--color-accent);
 }
 
 .footer-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: var(--spacing-md) var(--spacing-2xl);
     font-size: 13px;
 }
@@ -1329,26 +1274,6 @@ code {
     h1 { font-size: 40px; }
     h2 { font-size: 28px; }
     h3 { font-size: 18px; }
-
-    /* En una sola fila el menu se sale de la pantalla: el logo se queda
-       arriba y los enlaces pasan debajo, centrados y con salto de linea. */
-    .nav-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--spacing-md);
-    }
-
-    .nav-menu {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--spacing-md);
-    }
-
-    .nav-link {
-        font-size: 11px;
-        letter-spacing: 0.06em;
-    }
 
     .announce {
         gap: 8px;
@@ -1400,6 +1325,7 @@ code {
     .footer .container {
         flex-direction: column;
         gap: var(--spacing-lg);
+        text-align: center;
     }
 
     /* Con cuatro enlaces ya no caben en una linea a 375px. */
@@ -1408,11 +1334,7 @@ code {
         font-size: 12px;
     }
 
-    .nav-container {
-        padding: var(--spacing-md);
-    }
-
-    .container {
+.container {
         padding: 0 var(--spacing-md);
     }
 }
@@ -1421,15 +1343,6 @@ code {
     h1 { font-size: 32px; }
     h2 { font-size: 24px; }
 
-    /* Ajustado para que los enlaces y el idioma quepan en una sola fila. */
-    .nav-menu {
-        gap: 6px 10px;
-    }
-
-    .nav-link {
-        font-size: 10px;
-    }
-
     .language-selector select {
         padding: 4px var(--spacing-sm);
         font-size: 11px;
@@ -1437,7 +1350,7 @@ code {
 
     .btn {
         padding: 10px 20px;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .hero {
@@ -1552,3 +1465,21 @@ code {
     .legal th, .legal td { padding: 9px 8px; }
     .legal td:first-child { width: 40%; }
 }
+
+
+/* Antetitulos y etiquetas pequenas, en mayusculas */
+.announce-tag,
+.welcome-popup__tag,
+.price-badge,
+.badge,
+.auth-field > span,
+.account-block h3,
+.post-meta,
+.post-nav,
+.contact-meta h2,
+.product-card-tag,
+.legal h3 { text-transform: uppercase; }
+
+/* Palabras largas y las tarjetas de Instagram no ensanchan la pagina en movil */
+h1, h2 { overflow-wrap: break-word; }
+iframe.instagram-media { min-width: 0 !important; max-width: 100%; }
