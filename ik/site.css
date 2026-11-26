@@ -108,13 +108,15 @@ body:not(.ik-home) .ik-top { position: sticky; top: 0; }
     .ik-header__inner { position: relative; width: calc(var(--u) * 1672); height: 100%; margin: 0 auto; }
     .ik-logo { position: absolute; left: calc(var(--u) * 85); top: calc(var(--u) * 24); width: calc(var(--u) * 176); }
 
-    .ik-nav { position: absolute; left: calc(var(--u) * 567); top: 0; height: 100%; }
+    .ik-nav { position: absolute; left: calc(var(--u) * 420); top: 0; height: 100%; }
     .ik-nav__list { display: flex; height: 100%; }
     .ik-nav__list > li { display: flex; align-items: center; height: 100%; }
     .ik-navlink { position: relative; height: 100%; padding: 0 0 calc(var(--u) * 2); font-size: calc(var(--u) * 19); gap: calc(var(--u) * 9); }
     .ik-chev { width: calc(var(--u) * 14); height: calc(var(--u) * 9); }
     .ik-nav--kits { margin-left: calc(var(--u) * 47); }
     .ik-nav--kits .ik-navlink { padding-left: calc(var(--u) * 8); padding-right: calc(var(--u) * 8); }
+    .ik-nav--oe { margin-left: calc(var(--u) * 40); }
+    .ik-nav--oe .ik-navlink { padding-left: calc(var(--u) * 8); padding-right: calc(var(--u) * 8); }
     .ik-nav--resources { margin-left: calc(var(--u) * 46); }
     .ik-nav--support { margin-left: calc(var(--u) * 56); }
     .ik-navlink.is-current { font-weight: 600; }
