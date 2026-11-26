@@ -1,0 +1,119 @@
+/* Pagina de descarga de ODD ESSENTIALS (odd-essentials.html). */
+@font-face { font-family: 'Clash'; src: url('../ClashDisplay-Semibold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+
+.oe { width: min(1180px, 100% - 40px); margin: 0 auto; text-align: center; }
+.oe [hidden] { display: none !important; }
+.oe ul { list-style: none; padding: 0; }
+.oe h1, .oe h2 { font-family: 'Clash', 'Inter', system-ui, sans-serif; font-weight: 600; word-spacing: 0.08em; }
+
+.oe-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-accent); }
+.oe-lead { max-width: 640px; margin: 0 auto; font-size: clamp(16px, 2.1vw, 20px); line-height: 1.6; color: var(--color-text-secondary); }
+.oe-meta { margin-top: 18px; font-size: 13px; letter-spacing: 0.04em; color: #8f8c89; }
+.oe-meta + .oe-meta { margin-top: 4px; }
+.oe-meta a { color: var(--color-accent); }
+
+/* ---------- portada ---------- */
+.oe-hero { padding: 76px 0 0; }
+.oe-hero h1 { font-size: clamp(42px, 9.4vw, 112px); line-height: 1; letter-spacing: 0.005em; margin: 18px 0 20px; }
+
+.oe-downloads { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 36px; }
+.oe .oe-dl { display: flex; align-items: center; gap: 16px; width: min(320px, 100%); min-height: 68px; padding: 12px 24px; font-family: 'Inter', system-ui, sans-serif; text-align: left; cursor: pointer; color: #fff; background: rgba(23, 23, 26, 0.78); border: 1px solid #45423e; border-radius: 12px; transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s; }
+.oe .oe-dl:hover { transform: translateY(-2px); border-color: var(--color-accent); color: #fff; }
+.oe-dl svg { flex: none; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.oe-dl__text { display: flex; flex-direction: column; }
+.oe-dl__main { font-size: 16px; font-weight: 600; line-height: 1.35; }
+.oe-dl__sub { font-size: 12px; opacity: 0.72; }
+/* el sistema del visitante va primero, en dorado */
+.oe .oe-dl.is-mine { order: -1; color: #17120e; background: linear-gradient(180deg, #f6dfc7, #e4c0a0); border-color: transparent; box-shadow: 0 10px 40px rgba(236, 208, 179, 0.26); }
+.oe .oe-dl.is-mine:hover { color: #17120e; box-shadow: 0 14px 52px rgba(236, 208, 179, 0.42); }
+.oe .oe-dl[aria-busy="true"] { cursor: progress; opacity: 0.7; }
+
+.oe-mobile { max-width: 460px; margin: 28px auto 0; padding: 18px; background: rgba(23, 23, 26, 0.85); border: 1px solid rgba(236, 208, 179, 0.45); border-radius: 14px; }
+.oe-mobile p { font-size: 14px; color: var(--color-text-secondary); }
+.oe-mobile__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 12px; }
+.oe-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; font: 600 14px 'Inter', sans-serif; color: var(--color-accent); background: transparent; border: 1px solid rgba(236, 208, 179, 0.5); border-radius: 9px; cursor: pointer; text-decoration: none; }
+.oe-ghost:hover { background: rgba(236, 208, 179, 0.1); }
+
+/* los cuatro plugins en abanico */
+.oe-line { position: relative; display: flex; justify-content: center; align-items: flex-end; margin: 60px auto 0; padding-bottom: 40px; isolation: isolate; }
+.oe-line::before { content: ''; position: absolute; left: 8%; right: 8%; bottom: 0; height: 60%; background: radial-gradient(closest-side, rgba(236, 208, 179, 0.22), transparent); z-index: -1; }
+.oe-line img { width: 27%; height: auto; margin: 0 -0.6%; filter: drop-shadow(0 30px 34px rgba(0, 0, 0, 0.65)); transition: transform 0.35s; }
+.oe-line__drive { transform: translateY(0) rotate(-4deg); z-index: 1; }
+.oe-line__room { transform: translateY(-22px) rotate(-1.3deg); z-index: 2; }
+.oe-line__glue { transform: translateY(-22px) rotate(1.3deg); z-index: 2; }
+.oe-line__echo { transform: translateY(0) rotate(4deg); z-index: 1; }
+
+/* ---------- cifras ---------- */
+.oe .oe-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 24px 0 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background: rgba(16, 16, 19, 0.6); }
+.oe-specs li { padding: 26px 10px; border-left: 1px solid var(--color-border); }
+.oe-specs li:first-child { border-left: 0; }
+.oe-specs strong { display: block; font-family: 'Clash', 'Inter', sans-serif; font-size: clamp(20px, 2.8vw, 32px); line-height: 1.2; }
+.oe-specs span { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #8f8c89; }
+
+/* ---------- un bloque por plugin ---------- */
+.oe-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 64px; padding: 88px 0; border-bottom: 1px solid var(--color-border); text-align: left; --tono: #ecd0b3; }
+.oe-row--drive { --tono: #ff6a3d; }
+.oe-row--room { --tono: #5b8cff; }
+.oe-row--glue { --tono: #2fd196; }
+.oe-row--echo { --tono: #ffad1f; }
+.oe-row:nth-child(even) .oe-row__art { order: 2; }
+.oe-row__art { display: flex; justify-content: center; padding: 20px 0; background: radial-gradient(closest-side, color-mix(in srgb, var(--tono) 24%, transparent), transparent 100%); }
+.oe-row__art img { width: min(360px, 88%); height: auto; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.62)); }
+.oe-row .oe-eyebrow { color: var(--tono); }
+.oe-row h2 { font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; margin: 10px 0 8px; }
+.oe-claim { font-size: clamp(17px, 2vw, 21px); font-weight: 500; }
+.oe-desc { max-width: 480px; margin-top: 14px; font-size: 15px; line-height: 1.75; color: var(--color-text-secondary); }
+.oe .oe-points { margin-top: 24px; }
+.oe-points li { position: relative; padding: 11px 0 11px 26px; font-size: 15px; border-top: 1px solid var(--color-border); }
+.oe-points li::before { content: ''; position: absolute; left: 2px; top: 19px; width: 9px; height: 9px; border-radius: 2px; background: var(--tono); }
+.oe-presets__title { margin-top: 22px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8f8c89; }
+.oe .oe-presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.oe-presets li { padding: 6px 13px; font-size: 13px; color: var(--color-text-secondary); background: rgba(23, 23, 26, 0.8); border: 1px solid var(--color-border); border-radius: 40px; }
+
+/* ---------- DAWs, como en la portada ---------- */
+.oe-daws { padding: 56px 0; border-bottom: 1px solid var(--color-border); }
+.oe-daws h2 { font-family: 'Inter', sans-serif !important; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #a8a5a2; }
+.oe .oe-daws ul { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 28px 40px; margin-top: 28px; }
+.oe-daws li { display: flex; align-items: center; opacity: 0.75; }
+.oe-daws img { display: block; width: auto; }
+.oe-daw--ableton { height: 21px; }
+.oe-daw--flstudio { height: 24px; }
+.oe-daw--cubase { height: 32px; }
+.oe-daw--reaper { height: 36px; }
+.oe-daw--bitwig { height: 46px; }
+.oe-daw-name { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: #d9d6d3; white-space: nowrap; }
+
+/* ---------- cierre ---------- */
+.oe-final { padding: 92px 0 84px; }
+.oe-final h2 { font-size: clamp(30px, 5.4vw, 60px); line-height: 1.1; margin-bottom: 16px; }
+
+@media (max-width: 860px) {
+    .oe-row { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 56px 0; }
+    .oe-row:nth-child(even) .oe-row__art { order: 0; }
+    .oe-desc { max-width: none; }
+    .oe .oe-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .oe-specs li:nth-child(3) { border-left: 0; }
+    .oe-specs li:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+}
+
+@media (max-width: 560px) {
+    .oe-hero { padding-top: 40px; }
+    /* ESSENTIALS es una sola palabra: que no se parta en pantallas estrechas */
+    .oe-hero h1 { font-size: 11vw; }
+    .oe .oe-dl { gap: 12px; padding-left: 18px; padding-right: 14px; }
+    .oe-downloads { margin-top: 26px; }
+    /* en el movil, dos por fila para que se lean */
+    .oe-line { flex-wrap: wrap; gap: 12px 0; margin-top: 40px; }
+    .oe-line img { width: 48%; margin: 0 1%; transform: none; }
+    .oe-daws .oe-daw-name, .oe-daw-name { font-size: 18px; }
+    .oe-daw--ableton { height: 16px; }
+    .oe-daw--flstudio { height: 18px; }
+    .oe-daw--cubase { height: 25px; }
+    .oe-daw--reaper { height: 28px; }
+    .oe-daw--bitwig { height: 38px; }
+    .oe-final { padding: 60px 0 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .oe .oe-dl, .oe-line img { transition: none; }
+}
