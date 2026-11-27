@@ -159,7 +159,9 @@ body.ik-home::after { background: linear-gradient(90deg, rgba(10, 10, 13, 0.5) 0
 .ik-card--oe .ik-features strong { display: block; font-weight: 600; white-space: nowrap; }
 .ik-card--oe .ik-features span { display: block; opacity: 0.7; }
 .ik-fan { position: relative; display: flex; justify-content: center; align-items: flex-end; isolation: isolate; }
-.ik-fan::before { content: ''; position: absolute; left: 6%; right: 6%; bottom: -8%; height: 70%; background: radial-gradient(closest-side, rgba(236, 208, 179, 0.22), transparent); z-index: -1; }
+.ik-fan::before { content: ''; position: absolute; left: 6%; right: 6%; bottom: -8%; height: 70%; background: radial-gradient(closest-side, rgba(236, 208, 179, 0.22), transparent); z-index: -1; pointer-events: none; }
+/* precio dentro del boton de infinityKits, separado por una raya */
+.ik-cta__price { padding-left: 0.8em; border-left: 1px solid rgba(23, 18, 14, 0.3); font-weight: 700; }
 .ik-shot.ik-fan img { flex: none; filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.65)); }
 .ik-fan img:nth-child(1) { transform: rotate(-4deg); z-index: 1; }
 .ik-fan img:nth-child(2) { transform: translateY(-6%) rotate(-1.3deg); z-index: 2; }
@@ -182,6 +184,8 @@ body.ik-home::after { background: linear-gradient(90deg, rgba(10, 10, 13, 0.5) 0
 
     .ik-slide .ik-card { position: relative; inset: auto; display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: calc(var(--u) * 20); }
     .ik-slide .ik-card > * { position: static; flex: none; }
+    /* el abanico si necesita posicion: sin ella su brillo tapa los botones */
+    .ik-slide .ik-card > .ik-fan { position: relative; left: auto; top: auto; }
     .ik-card .ik-tag { height: calc(var(--u) * 30); font-size: calc(var(--u) * 14); }
     .ik-card .ik-title { margin-top: calc(var(--u) * 6); font-size: calc(var(--u) * 66); }
     .ik-card .ik-subtitle { width: auto; font-size: calc(var(--u) * 23); }
