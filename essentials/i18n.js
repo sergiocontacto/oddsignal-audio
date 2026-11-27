@@ -5,6 +5,9 @@
   // [ingles, es, fr, de, it]
   var filas = [
     ["Free plugin bundle", "Bundle de plugins gratis", "Pack de plugins gratuit", "Gratis-Plugin-Bundle", "Bundle di plugin gratuito"],
+    // anuncio del bundle en la portada
+    ["Free bundle", "Bundle gratis", "Pack gratuit", "Gratis-Bundle", "Bundle gratis"],
+    ["Four free plugins, one bundle", "Cuatro plugins gratis en un bundle", "Quatre plugins gratuits en un pack", "Vier Gratis-Plugins in einem Bundle", "Quattro plugin gratis in un bundle"],
     ["Four essential tools with one shared character: distortion, reverb, bus compression and tempo delay.", "Cuatro herramientas esenciales con un mismo carácter: distorsión, reverb, compresión de bus y delay a tempo.", "Quatre outils essentiels au caractère commun : distorsion, réverbe, compression de bus et delay synchronisé.", "Vier essenzielle Werkzeuge mit einem gemeinsamen Charakter: Verzerrung, Reverb, Bus-Kompression und Tempo-Delay.", "Quattro strumenti essenziali con un carattere comune: distorsione, riverbero, compressione di bus e delay a tempo."],
     ["Plugins are installed on a computer. Save this link and open it on your PC or Mac.", "Los plugins se instalan en un ordenador. Guarda este enlace y ábrelo en tu PC o Mac.", "Les plugins s'installent sur un ordinateur. Gardez ce lien et ouvrez-le sur votre PC ou Mac.", "Plugins werden am Computer installiert. Speichere diesen Link und öffne ihn am PC oder Mac.", "I plugin si installano su un computer. Salva questo link e aprilo sul tuo PC o Mac."],
     ["Copy link", "Copiar enlace", "Copier le lien", "Link kopieren", "Copia il link"],

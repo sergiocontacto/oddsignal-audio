@@ -39,6 +39,14 @@
         if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(current + (dx < 0 ? 1 : -1));
     }, { passive: true });
 
+    // descargar el bundle abre el carrito: que el aviso de bienvenida no salte encima
+    document.querySelectorAll('button[data-oe-os]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var popup = document.querySelector('[data-welcome-popup]');
+            if (popup) popup.remove();
+        });
+    });
+
     document.querySelectorAll('[data-ik-go]').forEach(function (link) {
         link.addEventListener('click', function (e) {
             e.preventDefault();

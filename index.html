@@ -41,7 +41,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="ik/site.css?v=2">
-    <link rel="stylesheet" href="ik/home.css?v=7">
+    <link rel="stylesheet" href="ik/home.css?v=9">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon_io/icon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/icon-192.png">
@@ -159,41 +159,84 @@
 
         <main class="ik-hero" aria-roledescription="carousel">
             <div class="ik-slides">
-                <section class="ik-slide ik-slide--kits is-active" aria-label="infinityKits">
-                    <div class="ik-copy">
-                        <span class="ik-tag">PLUGIN</span>
-                        <h1 class="ik-title">infinity<span>Kits</span></h1>
-                        <p class="ik-subtitle">Pull drums out of any song</p>
-                        <figure class="ik-shot">
-                            <img src="ik/ik-plugin.webp?v=3" alt="infinityKits plugin interface" width="1429" height="947" decoding="async">
+                <!-- Primera diapositiva: los dos lanzamientos, uno al lado del otro. -->
+                <section class="ik-slide ik-slide--duo is-active" aria-label="infinityKits + ODD ESSENTIALS">
+                    <article class="ik-copy ik-card ik-card--kits" aria-label="infinityKits">
+                            <span class="ik-tag">PLUGIN</span>
+                            <h1 class="ik-title">infinity<span>Kits</span></h1>
+                            <p class="ik-subtitle">Pull drums out of any song</p>
+                            <figure class="ik-shot">
+                                <img src="ik/ik-plugin.webp?v=3" alt="infinityKits plugin interface" width="1429" height="947" decoding="async">
+                            </figure>
+                            <p class="ik-desc">Analyse a song, isolate its drums and turn them into a kit ready to use in your DAW. Discover, organise and create new drums from your favourite tracks.</p>
+                            <ul class="ik-features">
+                                <li>
+                                    <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 14v8M11 8v20M18 3v30M25 10v16M32 15v6"/></svg>
+                                    <p>Extract the drums from any song</p>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 3 33 11 18 19 3 11z"/><path d="M3 18l15 8 15-8M3 25l15 8 15-8"/></svg>
+                                    <p>Turn the drums into a usable kit</p>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 11h17M29 11h4M3 25h4M16 25h17"/><circle cx="24.5" cy="11" r="4.500"/><circle cx="11.5" cy="25" r="4.500"/></svg>
+                                    <p>Edit and shape every single sound</p>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4v19M10 16l8 8 8-8"/><path d="M5 25v7h26v-7"/></svg>
+                                    <p>Export the kit to your DAW</p>
+                                </li>
+                            </ul>
+                            <button type="button" class="ik-btn ik-cta" data-ik-get><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3v15M7.5 12l6.5 6.5L20.500 12"/><path d="M3 19v6h22v-6"/></svg><span>Get infinityKits</span></button>
+                            <ul class="ik-platforms">
+                                <li class="ik-os ik-os--mac"><svg viewBox="0 0 17 20" aria-hidden="true"><path d="M14.100 10.600c0-2.500 2-3.600 2.100-3.700-1.100-1.700-2.900-1.900-3.500-1.900-1.500-.2-2.900.9-3.600.9s-1.900-.9-3.100-.8C4.400 5.100 2.900 6 2.100 7.400c-1.700 2.900-.4 7.200 1.200 9.600.8 1.2 1.800 2.500 3 2.400 1.200 0 1.700-.8 3.1-.8s1.9.8 3.1.8c1.300 0 2.1-1.2 2.900-2.300.9-1.300 1.300-2.600 1.3-2.700-.1 0-2.600-1-2.600-3.800zM11.800 3.300c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.500-.6.7-1.200 1.9-1 3 1.100.1 2.200-.6 2.9-1.400z"/></svg>macOS</li>
+                                <li class="ik-os ik-os--win"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M0 2.800 8.200 1.700v7.8H0zM9.200 1.500 20 0v9.5H9.200zM0 10.500h8.2v7.800L0 17.2zM9.2 10.5H20V20L9.2 18.5z"/></svg>Windows</li>
+                                <li class="ik-fmt">VST3</li>
+                                <li class="ik-fmt">AU</li>
+                            </ul>
+                    </article>
+
+                    <article class="ik-copy ik-card ik-card--oe" aria-labelledby="ik-bundle-title">
+                        <span class="ik-tag">Free bundle</span>
+                        <h2 class="ik-title" id="ik-bundle-title" translate="no">ODD <span>ESSENTIALS</span></h2>
+                        <p class="ik-subtitle">Four free plugins, one bundle</p>
+                        <figure class="ik-shot ik-fan">
+                            <img src="essentials/drive.webp?v=2" alt="ODD DRIVE plugin interface" width="720" height="999" loading="lazy" decoding="async">
+                            <img src="essentials/room.webp?v=2" alt="ODD ROOM plugin interface" width="720" height="999" loading="lazy" decoding="async">
+                            <img src="essentials/glue.webp?v=2" alt="ODD GLUE plugin interface" width="720" height="999" loading="lazy" decoding="async">
+                            <img src="essentials/echo.webp?v=2" alt="ODD ECHO plugin interface" width="720" height="999" loading="lazy" decoding="async">
                         </figure>
-                        <p class="ik-desc">Analyse a song, isolate its drums and turn them into a kit ready to use in your DAW. Discover, organise and create new drums from your favourite tracks.</p>
+                        <p class="ik-desc">Four essential tools with one shared character: distortion, reverb, bus compression and tempo delay.</p>
                         <ul class="ik-features">
                             <li>
-                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 14v8M11 8v20M18 3v30M25 10v16M32 15v6"/></svg>
-                                <p>Extract the drums from any song</p>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 31c13 0 6-26 18-26h12"/><path d="M3 18h30" opacity="0.45"/></svg>
+                                <p><strong translate="no">ODD DRIVE</strong><span>Distortion</span></p>
                             </li>
                             <li>
-                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 3 33 11 18 19 3 11z"/><path d="M3 18l15 8 15-8M3 25l15 8 15-8"/></svg>
-                                <p>Turn the drums into a usable kit</p>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="7" cy="18" r="3.500"/><path d="M16 10a11 11 0 0 1 0 16M22 6a17 17 0 0 1 0 24M28.500 3a22 22 0 0 1 0 30"/></svg>
+                                <p><strong translate="no">ODD ROOM</strong><span>Reverb</span></p>
                             </li>
                             <li>
-                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 11h17M29 11h4M3 25h4M16 25h17"/><circle cx="24.5" cy="11" r="4.500"/><circle cx="11.5" cy="25" r="4.500"/></svg>
-                                <p>Edit and shape every single sound</p>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 3v10M13 9l5 5 5-5M18 33V23M13 27l5-5 5 5"/><path d="M4 18h28"/></svg>
+                                <p><strong translate="no">ODD GLUE</strong><span>Bus compressor</span></p>
                             </li>
                             <li>
-                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4v19M10 16l8 8 8-8"/><path d="M5 25v7h26v-7"/></svg>
-                                <p>Export the kit to your DAW</p>
+                                <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 5v26M13 10v16M21 13v10M28 15.500v5M34 17v2"/></svg>
+                                <p><strong translate="no">ODD ECHO</strong><span>Tempo delay</span></p>
                             </li>
                         </ul>
-                        <button type="button" class="ik-btn ik-cta" data-ik-get><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3v15M7.5 12l6.5 6.5L20.500 12"/><path d="M3 19v6h22v-6"/></svg><span>Get infinityKits</span></button>
+                        <div class="ik-bundle__cta">
+                            <button type="button" class="ik-btn ik-dl" data-oe-os="windows"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3v15M7.5 12l6.5 6.5L20.500 12"/><path d="M3 19v6h22v-6"/></svg><span>Download for Windows</span></button>
+                            <button type="button" class="ik-btn ik-dl" data-oe-os="mac"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3v15M7.5 12l6.5 6.5L20.500 12"/><path d="M3 19v6h22v-6"/></svg><span>Download for macOS</span></button>
+                        </div>
                         <ul class="ik-platforms">
-                            <li class="ik-os ik-os--mac"><svg viewBox="0 0 17 20" aria-hidden="true"><path d="M14.100 10.600c0-2.500 2-3.600 2.100-3.700-1.100-1.700-2.900-1.900-3.500-1.900-1.500-.2-2.900.9-3.600.9s-1.900-.9-3.100-.8C4.400 5.100 2.900 6 2.100 7.400c-1.700 2.900-.4 7.200 1.200 9.600.8 1.2 1.800 2.500 3 2.400 1.200 0 1.700-.8 3.1-.8s1.9.8 3.1.8c1.300 0 2.1-1.2 2.900-2.300.9-1.300 1.300-2.600 1.3-2.700-.1 0-2.600-1-2.600-3.800zM11.800 3.300c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.500-.6.7-1.200 1.9-1 3 1.100.1 2.200-.6 2.9-1.400z"/></svg>macOS</li>
+                            <li class="ik-os ik-os--mac"><svg viewBox="0 0 17 20" aria-hidden="true"><path d="M14.100 10.600c0-2.500 2-3.600 2.100-3.700-1.100-1.700-2.900-1.900-3.500-1.900-1.500-.2-2.900.9-3.600.9s-1.900-.9-3.100-.8C4.400 5.100 2.900 6 2.100 7.400c-1.700 2.900-.4 7.200 1.200 9.600.8 1.2 1.800 2.5 3 2.4 1.200 0 1.700-.8 3.1-.8s1.9.8 3.1.8c1.300 0 2.1-1.200 2.9-2.3.9-1.300 1.3-2.6 1.3-2.7-.1 0-2.6-1-2.6-3.8zM11.800 3.300c.7-.8 1.1-1.9 1-3.100-1 0-2.2.7-2.9 1.500-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>macOS</li>
                             <li class="ik-os ik-os--win"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M0 2.800 8.200 1.700v7.8H0zM9.200 1.500 20 0v9.5H9.200zM0 10.500h8.2v7.800L0 17.2zM9.2 10.5H20V20L9.2 18.5z"/></svg>Windows</li>
                             <li class="ik-fmt">VST3</li>
                             <li class="ik-fmt">AU</li>
+                            <li class="ik-more"><a class="ik-link" href="odd-essentials.html">View details</a></li>
                         </ul>
-                    </div>
+                    </article>
                 </section>
 
                 <section class="ik-slide ik-slide--dist" aria-label="ODDDIST" inert>
@@ -232,7 +275,7 @@
             </div>
 
             <div class="ik-dots">
-                <button type="button" class="is-active" aria-label="infinityKits" aria-current="true"></button>
+                <button type="button" class="is-active" aria-label="infinityKits + ODD ESSENTIALS" aria-current="true"></button>
                 <button type="button" aria-label="ODDDIST"></button>
                 <button type="button" aria-label="EvoraVerb"></button>
             </div>
@@ -300,10 +343,12 @@
             </div>
         </div>
     </footer>
+    <script src="essentials/i18n.js?v=4"></script>
     <script src="i18n.js?v=48"></script>
     <script src="script.js?v=45"></script>
     <script src="buy-button.js?v=10"></script>
     <script src="ik/site.js?v=2"></script>
-    <script src="ik/home.js?v=2"></script>
+    <script src="ik/home.js?v=3"></script>
+    <script src="essentials/essentials.js?v=4"></script>
 </body>
 </html>
