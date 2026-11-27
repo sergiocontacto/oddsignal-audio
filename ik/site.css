@@ -184,3 +184,12 @@ body:not(.ik-home) .ik-top { position: sticky; top: 0; }
 @media (prefers-reduced-motion: reduce) {
     .ik-menu, .ik-btn, .ik-chev { transition: none !important; }
 }
+
+/* con FUZZMIC en el menu hacen falta huecos mas cortos */
+@media (min-width: 1100px) {
+    .ik-nav { left: calc(var(--u) * 360); }
+    .ik-nav--kits { margin-left: calc(var(--u) * 30); }
+    .ik-nav--oe { margin-left: calc(var(--u) * 24); }
+    .ik-nav--resources { margin-left: calc(var(--u) * 28); }
+    .ik-nav--support { margin-left: calc(var(--u) * 32); }
+}

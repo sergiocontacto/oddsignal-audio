@@ -2,6 +2,7 @@
 (function () {
   // [ingles, es, fr, de, it]
   var filas = [
+    ["Free plugin", "Plugin gratis", "Plugin gratuit", "Gratis-Plugin", "Plugin gratuito"],
     ["ODDSIGNAL Vintage · Free plugin", "ODDSIGNAL Vintage · Plugin gratis", "ODDSIGNAL Vintage · Plugin gratuit", "ODDSIGNAL Vintage · Gratis-Plugin", "ODDSIGNAL Vintage · Plugin gratuito"],
     ["A microphone and a fuzz circuit in one box. Run any track through it and turn the red knob.", "Un micrófono y un circuito fuzz en una sola caja. Pasa cualquier pista por él y gira la perilla roja.", "Un micro et un circuit fuzz dans un seul boîtier. Faites-y passer n'importe quelle piste et tournez le bouton rouge.", "Ein Mikrofon und eine Fuzz-Schaltung in einer Box. Schick eine beliebige Spur hindurch und dreh den roten Regler.", "Un microfono e un circuito fuzz in un'unica scatola. Facci passare qualsiasi traccia e gira la manopola rossa."],
     ["VST3 · 64-bit · 5 MB", "VST3 · 64 bits · 5 MB", "VST3 · 64 bits · 5 Mo", "VST3 · 64 Bit · 5 MB", "VST3 · 64 bit · 5 MB"],

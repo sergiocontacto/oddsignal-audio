@@ -1,0 +1,18 @@
+/* Franja de FUZZMIC en la portada, debajo del carrusel. */
+.fm-band { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 48px; width: min(1180px, 100% - 40px); margin: 40px auto 56px; padding: 24px; background: rgba(16, 16, 19, 0.78); border: 1px solid var(--color-border); border-radius: 18px; }
+.fm-band__art img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.fm-band__text { text-align: left; padding-right: 16px; }
+.fm-band .ik-tag { height: 28px; padding: 0 12px; font-size: 12px; border-radius: 6px; }
+.fm-band h2 { margin: 16px 0 4px; font-family: 'Clash', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.05; }
+.fm-band__sub { font-size: clamp(17px, 2vw, 22px); font-weight: 600; color: var(--color-accent); }
+.fm-band__desc { max-width: 440px; margin-top: 14px; font-size: 15px; line-height: 1.7; color: var(--color-text-secondary); }
+.fm-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 26px; }
+.fm-band__get { min-height: 52px; padding: 0 30px; font-size: 16px; border-radius: 10px; }
+.fm-band__get[aria-busy="true"] { cursor: progress; opacity: 0.7; }
+.fm-band__meta { margin-top: 18px; font-size: 13px; letter-spacing: 0.04em; color: #8f8c89; }
+@media (max-width: 859.98px) {
+    .fm-band { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 16px; margin: 28px auto 36px; }
+    .fm-band__text { text-align: center; padding: 0 0 10px; }
+    .fm-band__desc { margin-left: auto; margin-right: auto; }
+    .fm-band__actions { justify-content: center; }
+}
